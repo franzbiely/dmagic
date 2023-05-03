@@ -1,0 +1,14 @@
+wp-includes
+*.php
+*.txt
+wp-admin
+wp-content/et-cache
+wp-content/themes
+wp-content/upgrade
+wp-content/uploads
+wp-content/index.php
+*.html
+.DS_Store
+wp-content/plugins/affiliaa-affiliate-program-with-mlm
+wp-content/plugins/akismet
+wp-content/plugins/*.php
