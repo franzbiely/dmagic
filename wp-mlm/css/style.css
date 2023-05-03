@@ -1,0 +1,1261 @@
+#mlm-main-div{
+    background:url('../images/brillant.png');
+    padding:20px;
+    background: #edf1f2 !important;
+}
+
+.mlm-main-div #adminmenu, .mlm-main-div #adminmenu .wp-submenu, .mlm-main-div #adminmenuback, .mlm-main-div #adminmenuwrap {
+    width: 160px;
+    background-color: #1c2b36;
+}
+.mlm-main-div ul#adminmenu a.wp-has-current-submenu:after, .mlm-main-div ul#adminmenu>li.current>a.current:after {
+    border-right-color: #edf1f2;
+}
+.mlm-main-div h1{
+    font-size: 18px;
+}
+.mlm-main-div input[type="text"], .mlm-main-div input[type="email"], .mlm-main-div input[type="url"], .mlm-main-div input[type="password"], .mlm-main-div input[type="search"], .mlm-main-div input[type="number"], .mlm-main-div input[type="tel"], .mlm-main-div input[type="range"], .mlm-main-div input[type="date"], .mlm-main-div input[type="month"], .mlm-main-div input[type="week"], .mlm-main-div input[type="time"], .mlm-main-div input[type="datetime"], .mlm-main-div input[type="datetime-local"], .mlm-main-div input[type="color"],.mlm-main-div select {
+    padding: 0 10px;
+    height:34px !important ;
+    width: 100%;
+    border-radius: 4px;
+    color:#666! important;
+
+}
+.mlm-main-div label.tab_class {
+    background: #fff !important;
+    border: 1px solid #edf1f2 !important;
+    border-radius: 4px;
+}
+.mlm-main-div #general-settings p{
+    font-family: system-ui;
+}    
+.mlm-main-div .graph-box{
+    border: 1px solid #edf1f2;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .05) !important;
+    border-radius: 5px;
+    padding: 15px !important;
+    background: #f9f9f9;
+    margin-bottom: 19px;
+}
+.mlm-main-div input.tab_class:checked + label {
+    color: #fff !important;
+    border: 1px solid #edf1f2 !important;
+    border-bottom: 1px solid #edf1f2 !important;
+    background: linear-gradient(to right, #da8cff, #9a55ff) !important;
+    border-radius: 4px;
+}
+.mlm-main-div .ioss-mlm-menu section {
+    border-top: 1px solid #edf1f2 !important;
+}
+.mlm-main-div #regForm input[type="password"]{
+    font-size: 12px !important ;  
+}
+
+.mlm-main-div #regForm input[type="text"]{
+    font-size: 12px !important ; 
+}
+
+.mlm-main-div #regForm input[type="number"]{
+    font-size: 12px !important ; 
+}
+
+.mlm-main-div #regForm input[type="email"]{
+    font-size: 12px !important ; 
+}
+.mlm-main-div #regForm select{
+    font-size: 12px !important ; 
+
+}
+.mlm-main-div #user-form3-div select{
+    font-size: 14px !important ; 
+
+}
+
+.mlm-main-div #regForm h1{
+    font-size: 18px;
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+.mlm-main-div .panel-ioss-mlm h4 {
+    color: #a35afd;
+    font-weight: 600;
+    border-bottom: 1px solid #edf1f2;
+    padding-bottom: 5px;
+    }
+
+.mlm-main-div #first-user-create-form label{
+    font-size: 14px;
+}
+.mlm-main-div .panel-ioss-mlm img {
+    height: 65px !important;
+    width: 65px;
+    padding: 10px;
+    border-radius: 30%;
+    background: linear-gradient(to right, #da8cff, #9a55ff) !important;
+    box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
+    border: 1px solid #c1c1c1;
+}
+.mlm-main-div .err_msg{
+    color:#F00;
+}
+.mlm-main-div .panel-border{
+    /*border: 2px solid rgb(238, 241, 243);*/
+    padding: 20px;
+    margin-top: 20px;
+}
+.mlm-main-div .panel-border-heading {
+    border: 2px solid rgb(238, 241, 243);
+    padding: 5px 0px 5px 17px;
+    margin-top: 10px;
+}
+.mlm-main-div .user-table-profile {
+    background: #edf1f2 !important;
+}
+.mlm-main-div .usr {
+    padding: 12px 0px !important;
+    background-color: #edf1f2 !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    color: #1c2b36 !important;
+}
+.mlm-main-div .form-horizontal label, input {
+    font-size: 13.5px !important;
+}
+.mlm-main-div .btn-danger {
+    color: #fff;
+    background-color: #ffffff;
+    border-color: transparent;
+    background: linear-gradient(to right, #da8cff, #9a55ff) !important;
+    padding: 10px 30px;
+    font-size: 13.5px !important;
+    box-shadow: 0px 3px 8.3px 0.7px rgb(163 93 255 / 16%);
+}
+.mlm-main-div .btn-danger-sm {
+    color: #fff;
+    background-color: #ffffff;
+    border-color: transparent;
+    background: linear-gradient(to right, #da8cff, #9a55ff) !important;
+    font-size: 13.5px !important;
+    box-shadow: 0px 3px 8.3px 0.7px rgb(163 93 255 / 16%);
+}
+
+.mlm-main-div #exTab4 .nav.nav-tabs.tabs-left a {
+    border: 0 !important;
+}
+
+.mlm-main-div #exTab4 .nav.nav-tabs.tabs-left a {
+    border: 0 !important;
+    font-size: 15px !important;
+    padding: 16px 10px !important;
+    margin-bottom: 2px !important;
+    border-radius: 4px !important;
+}
+.mlm-main-div #exTab4 .nav-tabs>li>a, .mlm-main-div #exTab5 .nav-tabs>li>a, .mlm-main-div #exTab6 .nav-tabs>li>a {
+    background-color: #ffffff !important;
+}
+.mlm-main-div #exTab4 .nav-tabs>li>a:hover, .mlm-main-div #exTab5 .nav-tabs>li>a:hover, .mlm-main-div #exTab6 .nav-tabs>li>a:hover {
+    color: #1c2b36 !important;
+    background-color: #e4c2fe !important;
+}
+.mlm-main-div .table-bordered>thead>tr>td, .mlm-main-div .table-bordered>thead>tr>th {
+    border-bottom-width: 0px !important;
+}
+.mlm-main-div #exTab4 .nav-tabs>li.active>a, .mlm-main-div #exTab5 .nav-tabs>li.active>a, .mlm-main-div #exTab6 .nav-tabs>li.active>a{
+    background-color: #fff;
+    box-shadow: none;
+    color: #fff !important;
+    background: linear-gradient(to right, #da8cff, #9a55ff) !important;
+    border-radius: 4px;
+    padding: 16px 10px;
+    font-size: 15px !important;
+}
+.mlm-main-div #user-profile h4{
+        font-size: 17px !important;
+}
+.mlm-main-div input[type="text"], .mlm-main-div input[type="email"], .mlm-main-div input[type="url"], .mlm-main-div input[type="password"], .mlm-main-div input[type="search"], .mlm-main-div input[type="number"], .mlm-main-div input[type="tel"], .mlm-main-div input[type="range"], .mlm-main-div input[type="date"], .mlm-main-div input[type="month"], .mlm-main-div input[type="week"], .mlm-main-div input[type="time"], .mlm-main-div input[type="datetime"], .mlm-main-div input[type="datetime-local"], .mlm-main-div input[type="color"], .mlm-main-div select {
+    padding: 0 10px;
+    height: 45px !important;
+    width: 100%;
+    border-radius: 3px;
+    color: #666! important;
+    background: #edf1f2;
+}
+.mlm-main-div .panel-default>.panel-heading {
+    color: #000 !important;
+    background-color: #f5f5f5 !important;
+    border-bottom: 2px solid #d5acfe !important;
+    background: linear-gradient(to right, #d789fd59, #9d56fd70) !important;
+    box-shadow: 0px 3px 8.3px 0.7px rgb(241 241 241) !important;
+}
+.mlm-main-div .user-table-profile{
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    color: #1c2b36 !important;
+}
+
+.mlm-main-div .table>tbody+tbody {
+    border-top: 0px solid #ddd !important;
+}
+.mlm-main-div .table-bordered {
+    border: 0 !important;
+}
+.mlm-main-div .panel-border-heading h5{
+    padding-top: inherit !important;
+}
+.mlm-main-div .dashboard-title{
+    background: #8f9192;
+    padding: 10px;
+    color: #fff;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 10px 10px 10px !important;
+    font-weight: 500;
+    font-size: 18px;
+
+}
+.mlm-main-div .registration-products{
+    height: 240px;
+    border: 1px solid rgb(242, 242, 242);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+    margin: 0% 2% 0% 5%;
+    margin-bottom: 20px;
+    background: #fff;
+}
+.mlm-main-div .panel-ioss-mlm{
+    overflow: hidden;
+    position: relative;
+}
+.mlm-main-div .panel-ioss-mlm :before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-color: #fed605;
+    display: block;
+    z-index: -1;
+    border-radius: 50%;
+    top: -11%;
+    left: -27%;
+    opacity: .6;
+}
+
+
+
+.mlm-main-div .registration-products .add_to_cart_button{
+    margin-left: 50%;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px;
+    color: rgb(51, 51, 51);
+    background-color: rgb(255, 255, 255);
+    margin-top: -15%;
+}
+.mlm-main-div .registration-products h3{
+    padding: 10px;
+}
+.mlm-main-div .registration-products .price{
+    padding: 0px 10px;
+}
+.mlm-main-div #package_continue{
+    clear: both;
+    float: right;
+    margin: 4%;
+}
+.mlm-main-div .package-image-box{
+    height: 150px;
+    margin-top: 15px;
+}
+.mlm-main-div .package-image-box img{
+    max-height: 100%;
+    margin: auto;
+    max-width:100%
+}
+
+
+.mlm-main-div .package-des-box p{
+    margin: 10px 0px 0px 0px;
+    font-size: 14px;
+}
+
+
+.mlm-main-div .package-des-box input[type="checkbox"]{
+    width: 30px; 
+    height: 30px; 
+}
+
+.mlm-main-div #package-div{
+    margin-top: 30px;
+}
+.mlm-main-div #regForm label{
+    font-size: 14px;
+}
+
+.mlm-main-div #regForm {
+    margin: 70px auto;
+    font-family: Arial;
+    padding: 30px 75px 40px 75px;
+    width: 100%;
+    min-width: 300px;
+    border: 1px solid #ddd;
+    font-family: arial;
+}
+
+/* Mark input boxes that gets an error on validation: */
+.mlm-main-div input.invalid {
+    background-color: #ffdddd !important;
+}
+.mlm-main-div select.invalid {
+    background-color: #ffdddd !important;
+}
+
+.mlm-main-div textarea.invalid {
+    background-color: #ffdddd !important;
+}
+.mlm-main-div .date_of_birth{
+    font-size: 12px;
+}
+
+/* Hide all steps by default: */
+.mlm-main-div .tab {
+    display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.mlm-main-div .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.mlm-main-div .step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.mlm-main-div .step.finish {
+    background-color: #504d4d;
+}
+.mlm-main-div .err_msg_sponsor,.mlm-main-div .err_msg_user,.mlm-main-div .err_msg_pass{
+    color:#f00;
+    font-size: 12px;
+}
+.mlm-main-div .google-visualization-orgchart-nodesel {
+    border:none !important;
+}
+.mlm-main-div .google-visualization-orgchart-node {
+    border:none !important;
+    border-radius: 5px !important;
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+    background-color: #edf7ff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#edf7ff), to(#cde7ee));
+}
+
+/* login staat */
+
+.mlm-main-div .loginmodal-container {
+    padding: 30px;
+    max-width: 350px;
+    width: 100% !important;
+    background-color: #F7F7F7;
+    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    font-family: roboto;
+}
+
+.mlm-main-div .loginmodal-container h1 {
+    text-align: center;
+    font-size: 1.8em;
+    font-family: roboto;
+}
+
+.mlm-main-div .loginmodal-container input[type=submit] {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.mlm-main-div .loginmodal-container input[type=text], .mlm-main-div .loginmodal-container input[type=password] {
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    /* border-radius: 2px; */
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.mlm-main-div .loginmodal-container input[type=text]:hover,.mlm-main-div .loginmodal-container input[type=password]:hover {
+    border: 1px solid #b9b9b9;
+    border-top: 1px solid #a0a0a0;
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.mlm-main-div .loginmodal {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    height: 36px;
+    padding: 0 8px;
+}
+
+.mlm-main-div .loginmodal-submit {
+    border: 0px;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,0.1); 
+    background-color: #4d90fe;
+    padding: 17px 0px;
+    font-family: roboto;
+    font-size: 14px;
+}
+
+.mlm-main-div .loginmodal-submit:hover {
+    border: 0px;
+    text-shadow: 0 1px rgba(0,0,0,0.3);
+    background-color: #357ae8;
+}
+
+.mlm-main-div .loginmodal-container a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    opacity: 0.6;
+    transition: opacity ease 0.5s;
+} 
+
+.mlm-main-div .login-help{
+    font-size: 12px;
+}
+.mlm-main-div .form-control[readonly]{
+    background-color: #fff;
+}
+.mlm-main-div #user-profile .form-group{
+    margin-bottom: 0px;
+}
+.mlm-main-div #change-password .form-group{
+    margin-bottom: 10px;
+}
+
+.mlm-main-div #exTab3 .nav-pills>li.active>a, .mlm-main-div #exTab3 .nav-pills>li.active>a:focus, .mlm-main-div #exTab3 .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #8f9192;
+    box-shadow: none;
+}
+
+.mlm-main-div #exTab3 .nav-pills>li>a, .mlm-main-div #exTab3 .nav-pills>li>a:focus{
+    color: #000;
+    background-color: #ccc;
+    box-shadow: none;
+    border-radius: inherit;
+}
+.mlm-main-div #exTab3 .nav-pills>li>a:hover {
+    color: #fff;
+    background-color: #8f9192;
+}
+
+.mlm-main-div #exTab2 .nav-pills>li.active>a, .mlm-main-div #exTab2 .nav-pills>li.active>a:focus, .mlm-main-div #exTab2 .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #8f9192;
+    box-shadow: none;
+
+
+}
+
+.mlm-main-div #exTab2 .nav-pills>li>a, .mlm-main-div #exTab2 .nav-pills>li>a:focus, .mlm-main-div #exTab2 .nav-pills>li>a:hover {
+    color: #000;
+    background-color: #ccc;
+    box-shadow: none;
+    border-radius: inherit;
+    font-size: 12px;
+}
+
+.mlm-main-div #exTab2 .nav-pills>li>a:hover {
+    color: #fff;
+    background-color: #8f9192;
+}
+
+
+
+.mlm-main-div #exTab4 .nav-tabs>li,.mlm-main-div #exTab5 .nav-tabs>li, .mlm-main-div #exTab6 .nav-tabs>li{
+    width: 100%;
+    margin-bottom: 4px;
+}
+.mlm-main-div #exTab4 .nav-tabs>li>a,.mlm-main-div #exTab5 .nav-tabs>li>a, .mlm-main-div #exTab6 .nav-tabs>li>a{
+    border-radius:inherit;
+    background-color: #f1f1f1;
+    color: #000;
+    box-shadow: none;
+}
+
+.mlm-main-div #exTab4 .nav-tabs>li.active>a,.mlm-main-div #exTab5 .nav-tabs>li.active>a, .mlm-main-div #exTab6 .nav-tabs>li.active>a{
+    background-color: #fff;
+    color: #000;
+    box-shadow: none;
+}
+.mlm-main-div #exTab4 .nav>li>a,.mlm-main-div #exTab5 .nav>li>a, .mlm-main-div #exTab6 .nav>li>a {
+    border-radius:none;
+    line-height: 12px;
+    margin-left: 2px;
+    font-size: 12px;
+
+}
+.mlm-main-div #exTab4 .nav-tabs,.mlm-main-div #exTab5 .nav-tabs,.mlm-main-div #exTab6 .nav-tabs{
+    border-bottom: initial;
+}
+.mlm-main-div #tax-form .form-group,.mlm-main-div #user-form1 .form-group,.mlm-main-div #user-form3 .form-group,.mlm-main-div #user-form2 .form-group, .mlm-main-div #transfer-details-form .form-group{
+    margin-bottom:10px;
+}
+
+.mlm-main-div #exTab4 .nav-tabs>li>a:hover,.mlm-main-div #exTab5 .nav-tabs>li>a:hover,.mlm-main-div #exTab6 .nav-tabs>li>a:hover {
+    color: #555;
+    background-color: #fff;
+}
+
+.mlm-main-div .company_logo input[type="file"] {
+    display: none;
+}
+.mlm-main-div .package_image input[type="file"] {
+    display: none; 
+}
+.mlm-main-div .custom-file-upload,.mlm-main-div .image-remove,.mlm-main-div .image-remove-package,.mlm-main-div .custom-file-upload-logo {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+
+}
+
+.mlm-main-div .dropdown-menu>.active>a, .mlm-main-div .dropdown-menu>.active>a:focus, .mlm-main-div .dropdown-menu>.active>a:hover {
+
+    background-color: #fff !important;
+    color: #666;
+    border: none;
+}
+.mlm-main-div .dropdown-menu{
+    min-width: 232px !important;
+}
+.mlm-main-div .dataTables_filter{
+    float:right;
+}
+.mlm-main-div .user-image img{
+    width:40%;
+    border: 2px solid #dd6c69 !important;
+    border-radius: 50% !important;
+}
+.mlm-main-div .orgchart .node .title{
+    background-color: rgb(143, 145, 146);
+    border-radius: inherit;
+}
+.mlm-main-div .alert-danger,.alert-info{
+    font-size: 12px;
+}
+.mlm-main-div .nav-pills>li{
+    margin-bottom: 5px;
+}
+.mlm-main-div .panel-border-heading h5{
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.mlm-main-div .panel-border h5{
+    font-size: 10px;
+    text-transform: uppercase;
+
+}
+.mlm-main-div .dataTables_wrapper{
+    font-size: 12px;
+}
+.mlm-main-div .form-horizontal label,input{
+    /*    font-size: 12px;
+    */    font-size: 13px;
+
+    font-weight: normal;
+}
+
+.mlm-main-div .orgchart table, .mlm-main-div .orgchart th, .mlm-main-div .orgchart td {
+    border: none;
+}
+.mlm-main-div #transfer-details-form label{
+    font-size: 12px;
+    pointer-events: none;
+    font-weight: normal;
+}
+
+
+::-webkit-input-placeholder { /* Chrome */
+    color: #666 !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #666 !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #666 !important;
+    opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+    color: #666 !important;
+    opacity: 1;
+}
+
+.mlm-main-div .report-header img{
+    width: 150px;
+}
+.mlm-main-div .report-header-right{
+    background:none!important;
+}
+
+.mlm-main-div .thumb-image,.mlm-main-div .thumb-image-general{
+    height: 100%;float: left;border: 1px solid #f3f3f3;padding: 5px;width: 100%;
+}
+.mlm-main-div .pro-message{
+    color:#F00;
+}
+.mlm-main-div .regOuterDiv{
+    float:none;
+    margin: auto;
+}
+.mlm-main-div #nextBtn{
+    color: #000;
+    width: 80px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.mlm-main-div #nextBtn:hover{
+    background-color: #c7bfbf;
+    border-color: #ccc;
+}
+
+.mlm-main-div #prevBtn {
+    color:#fff;
+    background-color: #bbbbbb;
+    border: none;
+    width: 80px;
+    height: 30px;
+    margin-top: 10px;    
+    order-radius: 4px;
+}
+.mlm-main-div #prevBtn:hover{
+    background-color: #c7bfbf;
+    border-color: #ccc;
+}
+.mlm-main-div .reg-steps-circle{
+    text-align:center;margin-top:70px;
+}
+.mlm-main-div .reg-next-prev-div{
+    float:left;
+}
+.mlm-main-div .please-wait{
+    display: none;
+}
+.mlm-main-div .reg-next-prev-div-outer{
+    overflow:inherit;
+}
+.mlm-main-div .selected-pkg-info{
+    display:none;
+}
+
+.mlm-main-div .regForm input[type=radio]:checked:before {
+
+
+    width: 10px;
+    height: 10px;
+    margin: 4px;
+    background-color: #CD2323;
+}
+.mlm-main-div .status-msg{
+    float:none;
+    margin: auto;
+    margin-top: 50px;
+}
+.mlm-main-div .status-msg a{
+    color:#f00;
+    font-weight:bold;
+}
+.mlm-main-div .reg_with_out_pkg_label{
+    margin-left: 10px;
+    margin: 15px; 
+}
+.mlm-main-div .site_logo_label{margin-left: 10px}
+.mlm-main-div .typeahead.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+
+}
+.mlm-main-div .typeahead.dropdown-menu li {
+    border-bottom: 1px solid #efecec;
+    margin-bottom:0px;
+}
+
+.mlm-main-div .typeahead::-webkit-scrollbar {
+    width: .3em;
+}
+
+.mlm-main-div .typeahead::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.mlm-main-div .typeahead::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+.mlm-main-div #chart-container::-webkit-scrollbar {
+    width: .4em;
+    height: 0.5em;
+}
+
+.mlm-main-div #chart-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.mlm-main-div #chart-container::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+
+
+/* New CSS 25-06-2018 */
+
+
+.mlm-main-div .ioss-mlm-menu section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+}
+
+.mlm-main-div input.tab_class[type=radio] {
+    display: none;
+}
+
+.mlm-main-div label.tab_class {
+    display: inline-block;
+    margin: 0 2px -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #555;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.mlm-main-div label.tab_class:before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+
+.mlm-main-div label.tab_class:hover {
+    /*color: #888;*/
+    cursor: pointer;
+    background: #fff;
+}
+
+.mlm-main-div input.tab_class:checked + label {
+    color: #000;
+    border: 1px solid #ddd;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+#ioss-mlm-tab1:checked ~ #content1,
+#ioss-mlm-tab2:checked ~ #content2,
+#ioss-mlm-tab3:checked ~ #content3,
+#ioss-mlm-tab4:checked ~ #content4,
+#ioss-mlm-tab5:checked ~ #content5,
+#ioss-mlm-tab6:checked ~ #content6,
+#ioss-mlm-tab7:checked ~ #content7,
+#ioss-mlm-tab8:checked ~ #content8,
+#ioss-mlm-tab9:checked ~ #content9
+{
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    .mlm-main-div label.tab_class {
+        font-size: 0;
+    }
+    .mlm-main-div label.tab_class:before {
+        margin: 0;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .mlm-main-div label.tab_class {
+        padding: 15px;
+    }
+}
+.mlm-main-div label.tab_class:active {
+    background: none !important;
+    /*display: block !important;*/
+    cursor: pointer;
+}
+.mlm-main-div .panel-ioss-mlm {
+    background: #f9f9f9;
+}
+.mlm-main-div .panel-ioss-mlm img {
+    height: 70px;
+}
+.mlm-main-div #general-settings .col-sm-7 {
+    text-align: left;
+}
+.mlm-main-div .user-list {
+    text-align: center;
+    list-style: none;
+    padding-left: 51px;
+    float: left;
+
+}
+.mlm-main-div .user-list img {
+    height: 60px;
+    margin: 10px;
+}
+.mlm-main-div .mlm-users {
+
+    background: #f9f9f9;
+    overflow-x: scroll;
+
+}
+.mlm-main-div .usr{
+    text-align: center; 
+    padding: 7px 0px;
+    background-color: #f9f9f9;
+    margin-bottom: 0px !important;
+    border-bottom: 1px solid #ddd;
+    margin-top: 0px;
+
+}
+.mlm-main-div .head-class{
+
+    border: 1px solid #bbb; 
+}
+.mlm-main-div table {
+
+    background: #f9f9f9 !important;
+}
+.mlm-main-div .dataTables_wrapper {
+    font-size: 13px;
+}
+.mlm-main-div #general-settings .fa.fa-edit {
+    float: right;
+    margin-top: 4px;
+}
+.mlm-main-div .mlm-user-tabs a {
+    border: 1px solid #ddd !important;
+
+}
+
+.mlm-main-div .h4, .mlm-main-div h4 {
+    font-size: 16px;
+}
+.mlm-main-div .user-dt {
+
+    text-align: left !important;
+
+}
+.mlm-main-div a {
+    color: #333333;
+}
+.mlm-main-div a:hover {
+    color: #333333;
+}
+.mlm-main-div #exTab4 .nav.nav-tabs.tabs-left a {
+    border: 1px solid #ddd;
+}
+.mlm-main-div #exTab6 .nav.nav-tabs.tabs-right a {
+    border: 1px solid #ddd;
+}
+.mlm-main-div #frame {
+    float: right;
+}
+.mlm-main-div .paginate_button.active a {
+    color: #777;
+    background-color: #f1f1f1;
+    border-color: #ddd;
+}
+.mlm-main-div .paginate_button.active a:hover {
+
+    background-color: #777 !important;
+    border: 1px solid #777;
+
+}
+.mlm-main-div #general-settings .panel-border.col-md-4.panel-ioss-mlm {
+    border: 1px solid #edf1f2;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .05) !important;
+    border-radius: 5px;
+}
+.mlm-main-div .panel{
+    display: flow-root;
+}
+.mlm-main-div .wp-person a:focus .gravatar, .mlm-main-div a:focus, a:focus .media-icon img {
+
+    color: #124964;
+    box-shadow: 0 0 0 1px #fff,0 0 2px 1px #fff;
+
+}
+.mlm-main-div body {
+
+    font-size: 13px;
+    background: #f1f1f1;
+}
+.mlm-main-div #exTab6 li a, .mlm-main-div #exTab4 li a{
+    font-size: 13px !important;
+}
+.mlm-main-div .btn-group-sm > .btn, .mlm-main-div .btn-sm {
+    font-size: 13px;
+}
+.mlm-main-div .btn {
+    font-size: 13px;
+}
+.mlm-main-div .orgchart .node .title {
+    font-size: 13px;
+}
+.mlm-main-div .mlm-up-btn {
+    margin-left: 0px;
+}
+
+
+
+@media (max-width:768px){
+    .mlm-main-div .tab_class {
+        font-size: 14px !important;
+    }
+    .mlm-main-div .button-class-mode {
+        margin-left: 0px;
+    }
+}
+@media (max-width:1200px){
+    .mlm-main-div .ioss-mlm-menu section {
+        border-top: none;
+    }
+    .mlm-main-div input.tab_class:checked + label{
+        border-bottom: 1px solid #ddd;
+        background: #fff;
+
+    }
+    .mlm-main-div label.tab_class {
+        margin: 0 2px 6px;
+    }
+
+}
+
+.mlm-main-div .contact-up-btn {
+    width: 19%;
+}
+
+
+@media (max-width:767px){
+    .mlm-main-div .mlm-main-div .contact-up-btn {
+        width: 15%;
+    }
+
+    .mlm-main-div .mlm-main-div label.tab_class {
+        width: 100%;
+    }
+    .mlm-main-div .mlm-main-div .panel-ioss-mlm {
+        height: 134px;
+    }
+    .mlm-main-div .mlm-main-div .tabble-mode
+
+    {
+
+
+        margin-left: -42px;  
+
+    }
+    .mlm-main-div .mlm-main-div #myChart {
+        height: 383px !important;
+    }
+
+}
+@media (max-width:768px){
+    .mlm-main-div .contact-up-btn {
+        width: 16%;
+    }
+    .mlm-main-div .transfer-details-btn button {
+        float: left !important;
+    }
+    .mlm-main-div #general-settings .panel-border.col-md-4.panel-ioss-mlm {
+        height: 161px;
+    }
+}
+
+
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .mlm-main-div .contact-up-btn {
+        width: 29%;
+    }
+    .mlm-main-div .button-class-mode {
+        margin-left: 36px !important;
+    }
+}
+@media (max-width:991px){
+
+    .mlm-main-div #general-settings .panel-border.col-md-4.panel-ioss-mlm
+    {
+        height: 140px;         
+    }
+    .mlm-main-div .fund-manage-btn{
+        margin-left: 0;
+    }
+    .mlm-main-div .fund-transfer-btn{
+        margin-left: 0;
+    }
+    .mlm-main-div .transfer-details-btn {
+        margin-left: 0px;
+    }
+    .mlm-main-div .form-group.ewallet-date {
+        margin: 0px;
+    }
+    .mlm-main-div .transfer-details-btn button {
+        margin-top: 0px;
+    }    
+    .mlm-main-div #transfer-details-form .ewallet-date {
+        margin-bottom: 10px;
+        display: block !important;
+    } 
+}
+.mlm-main-div #transfer-details-form .ewallet-date {
+    display: -webkit-box;
+} 
+
+.mlm-main-div .tabble-mode{   
+    margin-left: 0px !important;
+    padding-right: 0px;
+    padding-top: 42px !important; 
+    margin-left: -16px;  
+
+}
+.mlm-main-div #myChart {
+    height: 485px !important;
+}
+.mlm-main-div #user-table_length {
+    float: left;
+}
+
+.mlm-main-div table { 
+    width: 100%; 
+   /* border-collapse: collapse; */
+}
+@media (max-width: 767px){
+    .mlm-main-div .table-responsive-lg {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+    .mlm-main-div .button-class-mode{
+
+        margin-left: 40px !important;
+    }
+    .mlm-main-div .sharedaddy
+    {
+        padding: 0px 18px; 
+
+    }
+}
+
+.mlm-main-div .form-group.ewallet-date {
+    margin: 16px 0px !important;
+}
+
+.mlm-main-div .button-class-mode{
+
+    margin-left: 13px;
+}
+@media (min-width: 992px){
+    .mlm-main-div .button-class-mode {
+        margin-left: 38px;
+    }
+
+
+}
+.mlm-main-div .sharedaddy ul {
+    font-size: 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+}
+
+.mlm-main-div .sharedaddy li {
+    display: inline-block;
+}
+.mlm-main-div .sharedaddy a {
+    border: 1px solid #ccc;
+    color: #fff;
+    border-radius: 6px;
+    padding: 7px 0px;
+    margin:0px 1.5rem
+
+}
+.mlm-main-div .btn.btn-primary.edit-cancel:hover {
+
+    background-color: #716565;
+    border-color: #605959;
+
+}
+.mlm-main-div .btn.btn-primary.edit-cancel {
+
+    background: #bbbbbb;
+
+    border: none;
+
+}
+.mlm-main-div element {
+
+}
+.mlm-main-div #user_form3_save {
+
+    background: #d9534f;
+    border-color: #d43f3a;
+
+}
+.mlm-main-div element {
+
+}
+.mlm-main-div #user_form3_save:hover {
+
+    background-color: #c9302c;
+    border-color: #ac2925;
+
+}
+.mlm-main-div .panel-body.content-class-mode {
+
+    height: 148px;
+
+}
+.mlm-main-div .user-table-profile {
+    border: 1px solid #ddd;
+    text-align: center;
+    background: #f9f9f9;
+    font-size: 16px;
+    color: #333333;
+    border-bottom: 0px;
+}
+.mlm-main-div .list-style-mode {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    width: 1196px;
+
+}
+.mlm-main-div .table>tbody>tr>td, .mlm-main-div .table>tbody>tr>th, .mlm-main-div .table>tfoot>tr>td, .mlm-main-div .table>tfoot>tr>th, .mlm-main-div .table>thead>tr>td, .mlm-main-div .table>thead>tr>th {
+
+    vertical-align: middle !important;
+
+}
+@media (max-width: 767px){
+    .mlm-main-div .panel-border {
+
+        padding: 12px;
+
+    }
+}
+
+.mlm-main-div .top_earners_div{
+    text-align: center; display: table; height: 160px; width: 100%;
+
+}
+.mlm-main-div .top_earners_div p{
+    display: table-cell; vertical-align: middle;
+
+}
+.complete{
+    display:none;
+}
+
+.more{
+    background:lightblue;
+    color:navy;
+    font-size:13px;
+    padding:3px;
+    cursor:pointer;
+}
+
+/******************* for toggl button ****************/
+
+.switch_div input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    /*float: left;*/
+}
+
+.switch_div label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 40px;
+    height: 20px;
+    background: grey;
+    display: block;
+    border-radius: 20px;
+    position: relative;
+}
+
+.switch_div label:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.switch_div input:checked + label {
+    /*background: #bada55;*/
+    background: linear-gradient(to right, rgb(218, 140, 255), rgb(154, 85, 255));
+}
+
+.switch_div input:checked + label:after {
+    left: calc(100% - 1px);
+    transform: translateX(-100%);
+}
+
+.switch_div label:active:after {
+    width: 26px;
+}

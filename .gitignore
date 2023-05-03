@@ -1,6 +1,11 @@
 wp-includes
+<<<<<<< HEAD
 *.php
 *.txt
+=======
+/*.php
+/*.txt
+>>>>>>> 11353b6 (Init PHP files)
 wp-admin
 wp-content/et-cache
 wp-content/themes

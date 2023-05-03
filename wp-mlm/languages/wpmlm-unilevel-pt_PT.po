@@ -1,0 +1,1196 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP MLM\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-21 06:25+0000\n"
+"PO-Revision-Date: 2020-12-29 13:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: Português\n"
+"Language: pt_PT\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.0; wp-5.6\n"
+"X-Domain: wpmlm-unilevel"
+
+#: templates/wp-mlm-registration-page.php:267
+msgid " Enter Last Name"
+msgstr "Insira o último nome"
+
+#: custom-functions.php:167 custom-functions.php:175
+msgid " here"
+msgstr "aqui"
+
+#: custom-functions.php:167 custom-functions.php:175
+msgid " to view the WP MLM Dashboard"
+msgstr "para ver o painel WP MLM"
+
+#: templates/user-details-admin.php:19
+#: templates/registration-package-settings.php:95
+#: templates/user-referrals.php:29
+msgid "Action"
+msgstr "Açao"
+
+#: templates/ewallet-management.php:58
+msgid "Add"
+msgstr "Adicionar"
+
+#: templates/registration-package-settings.php:52
+msgid "Add New Package"
+msgstr "Adicionar Novo Pacote"
+
+#: custom-functions.php:674
+msgid "ADDRESS"
+msgstr "ENDEREÇO"
+
+#: functions/ajax-functions.php:931 functions/ajax-functions.php:1034
+msgid "Address"
+msgstr "Endereço"
+
+#: templates/user-profile-admin.php:86
+msgid "Address 1"
+msgstr "Endereço 1"
+
+#: templates/user-dashboard.php:50 templates/admin-dashboard.php:179
+msgid "Affiliate Link"
+msgstr "Link de afiliado"
+
+#: templates/reports.php:40
+msgid "All"
+msgstr "Todos"
+
+#: templates/registration-package-settings.php:168
+msgid "Already Updated"
+msgstr "Já atualizado"
+
+#: templates/ewallet-management.php:40 templates/ewallet-management.php:99
+#: templates/user-ewallet-management.php:72
+#: templates/user-income-details.php:25 functions/ajax-functions.php:458
+msgid "Amount"
+msgstr "Montante"
+
+#: templates/ewallet-management.php:128
+#: templates/user-ewallet-management.php:118
+msgid "Amount to transfer"
+msgstr "Quantia para transferir"
+
+#: templates/user-income-details.php:23 functions/ajax-functions.php:1282
+#: functions/ajax-functions.php:1353
+msgid "Amount Type"
+msgstr "Tipo de quantidade"
+
+#: templates/registration-package-settings.php:159
+msgid "Amount Updated Successfully"
+msgstr "Quantidade atualizada com sucesso"
+
+#: templates/payment-options.php:91 templates/general-settings.php:86
+msgid "Australian dollar"
+msgstr "dólar australiano"
+
+#: templates/user-ewallet-details.php:34
+msgid "Available Balance"
+msgstr "Saldo disponível"
+
+#: templates/user-ewallet-details.php:28
+msgid "Balance"
+msgstr "Saldo"
+
+#: templates/ewallet-management.php:87 templates/user-ewallet-management.php:56
+msgid "Balance Amount"
+msgstr "Valor do saldo"
+
+#: templates/user-dashboard.php:78 templates/admin-dashboard.php:65
+msgid "Bonus"
+msgstr "Bônus"
+
+#: templates/wp-mlm-registration-page.php:217 templates/user-area.php:35
+#: templates/user-area.php:67 templates/user-income-details.php:13
+#: functions/ajax-functions.php:1390
+msgid "Bonus Details"
+msgstr "Detalhes de bônus"
+
+#: templates/reports.php:17 templates/reports.php:267 templates/reports.php:467
+#: functions/ajax-functions.php:1272 functions/ajax-functions.php:1343
+msgid "Bonus Report"
+msgstr "Relatório de bônus"
+
+#: templates/level-commission-settings.php:11
+#: templates/level-commission-settings.php:42 templates/wp-mlm-settings.php:16
+msgid "Bonus Settings"
+msgstr "Configurações de bônus"
+
+#: templates/payment-options.php:92 templates/general-settings.php:87
+msgid "Brazilian real"
+msgstr "Real brasileiro"
+
+#: templates/payment-options.php:93 templates/general-settings.php:88
+msgid "Canadian dollar"
+msgstr "Dólar canadense"
+
+#: templates/user-profile-admin.php:164
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/password-settings.php:20
+msgid "Change Admin Transaction"
+msgstr "Alterar transação administrativa"
+
+#: templates/password-settings.php:117
+msgid "Change Admin Transaction Password"
+msgstr "Alterar senha de transação de administrador"
+
+#: templates/general-settings.php:45
+msgid "Change Logo"
+msgstr "Mudar logotipo"
+
+#: templates/user-profile-admin.php:182 templates/admin-area.php:25
+msgid "Change Password"
+msgstr "Mudar senha"
+
+#: templates/password-settings.php:17 templates/password-settings.php:33
+msgid "Change User Password"
+msgstr "Alterar senha de usuário"
+
+#: templates/payment-options.php:94 templates/general-settings.php:89
+msgid "Chinese Renmenbi"
+msgstr "Renmenbi Chinês"
+
+#: templates/wp-mlm-registration-page.php:280
+msgid "Choose Country"
+msgstr "Escolha o país"
+
+#: custom-functions.php:701
+msgid "CITY"
+msgstr "CIDADE"
+
+#: custom-functions.php:702 templates/user-profile-admin.php:112
+msgid "City"
+msgstr "Cidade"
+
+#: custom-functions.php:167 custom-functions.php:175
+msgid "Click"
+msgstr "Clique"
+
+#: templates/payment-options.php:70 templates/payment-options.php:73
+msgid "Client ID"
+msgstr "ID do Cliente"
+
+#: templates/payment-options.php:78 templates/payment-options.php:81
+msgid "Client Secret"
+msgstr "Segredo do cliente"
+
+#: templates/general-settings.php:22
+msgid "Company Address"
+msgstr "Endereço da companhia"
+
+#: templates/general-settings.php:68
+msgid "Company Email"
+msgstr "Email da Empresa"
+
+#: templates/general-settings.php:29
+msgid "Company Logo"
+msgstr "Logo da Empresa"
+
+#: templates/general-settings.php:16
+msgid "Company Name"
+msgstr "Nome da empresa"
+
+#: templates/general-settings.php:75
+msgid "Company Phone"
+msgstr "Telefone da empresa"
+
+#: templates/password-settings.php:138
+msgid "Confirm New Password"
+msgstr "Confirme a nova senha"
+
+#: templates/user-profile-admin.php:191 templates/password-settings.php:58
+msgid "Confirm Password"
+msgstr "Confirme a Senha"
+
+#: templates/user-profile-admin.php:70
+msgid "Contact Information"
+msgstr "Informações de Contato"
+
+#: templates/ewallet-management.php:113
+#: templates/user-ewallet-management.php:102
+msgid "Continue"
+msgstr "Continuar"
+
+#: templates/user-dashboard.php:58 templates/admin-dashboard.php:187
+msgid "Copy Link"
+msgstr "Link de cópia"
+
+#: custom-functions.php:680
+msgid "COUNTRY"
+msgstr "PAÍS"
+
+#: templates/user-profile-admin.php:124
+msgid "Country"
+msgstr "País"
+
+#: custom-functions.php:687
+msgid "Country not available"
+msgstr "País não disponível"
+
+#: templates/user-dashboard.php:89 templates/admin-dashboard.php:76
+#: templates/user-ewallet-details.php:27
+msgid "Credit"
+msgstr "Crédito"
+
+#: templates/payment-options.php:87 templates/general-settings.php:82
+msgid "Currency"
+msgstr "Moeda"
+
+#: templates/password-settings.php:125
+msgid "Current Password"
+msgstr "senha atual"
+
+#: custom-functions.php:595
+msgid "CUSTOMER INFORMATION"
+msgstr "INFORMAÇÃO AO CLIENTE"
+
+#: templates/payment-options.php:95 templates/general-settings.php:90
+msgid "Czech koruna"
+msgstr "Coroa checa"
+
+#: templates/payment-options.php:96 templates/general-settings.php:91
+msgid "Danish krone"
+msgstr "Coroa dinamarquesa"
+
+#: templates/admin-area.php:15 templates/wp-mlm-registration-page.php:208
+#: templates/user-area.php:26 templates/user-area.php:59
+msgid "Dashboard"
+msgstr "painel de controle"
+
+#: templates/user-ewallet-details.php:24 templates/user-income-details.php:24
+#: functions/ajax-functions.php:461 functions/ajax-functions.php:916
+#: functions/ajax-functions.php:1019 functions/ajax-functions.php:1108
+#: functions/ajax-functions.php:1186 functions/ajax-functions.php:1267
+#: functions/ajax-functions.php:1338
+msgid "Date"
+msgstr "Encontro"
+
+#: functions/ajax-functions.php:930 functions/ajax-functions.php:1033
+#: functions/ajax-functions.php:1125 functions/ajax-functions.php:1203
+msgid "Date of Birth"
+msgstr "Data de nascimento"
+
+#: templates/user-profile-admin.php:99
+msgid "Date of birth"
+msgstr "Data de nascimento"
+
+#: functions/ajax-functions.php:935 functions/ajax-functions.php:1038
+#: functions/ajax-functions.php:1127 functions/ajax-functions.php:1205
+msgid "Date of Joining"
+msgstr "Data de adesão"
+
+#: templates/user-dashboard.php:90 templates/admin-dashboard.php:77
+#: templates/user-ewallet-details.php:26
+msgid "Debit"
+msgstr "Débito"
+
+#: templates/ewallet-management.php:59
+msgid "Deduct"
+msgstr "Deduzir"
+
+#: templates/registration-package-settings.php:112
+msgid "Delete"
+msgstr "Excluir"
+
+#: templates/user-ewallet-details.php:25
+msgid "Description"
+msgstr "Descrição"
+
+#: custom-functions.php:646
+msgid "DOB"
+msgstr "DOB"
+
+#: templates/user-dashboard.php:68 templates/admin-dashboard.php:53
+msgid "Downlines"
+msgstr "Downlines"
+
+#: templates/user-dashboard.php:88 templates/admin-dashboard.php:75
+msgid "E-Wallet"
+msgstr "carteira eletrônica"
+
+#: templates/user-ewallet-details.php:14
+#: templates/user-ewallet-management.php:20 functions/ajax-functions.php:1389
+msgid "E-wallet Details"
+msgstr "Detalhes da carteira eletrônica"
+
+#: templates/ewallet-management.php:6 templates/user-ewallet-management.php:11
+msgid "E-Wallet Management"
+msgstr "Gerenciamento de carteira eletrônica"
+
+#: templates/admin-area.php:21 templates/wp-mlm-registration-page.php:215
+#: templates/user-area.php:33 templates/user-area.php:65
+msgid "E-wallet Management"
+msgstr "Gerenciamento de carteira eletrônica"
+
+#: templates/user-profile-admin.php:80
+#: templates/registration-package-settings.php:111
+msgid "Edit"
+msgstr "Editar"
+
+#: custom-functions.php:664
+msgid "EMAIL"
+msgstr "EMAIL"
+
+#: templates/user-profile-admin.php:92 templates/user-referrals.php:27
+#: functions/ajax-functions.php:912 functions/ajax-functions.php:934
+#: functions/ajax-functions.php:1015 functions/ajax-functions.php:1037
+#: functions/ajax-functions.php:1104 functions/ajax-functions.php:1126
+#: functions/ajax-functions.php:1182 functions/ajax-functions.php:1204
+#: functions/ajax-functions.php:1263 functions/ajax-functions.php:1334
+msgid "Email"
+msgstr "Email"
+
+#: templates/user-dashboard.php:140 templates/admin-dashboard.php:124
+msgid "Email ID"
+msgstr "ID do email"
+
+#: custom-functions.php:675 templates/wp-mlm-registration-page.php:269
+msgid "Enter Address"
+msgstr "Insira o endereço"
+
+#: templates/ewallet-management.php:42 templates/ewallet-management.php:101
+#: templates/ewallet-management.php:225
+#: templates/user-ewallet-management.php:74
+msgid "Enter Amount"
+msgstr "Insira o valor"
+
+#: templates/wp-mlm-registration-page.php:289
+msgid "Enter City"
+msgstr "Entrar na cidade"
+
+#: templates/general-settings.php:18
+msgid "Enter Company Name"
+msgstr "Digite o nome da empresa"
+
+#: templates/general-settings.php:77
+msgid "Enter Company Phone"
+msgstr "Digite o telefone da empresa"
+
+#: templates/wp-mlm-registration-page.php:293
+msgid "Enter Contact No"
+msgstr "Insira o número do contato"
+
+#: custom-functions.php:648 templates/wp-mlm-registration-page.php:272
+msgid "Enter DOB"
+msgstr "Digite DOB"
+
+#: custom-functions.php:665 templates/general-settings.php:70
+msgid "Enter Email"
+msgstr "Digite o e-mail"
+
+#: custom-functions.php:639 templates/wp-mlm-registration-page.php:266
+msgid "Enter First Name"
+msgstr "Introduza o primeiro nome"
+
+#: custom-functions.php:643
+msgid "Enter Last Name"
+msgstr "Insira o último nome"
+
+#: templates/level-commission-settings.php:21
+msgid "Enter Level"
+msgstr "Entrar no Nível"
+
+#: templates/registration-package-settings.php:62
+msgid "Enter Package Name"
+msgstr "Digite o nome do pacote"
+
+#: templates/registration-package-settings.php:68
+msgid "Enter Package Price"
+msgstr "Insira o preço do pacote"
+
+#: custom-functions.php:659
+msgid "Enter Password"
+msgstr "Digite a senha"
+
+#: templates/registration-package-settings.php:33
+msgid "Enter registration amount"
+msgstr "Insira o valor da inscrição"
+
+#: templates/wp-mlm-registration-page.php:265
+msgid "Enter Sponsor Name"
+msgstr "Digite o nome do patrocinador"
+
+#: custom-functions.php:603
+msgid "Enter Sponsor name"
+msgstr "Insira o nome do patrocinador"
+
+#: templates/wp-mlm-registration-page.php:286
+msgid "Enter State"
+msgstr "Entrar no estado"
+
+#: templates/ewallet-management.php:48 templates/ewallet-management.php:107
+#: templates/user-ewallet-management.php:81
+msgid "Enter Transaction Note"
+msgstr "Insira a nota de transação"
+
+#: templates/ewallet-management.php:136
+#: templates/user-ewallet-management.php:125
+msgid "Enter Transaction Password"
+msgstr "Digite a senha da transação"
+
+#: templates/ewallet-management.php:95 templates/user-ewallet-management.php:66
+msgid "Enter transfer to"
+msgstr "Digite a transferência para"
+
+#: templates/ewallet-management.php:36
+msgid "Enter User Name"
+msgstr "Insira nome de usuário"
+
+#: custom-functions.php:655 templates/ewallet-management.php:83
+#: templates/ewallet-management.php:219
+msgid "Enter Username"
+msgstr "Insira nome de usuário"
+
+#: templates/wp-mlm-registration-page.php:290
+msgid "Enter Zip Code"
+msgstr "Digite o código postal"
+
+#: functions/ajax-functions.php:771
+msgid "Error in database insert"
+msgstr "Erro na inserção do banco de dados"
+
+#: functions/ajax-functions.php:280
+msgid "Error Occured"
+msgstr "Ocorreu um erro"
+
+#: templates/payment-options.php:97 templates/general-settings.php:92
+msgid "Euro"
+msgstr "Euro"
+
+#: templates/ewallet-management.php:122
+#: templates/user-ewallet-management.php:113
+msgid "Ewallet Balance"
+msgstr "Ewallet Balance"
+
+#: custom-functions.php:638
+msgid "FIRST NAME"
+msgstr "PRIMEIRO NOME"
+
+#: templates/user-profile-admin.php:52
+msgid "First Name"
+msgstr "Primeiro nome"
+
+#: templates/level-commission-settings.php:50
+msgid "Flat"
+msgstr "Plana"
+
+#: templates/user-ewallet-management.php:90
+msgid "Forgot your transaction password?"
+msgstr "Esqueceu sua senha de transação?"
+
+#: templates/payment-options.php:26
+msgid "Free Join"
+msgstr "Aderir grátis"
+
+#: templates/ewallet-management.php:171
+#: templates/user-ewallet-management.php:214 templates/reports.php:71
+#: templates/reports.php:113
+msgid "From Date"
+msgstr "Da data"
+
+#: templates/user-details-admin.php:17 templates/user-referrals.php:25
+msgid "Full Name"
+msgstr "Nome completo"
+
+#: templates/user-dashboard.php:139 templates/admin-dashboard.php:123
+#: functions/ajax-functions.php:1281 functions/ajax-functions.php:1352
+msgid "Fullname"
+msgstr "Nome completo"
+
+#: templates/ewallet-management.php:14 templates/ewallet-management.php:27
+msgid "Fund Management"
+msgstr "Gestão de fundos"
+
+#: templates/ewallet-management.php:15 templates/ewallet-management.php:70
+#: templates/user-ewallet-management.php:22
+#: templates/user-ewallet-management.php:41
+msgid "Fund Transfer"
+msgstr "Transferência de fundos"
+
+#: templates/admin-area.php:19 templates/wp-mlm-registration-page.php:213
+#: templates/genealogy-tree-loading.php:44 templates/genealogy-tree.php:47
+#: templates/user-area.php:31 templates/user-area.php:63
+msgid "Genealogy Tree"
+msgstr "Árvore Genealógica"
+
+#: templates/wp-mlm-settings.php:14 templates/general-settings.php:10
+msgid "General Settings"
+msgstr "Configurações Gerais"
+
+#: templates/payment-options.php:98 templates/general-settings.php:93
+msgid "Hong Kong dollar"
+msgstr "dólar de Hong Kong"
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "http://wpmlmsoftware.com"
+msgstr "http://wpmlmsoftware.com"
+
+#: templates/payment-options.php:99 templates/general-settings.php:94
+msgid "Hungarian forint"
+msgstr "Forint húngaro"
+
+#: templates/level-commission-settings.php:25
+msgid "I agree"
+msgstr "concordo"
+
+#: templates/payment-options.php:100 templates/general-settings.php:95
+msgid "Indian rupee"
+msgstr "Rupia indiana"
+
+#. Author of the plugin
+msgid "IOSS"
+msgstr "IOSS"
+
+#: templates/payment-options.php:101 templates/general-settings.php:96
+msgid "Israeli new shekel"
+msgstr "Novo shekel israelense"
+
+#: templates/payment-options.php:102 templates/general-settings.php:97
+msgid "Japanese yen"
+msgstr "Yen japonês"
+
+#: templates/user-profile-admin.php:30 templates/user-details-admin.php:18
+#: templates/user-referrals.php:26
+msgid "Joining Date"
+msgstr "Data de ingresso"
+
+#: templates/reports.php:16 templates/reports.php:233
+#: functions/ajax-functions.php:1113 functions/ajax-functions.php:1191
+msgid "Joining Report"
+msgstr "Relatório de adesão"
+
+#: custom-functions.php:642
+msgid "LAST NAME"
+msgstr "ÚLTIMO NOME"
+
+#: templates/user-profile-admin.php:58
+msgid "Last Name"
+msgstr "Último nome"
+
+#: templates/level-commission-settings.php:19
+msgid "Level Bonus Depth"
+msgstr "Profundidade do bônus de nível"
+
+#: functions/ajax-functions.php:552
+msgid "Level Bonus Depth Updated"
+msgstr "Profundidade de bônus de nível atualizada"
+
+#: functions/ajax-functions.php:561
+msgid "Level Bonus Updated"
+msgstr "Bônus de nível atualizado"
+
+#: templates/ewallet-management.php:17 templates/ewallet-management.php:209
+msgid "Level Commission"
+msgstr "Comissão de Nível"
+
+#: functions/ajax-functions.php:277
+msgid "Level Commission Updated Successfully"
+msgstr "Comissão de nível atualizada com sucesso"
+
+#: templates/level-commission-settings.php:15
+msgid "Level Settings"
+msgstr "Configurações de nível"
+
+#: templates/payment-options.php:128
+msgid "Live"
+msgstr "Viver"
+
+#: functions/ajax-functions.php:678 functions/ajax-functions.php:711
+msgid "Mail sending failed"
+msgstr "Falha no envio de e-mail"
+
+#: templates/payment-options.php:103 templates/general-settings.php:98
+msgid "Malaysian ringgit"
+msgstr "Ringgit da Malásia"
+
+#: templates/payment-options.php:104 templates/general-settings.php:99
+msgid "Mexican peso"
+msgstr "Peso mexicano"
+
+#. Description of the plugin
+msgid "MLM Unilevel plugin for Wordpress."
+msgstr "Plugin MLM Unilevel para Wordpress."
+
+#: functions/ajax-functions.php:933 functions/ajax-functions.php:1036
+msgid "Mobile No"
+msgstr "Celular Não"
+
+#: custom-functions.php:668
+msgid "MOBILE NUMBER"
+msgstr "NÚMERO DE CELULAR"
+
+#: custom-functions.php:669
+msgid "Mobile Number"
+msgstr "Número de celular"
+
+#: templates/wp-mlm-registration-page.php:211 templates/user-area.php:29
+#: templates/user-area.php:61
+msgid "My Profile"
+msgstr "Meu perfil"
+
+#: functions/ajax-functions.php:927 functions/ajax-functions.php:1030
+#: functions/ajax-functions.php:1122 functions/ajax-functions.php:1200
+msgid "Name"
+msgstr "Nome"
+
+#: functions/ajax-functions.php:588
+msgid "New and confirm password miss match"
+msgstr "Nova correspondência e confirmação de falha de senha"
+
+#: templates/user-profile-admin.php:185 templates/password-settings.php:51
+#: templates/password-settings.php:131
+msgid "New Password"
+msgstr "Nova senha"
+
+#: functions/ajax-functions.php:585
+msgid "New Password should be at least 8 characters in length"
+msgstr "A nova senha deve ter pelo menos 8 caracteres"
+
+#: templates/payment-options.php:105 templates/general-settings.php:100
+msgid "New Taiwan dollar"
+msgstr "Novo dólar taiwanês"
+
+#: templates/general-settings.php:101
+msgid "New Zealand dollar"
+msgstr "Dólar neozelandês"
+
+#: templates/wp-mlm-registration-page.php:352
+msgid "Next"
+msgstr "Próximo"
+
+#: functions/ajax-functions.php:926 functions/ajax-functions.php:1199
+#: functions/ajax-functions.php:1350
+msgid "No"
+msgstr "No"
+
+#: templates/admin-dashboard.php:155
+msgid "No bonus earned users yet"
+msgstr "Nenhum bônus de usuários ganhos ainda"
+
+#: templates/user-ewallet-details.php:84 templates/user-referrals.php:62
+#: templates/reports.php:204 templates/reports.php:238
+#: templates/reports.php:273 templates/reports.php:413
+#: templates/reports.php:473 templates/user-income-details.php:56
+#: functions/ajax-functions.php:498 functions/ajax-functions.php:538
+msgid "No Data"
+msgstr "Sem dados"
+
+#: templates/payment-options.php:106 templates/general-settings.php:102
+msgid "Norwegian krone"
+msgstr "Coroa norueguesa"
+
+#: templates/password-settings.php:89
+msgid "Note : Transaction password will be sent to user's Registered Email id"
+msgstr ""
+"Observação: a senha da transação será enviada para o ID do e-mail registrado"
+
+#: templates/user-ewallet-management.php:156
+msgid "Note : Transaction password will be sent to your registered Email id"
+msgstr ""
+"Observação: a senha da transação será enviada para o seu ID de e-mail "
+"registrado"
+
+#: templates/registration-package-settings.php:60
+#: templates/registration-package-settings.php:93
+msgid "Package Name"
+msgstr "Nome do pacote"
+
+#: templates/registration-package-settings.php:66
+msgid "Package Price"
+msgstr "Preço do pacote"
+
+#: templates/wp-mlm-settings.php:15
+#: templates/registration-package-settings.php:20
+msgid "Package Settings"
+msgstr "Configurações do pacote"
+
+#: templates/payment-options.php:39
+msgid "Paid Join"
+msgstr "Adesão paga"
+
+#: custom-functions.php:658
+msgid "PASSWORD"
+msgstr "SENHA"
+
+#: templates/password-settings.php:20
+msgid "Password"
+msgstr "Senha"
+
+#: functions/ajax-functions.php:684 functions/ajax-functions.php:716
+msgid "Password sending failed"
+msgstr "Falha no envio da senha"
+
+#: templates/password-settings.php:6
+msgid "Password Settings"
+msgstr "Configurações de senha"
+
+#. echo 'Password Updated Successfully';
+#: functions/ajax-functions.php:48 functions/ajax-functions.php:737
+msgid "Password Updated Successfully"
+msgstr "Senha atualizada com sucesso"
+
+#: functions/ajax-functions.php:600 functions/ajax-functions.php:640
+msgid "Password updation failed"
+msgstr "A atualização da senha falhou"
+
+#: custom-functions.php:711 templates/wp-mlm-registration-page.php:298
+msgid "Payment Mode"
+msgstr "Modo de pagamento"
+
+#: templates/payment-options.php:12 templates/wp-mlm-settings.php:17
+msgid "Payment Settings"
+msgstr "Configurações de pagamento"
+
+#: functions/ajax-functions.php:1561
+msgid "payment_cancelled"
+msgstr "pagamento_cancelado"
+
+#: templates/payment-options.php:64
+msgid "PayPal Credentials"
+msgstr "Credenciais do PayPal"
+
+#: templates/payment-options.php:121
+msgid "Paypal Mode"
+msgstr "Modo Paypal"
+
+#: templates/level-commission-settings.php:49
+msgid "Percentage"
+msgstr "Percentagem"
+
+#: templates/user-profile-admin.php:49
+msgid "Personal Information"
+msgstr "Informação pessoal"
+
+#: templates/payment-options.php:107 templates/general-settings.php:103
+msgid "Philippine peso"
+msgstr "Peso filipino"
+
+#: functions/ajax-functions.php:911 functions/ajax-functions.php:1014
+#: functions/ajax-functions.php:1103 functions/ajax-functions.php:1181
+#: functions/ajax-functions.php:1262 functions/ajax-functions.php:1333
+msgid "Phone"
+msgstr "telefone"
+
+#: templates/wp-mlm-registration-page.php:226
+msgid "Please complete the registration to join the MLM network"
+msgstr "Por favor, preencha o registro para ingressar na rede MLM"
+
+#: functions/ajax-functions.php:793
+msgid "Please enter registration package name"
+msgstr "Insira o nome do pacote de registro"
+
+#: functions/ajax-functions.php:795
+msgid "Please enter your registration package price"
+msgstr "Insira o preço do pacote de registro"
+
+#: templates/payment-options.php:108 templates/general-settings.php:104
+msgid "Polish złoty"
+msgstr "Zloty polonês"
+
+#: templates/payment-options.php:109 templates/general-settings.php:105
+msgid "Pound sterling"
+msgstr "Libra esterlina"
+
+#: templates/wp-mlm-registration-page.php:351
+msgid "Previous"
+msgstr "Anterior"
+
+#: templates/registration-package-settings.php:94
+msgid "Price"
+msgstr "Preço"
+
+#: templates/reports.php:15 templates/reports.php:26 templates/reports.php:197
+#: functions/ajax-functions.php:921 functions/ajax-functions.php:1024
+msgid "Profile Report"
+msgstr "Relatório de Perfil"
+
+#: templates/ewallet-management.php:125
+#: templates/user-ewallet-management.php:115
+msgid "Receiver"
+msgstr "Receptor"
+
+#: templates/user-dashboard.php:135 templates/admin-dashboard.php:119
+msgid "Recently joined users"
+msgstr "Usuários ingressados ​​recentemente"
+
+#: templates/wp-mlm-registration-page.php:219 templates/user-referrals.php:13
+#: templates/user-area.php:37 templates/user-area.php:69
+#: functions/ajax-functions.php:1391
+msgid "Referral Details"
+msgstr "Detalhes de referência"
+
+#: custom-functions.php:630
+msgid "REGISTRATION AMOUNT"
+msgstr "VALOR DA INSCRIÇÃO"
+
+#: templates/registration-package-settings.php:31
+msgid "Registration Amount"
+msgstr "Quantidade de registro"
+
+#: templates/user-profile-admin.php:38
+msgid "Registration Package"
+msgstr "Pacote de Registro"
+
+#: templates/payment-options.php:16
+msgid "Registration Type"
+msgstr "Tipo de Registro"
+
+#: templates/registration-package-settings.php:25
+msgid "Registration without using packages"
+msgstr "Registro sem usar pacotes"
+
+#: templates/general-settings.php:55
+msgid "Remove"
+msgstr "Retirar"
+
+#: templates/admin-area.php:23 templates/reports.php:6
+msgid "Reports"
+msgstr "Relatórios"
+
+#: templates/payment-options.php:110 templates/general-settings.php:106
+msgid "Russian ruble"
+msgstr "Rublo russo"
+
+#: templates/payment-options.php:124
+msgid "Sandbox"
+msgstr "Caixa de areia"
+
+#: templates/user-profile-admin.php:203 templates/password-settings.php:68
+#: templates/level-commission-settings.php:34 templates/payment-options.php:46
+#: templates/payment-options.php:134
+#: templates/registration-package-settings.php:42
+#: templates/registration-package-settings.php:77
+#: templates/general-settings.php:121
+msgid "Save"
+msgstr "Salve "
+
+#: templates/reports.php:46 templates/reports.php:49
+msgid "Search"
+msgstr "Pesquisa"
+
+#: templates/ewallet-management.php:164
+msgid "search"
+msgstr "pesquisa"
+
+#: custom-functions.php:682
+msgid "Select Country"
+msgstr "Selecione o pais"
+
+#: templates/payment-options.php:90 templates/general-settings.php:85
+msgid "Select Currency"
+msgstr "Escolha a moeda"
+
+#: custom-functions.php:614 templates/wp-mlm-registration-page.php:243
+#: templates/wp-mlm-registration-page.php:250
+msgid "Select Package"
+msgstr "Selecione o pacote"
+
+#: templates/ewallet-management.php:142
+#: templates/user-ewallet-management.php:140
+msgid "Send"
+msgstr "Enviar"
+
+#: templates/password-settings.php:102
+#: templates/user-ewallet-management.php:169
+msgid "Send Password"
+msgstr "Enviar senha"
+
+#: templates/password-settings.php:19 templates/password-settings.php:84
+msgid "Send Transaction Password"
+msgstr "Enviar senha de transação"
+
+#: templates/admin-area.php:27 templates/wp-mlm-settings.php:7
+msgid "Settings"
+msgstr "Configurações"
+
+#: templates/payment-options.php:111 templates/general-settings.php:107
+msgid "Singapore dollar"
+msgstr "dólar de Singapura"
+
+#: templates/registration-package-settings.php:92
+msgid "Sl.No"
+msgstr "Sl.No"
+
+#: functions/ajax-functions.php:220 functions/ajax-functions.php:248
+msgid "Sorry! Insufficient Balance"
+msgstr "Desculpa! Saldo insuficiente"
+
+#: functions/ajax-functions.php:1477
+msgid "Sorry! The Email Address is Already Registered."
+msgstr "Desculpa! O endereço de e-mail já está registrado."
+
+#: functions/ajax-functions.php:1466
+msgid "Sorry! The specified sponsor is not available for registration."
+msgstr ""
+"Desculpa! O patrocinador especificado não está disponível para registro."
+
+#: functions/ajax-functions.php:518
+msgid "Sorry! The specified to user is not available."
+msgstr "Desculpa! O especificado para o usuário não está disponível."
+
+#: functions/ajax-functions.php:168
+msgid "Sorry! The specified user is not available"
+msgstr "Desculpa! O usuário especificado não está disponível"
+
+#: functions/ajax-functions.php:270 functions/ajax-functions.php:508
+msgid "Sorry! The specified user is not available."
+msgstr "Desculpa! O usuário especificado não está disponível."
+
+#: functions/ajax-functions.php:1450
+msgid "Sorry! Username already taken"
+msgstr "Desculpa! nome de usuário já utilizado"
+
+#: functions/ajax-functions.php:661 functions/ajax-functions.php:733
+msgid "Sorry! Username not exist"
+msgstr "Desculpa! Nome de usuário não existe"
+
+#: templates/user-profile-admin.php:15
+msgid "Sponsor & Package Information"
+msgstr "Patrocinador e informações do pacote"
+
+#: custom-functions.php:602
+msgid "SPONSOR NAME"
+msgstr "NOME DO PATROCINADOR"
+
+#: templates/user-profile-admin.php:24 functions/ajax-functions.php:929
+#: functions/ajax-functions.php:1032 functions/ajax-functions.php:1124
+#: functions/ajax-functions.php:1202
+msgid "Sponsor Name"
+msgstr "Nome do Patrocinador"
+
+#: custom-functions.php:694
+msgid "STATE"
+msgstr "ESTADO"
+
+#: custom-functions.php:695 templates/user-profile-admin.php:118
+msgid "State"
+msgstr "Estado"
+
+#: templates/ewallet-management.php:78
+msgid "Step 1"
+msgstr "Passo 1"
+
+#: templates/ewallet-management.php:119
+msgid "Step 2"
+msgstr "Passo 2"
+
+#: templates/user-ewallet-management.php:52
+msgid "Step: 1"
+msgstr "Passo: 1"
+
+#: templates/user-ewallet-management.php:110
+msgid "Step: 2"
+msgstr "Passo: 2"
+
+#: custom-functions.php:747 templates/ewallet-management.php:197
+#: templates/ewallet-management.php:231
+#: templates/user-ewallet-management.php:245 templates/reports.php:92
+#: templates/reports.php:134
+msgid "Submit"
+msgstr "Enviar"
+
+#: functions/ajax-functions.php:1468
+msgid "Success"
+msgstr "Sucesso"
+
+#: functions/ajax-functions.php:117 functions/ajax-functions.php:768
+#: functions/ajax-functions.php:779
+msgid "Successfully Updated"
+msgstr "Atualizado com sucesso"
+
+#: templates/payment-options.php:112 templates/general-settings.php:108
+msgid "Swedish krona"
+msgstr "Coroa sueca"
+
+#: templates/payment-options.php:113 templates/general-settings.php:109
+msgid "Swiss franc"
+msgstr "Franco suíço"
+
+#: templates/user-profile-admin.php:106
+msgid "Telephone"
+msgstr "Telefone"
+
+#: templates/payment-options.php:114 templates/general-settings.php:110
+msgid "Thai baht"
+msgstr "Baht tailandês"
+
+#: templates/ewallet-management.php:183
+#: templates/user-ewallet-management.php:226 templates/reports.php:81
+#: templates/reports.php:123
+msgid "To Date"
+msgstr "Até a presente data"
+
+#: templates/user-dashboard.php:70 templates/user-dashboard.php:80
+#: templates/admin-dashboard.php:55 templates/admin-dashboard.php:67
+msgid "Today"
+msgstr "Hoje"
+
+#: templates/user-dashboard.php:167 templates/admin-dashboard.php:150
+msgid "Top Bonus Earned Users"
+msgstr "Principais usuários com bônus ganhos"
+
+#: templates/user-dashboard.php:69 templates/user-dashboard.php:79
+#: templates/admin-dashboard.php:54 templates/admin-dashboard.php:66
+msgid "Total"
+msgstr "Total"
+
+#: templates/user-income-details.php:32 functions/ajax-functions.php:1283
+#: functions/ajax-functions.php:1354
+msgid "Total Amount"
+msgstr "Total Amount"
+
+#: templates/ewallet-management.php:223
+msgid "Trading Amount"
+msgstr "Quantidade de negociação"
+
+#: functions/ajax-functions.php:254
+msgid "Transaction Completed Successfully"
+msgstr "Transação concluída com sucesso"
+
+#: functions/ajax-functions.php:257
+msgid "Transaction Failed"
+msgstr "Transaction Failed"
+
+#: functions/ajax-functions.php:457
+msgid "Transaction Id"
+msgstr "Id de transação"
+
+#: templates/ewallet-management.php:46 templates/ewallet-management.php:105
+#: templates/ewallet-management.php:131
+#: templates/user-ewallet-management.php:79
+#: templates/user-ewallet-management.php:120
+msgid "Transaction Note"
+msgstr "Nota de transação"
+
+#: templates/ewallet-management.php:134
+#: templates/user-ewallet-management.php:123
+msgid "Transaction Password"
+msgstr "Senha de transação"
+
+#: templates/ewallet-management.php:16 templates/ewallet-management.php:154
+#: templates/user-ewallet-management.php:23
+#: templates/user-ewallet-management.php:201
+msgid "Transfer Details"
+msgstr "Detalhes de transferência"
+
+#: functions/ajax-functions.php:460
+msgid "Transfer Note"
+msgstr "Nota de Transferência"
+
+#: templates/ewallet-management.php:93 templates/user-ewallet-management.php:64
+msgid "Transfer To (User Name)"
+msgstr "Transferir para (nome de usuário)"
+
+#: functions/ajax-functions.php:459
+msgid "Transfer Type"
+msgstr "Tipo de Transferência"
+
+#: templates/user-profile-admin.php:161 templates/password-settings.php:150
+msgid "Update"
+msgstr "Atualizar"
+
+#: functions/ajax-functions.php:38
+msgid "Updated Successfully"
+msgstr "Atualizado com sucesso"
+
+#: templates/general-settings.php:42
+msgid "Upload Logo"
+msgstr "Carregar logotipo"
+
+#: templates/payment-options.php:115 templates/general-settings.php:111
+msgid "US dollar"
+msgstr "Dólar americano"
+
+#: templates/general-settings.php:65
+msgid "Use same image in the Login/Register Page"
+msgstr "Use a mesma imagem na página de login / registro"
+
+#: templates/user-details-admin.php:6
+msgid "User Details"
+msgstr "Detalhes do usuario"
+
+#: custom-functions.php:600
+msgid "User Info"
+msgstr "informação de usuário"
+
+#: templates/user-profile-admin.php:18 templates/password-settings.php:92
+#: templates/ewallet-management.php:34 templates/ewallet-management.php:81
+#: templates/ewallet-management.php:162 templates/ewallet-management.php:217
+msgid "User Name"
+msgstr "Nome do usuário"
+
+#: templates/reports.php:348
+msgid "User name not exists"
+msgstr "Nome de usuário não existe"
+
+#: templates/user-profile-admin.php:12 functions/ajax-functions.php:1388
+msgid "User Profile"
+msgstr "Perfil de usuário"
+
+#: custom-functions.php:654
+msgid "USERNAME"
+msgstr "NOME DO USUÁRIO"
+
+#: templates/password-settings.php:43 templates/user-dashboard.php:138
+#: templates/admin-dashboard.php:122 templates/user-details-admin.php:16
+#: templates/user-referrals.php:24 templates/reports.php:39
+#: templates/user-income-details.php:22 functions/ajax-functions.php:456
+#: functions/ajax-functions.php:928 functions/ajax-functions.php:1031
+#: functions/ajax-functions.php:1123 functions/ajax-functions.php:1201
+#: functions/ajax-functions.php:1280 functions/ajax-functions.php:1351
+msgid "Username"
+msgstr "Nome do usuário"
+
+#: templates/admin-area.php:17
+msgid "Users"
+msgstr "Comercial"
+
+#: templates/user-details-admin.php:38 templates/user-referrals.php:41
+msgid "View details"
+msgstr "Ver detalhes"
+
+#. Name of the plugin
+msgid "WP MLM"
+msgstr "WP MLM"
+
+#: templates/admin-area.php:11
+msgid "WP MLM Admin"
+msgstr "WP MLM Admin"
+
+#: templates/user-area.php:23 templates/user-area.php:56
+msgid "WP MLM User"
+msgstr "Usuário WP MLM"
+
+#: custom-functions.php:594 templates/wp-mlm-registration-page.php:204
+#: templates/user-area.php:50
+msgid "WP MLM User Registration"
+msgstr "Registro de usuário WP MLM"
+
+#: templates/reports.php:379 templates/reports.php:439
+msgid "You must select an end date greater than start date"
+msgstr "Você deve selecionar uma data de término posterior à data de início"
+
+#: functions/ajax-functions.php:581
+msgid "Your current transaction password is incorrect"
+msgstr "Sua senha de transação atual está incorreta"
+
+#: custom-functions.php:705
+msgid "ZIP"
+msgstr "CÓDIGO POSTAL"
+
+#: custom-functions.php:706
+msgid "ZIP Code"
+msgstr "Código postal"
+
+#: templates/user-profile-admin.php:144 functions/ajax-functions.php:932
+#: functions/ajax-functions.php:1035
+msgid "Zip Code"
+msgstr "Código postal"
