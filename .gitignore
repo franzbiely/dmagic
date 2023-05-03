@@ -1,18 +1,13 @@
 wp-includes
-<<<<<<< HEAD
-*.php
-*.txt
-=======
 /*.php
 /*.txt
->>>>>>> 11353b6 (Init PHP files)
 wp-admin
 wp-content/et-cache
 wp-content/themes
 wp-content/upgrade
 wp-content/uploads
 wp-content/index.php
-*.html
+/*.html
 .DS_Store
 wp-content/plugins/affiliaa-affiliate-program-with-mlm
 wp-content/plugins/akismet
