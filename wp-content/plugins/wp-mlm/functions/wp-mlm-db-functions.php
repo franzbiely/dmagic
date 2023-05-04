@@ -319,7 +319,7 @@ function wpmlm_get_all_user_details_by_date_join($start_date, $end_date) {
 function wpmlm_get_all_user_details_join() {
     global $wpdb;
     $table_prefix = $wpdb->prefix;
-    $sql = "SELECT a.*,b.* FROM {$table_prefix}users a INNER JOIN {$table_prefix}wpmlm_users b ON a.ID=b.user_ref_id ";
+    $sql = "SELECT a.*,b.* FROM {$table_prefix}users a INNER JOIN {$table_prefix}wpmlm_users b ON a.ID=b.user_ref_id WHERE b.user_status <> '-1'";
     $results = $wpdb->get_results($sql);
     return $results;
 }
