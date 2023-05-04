@@ -846,8 +846,63 @@ function wpmlm_insert_leg_amount($user_id, $package_id) {
         wpmlm_updateBalanceAmountDetailsTo($res->user_ref_id, $commission_amount);
     }
 }
+function wpmlm_insert_static_leg_amount_new($user_id, $package_amount, $package_id) {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "wpmlm_leg_amount";
+
+    $user_details = wpmlm_get_user_details($user_id);
+    $level_from = $user_details->user_level + 1;
+    $depth = wpmlm_get_level_depth();
+    $level_to = $level_from + $depth + 1;
+    
+    $general = wpmlm_get_general_information();
+    $reg_amt = $general->registration_amt;
+
+    $result1 = wpmlm_get_commission_level_type();
+    $result = wpmlm_getTenChildren($user_details->user_parent_id, $level_from, $level_to);
+    $i = 0;
+    foreach ($result as $res) {
+        print_r($res);
+        $i++;
+        // $level_percentage = wpmlm_get_level_percentage($i);
+        $level_percentage = wpmlm_get_level_percentage($i);
+       
+        $amount = $level_percentage;
+        $depth = $depth - 1;
+
+        $data = array(
+            'user_id' => $res->user_ref_id,
+            'from_id' => $user_id,
+            'amount_type' => 'level_bonus',
+            'total_amount' => $amount,
+            'product_id' => $package_id,
+            'product_value' => $package_amount,
+            'user_level' => $i,
+            'date_of_submission' => date("Y-m-d H:i:s")
+        );
+        $wpdb->insert($table_name, $data);
+
+        $ewallet_id = $wpdb->insert_id;
+
+        $ewallet_details = array(
+            'from_id' => $user_id,
+            'user_id' => $res->user_ref_id,
+            'ewallet_id' => $ewallet_id,
+            'ewallet_type' => 'commission',
+            'amount' => $amount,
+            'amount_type' => 'level_bonus',
+            'type' => 'credit',
+            'date_added' => $date
+        );
+        wpmlm_addEwalletHistory($ewallet_details);
+        wpmlm_updateBalanceAmountDetailsTo($res->user_ref_id, $amount);
+    }
+    return true;
+}
+
 function wpmlm_insert_leg_amount_new($user_id, $package_amount,$package_id) {
-   
+   echo "I AM HERE";
+    exit();
     global $wpdb;
     $table_name = $wpdb->prefix . "wpmlm_leg_amount";
 
@@ -903,6 +958,18 @@ function wpmlm_insert_leg_amount_new($user_id, $package_amount,$package_id) {
         wpmlm_updateBalanceAmountDetailsTo($res->user_ref_id, $commission_amount);
     }
     return true;
+}
+
+function wpmlm_getTenChildren($user_id = NULL, $level_from, $level_to) {
+    if ($user_id == NULL) {
+        return false;
+    }
+
+    global $wpdb;
+    $table_name = $wpdb->prefix . "wpmlm_users";
+    $depth = wpmlm_get_level_depth();
+    $sql = "SELECT * FROM {$table_name} WHERE `user_level` BETWEEN $level_from AND $level_to";
+    return $wpdb->get_results($sql);
 }
 
 function wpmlm_getAllParents($user_id = NULL, $level_from) {

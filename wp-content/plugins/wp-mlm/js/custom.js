@@ -451,7 +451,7 @@ $(document).on("click", ".transfer-details", function () {
 });
 
 $(document).on("click", ".ewallet-tab", function () {    
-   $('.fund_management').trigger('click');
+   $('.purchase_disperse').trigger('click');
 });
 
 $(document).on("click", ".ewallet-tab-user", function () {    

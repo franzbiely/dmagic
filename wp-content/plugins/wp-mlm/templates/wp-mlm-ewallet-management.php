@@ -13,7 +13,8 @@ function wpmlm_ewallet_management() {
                 <div class="col-md-3">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-left">
-                        <li class="active"><a href="#fund-management" data-toggle="tab" class="fund_management"><?php _e('Fund Management','wpmlm-unilevel'); ?></a></li>
+                        <li class="active"><a href="#purchase-disperse" data-toggle="tab" class="purchase_disperse"><?php _e('Purchase Disperse','wpmlm-unilevel'); ?></a></li>
+                        <li><a href="#fund-management" data-toggle="tab" class="fund_management"><?php _e('Fund Management','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#fund-transfer" data-toggle="tab" class="fund-transfer"><?php _e('Fund Transfer','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e('Transfer Details','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#Level-Commission" data-toggle="tab" class="Level-Commission"><?php _e('Level Commission','wpmlm-unilevel'); ?></a></li>
@@ -22,7 +23,48 @@ function wpmlm_ewallet_management() {
                 <div class="col-md-9">
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div class="tab-pane active" id="fund-management">
+                    <div class="tab-pane active" id="purchase-disperse">
+                        
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <h4><i class="fa fa-external-link-square"></i> <span> <?php _e('Purchase Disperse','wpmlm-unilevel'); ?></span></h4>
+                                </div>
+                                <div class="panel-border">
+                                    <div class="submit_message"></div>
+                                    <form id="Purchase-Disperse-form" class="form-horizontal " method="post">
+                                        <div id="fund-step-1">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 user-dt" for="user_name"><?php _e('User Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control purchase_dispurse_input" name="pd_user_name" id="pd_user_name" placeholder="<?php _e('Enter Username','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label col-md-3 user-dt" for="trade_amount"><?php _e('Package','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <select class="form-control" name="pd_trade_amount" id="pd_trade_amount">
+                                                        <?php 
+                                                        foreach ($reg_pack as $reg) { ?>                                                                      
+                                                            <option value=<?php echo $reg->id ?>> <?php echo $reg->package_name .'('.$reg->package_price .')' ?></option>
+                                                            <?php  } ?>                                                 
+                                                    </select> 
+                                                </div>                                              
+                                            </div>
+                                            <div class="form-group"> 
+                                                <div class="col-sm-offset-3 col-sm-6 fund-transfer-btn">
+                                                    <input type="hidden" name="fund_action" class="fund-action" value="">
+                                                    <button id="Purchase-Disperse-submit"  class="btn btn-danger Purchase-Disperse-submit" > <?php _e('Submit','wpmlm-unilevel'); ?></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php wp_nonce_field('purchase_disperse_add', 'purchase_disperse_add_nonce'); ?>   
+                                    </form> 
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane" id="fund-management">
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
@@ -369,6 +411,46 @@ function wpmlm_ewallet_management() {
                 $(".fund-action").val(action);
             });
 
+            // Purchase Disperse
+            $("#Purchase-Disperse-form").submit(function (event) {
+                event.preventDefault();
+                $(".submit_message").html('');
+                $(".submit_message").show();
+                var formData = new FormData(this);
+                formData.append('action', 'wpmlm_ajax_ewallet_management');
+                
+                isValid = true;
+                $(".purchase_dispurse_input").each(function () {
+                    var element = $(this);
+                    console.log({element})
+                    if (element.val() == '') {
+                        $(this).addClass("invalid");
+                        isValid = false;
+                    }
+                });
+                if (isValid) {
+                    $.ajax({
+                        type: "POST",
+                        url: ajaxurl,
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            $(".submit_message").html('<div class="alert alert-info">' + data + '</div>');
+                            setTimeout(function () {
+                                $(".submit_message").hide();
+                                $("#Purchase-Disperse-form")[0].reset();
+
+                            }, 2000);
+                        }
+                    });
+                }
+                console.log('maybe not valid')
+                return false;
+            })
+            // End Purchase Disperse
+
             // Level commission Ajax Function 
 
             $("#Level-Commission-form").submit(function () {
@@ -376,6 +458,7 @@ function wpmlm_ewallet_management() {
                 $(".submit_message").show();
                 var formData = new FormData(this);
                 formData.append('action', 'wpmlm_ajax_ewallet_management');
+                
                 isValid = true;
                 $(".level_commission_input").each(function () {
                     var element = $(this);
@@ -384,7 +467,6 @@ function wpmlm_ewallet_management() {
                         isValid = false;
                     }
                 });
-
                 if (isValid) {
                     $.ajax({
                         type: "POST",
@@ -403,9 +485,10 @@ function wpmlm_ewallet_management() {
                         }
                     });
                 }
+                console.log('maybe not valid')
                 return false;
             })
-            $(".level_commission_input").focus(function () {
+            $(".level_commission_input, .purchase_dispurse_input").focus(function () {
                 $(this).removeClass("invalid");
             })
 

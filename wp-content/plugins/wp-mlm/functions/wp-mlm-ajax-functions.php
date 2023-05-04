@@ -271,6 +271,34 @@ function wpmlm_ajax_ewallet_management() {
         }
     }
 
+// Purchase Disperse
+if (isset($_POST['purchase_disperse_add_nonce']) && wp_verify_nonce($_POST['purchase_disperse_add_nonce'], 'purchase_disperse_add')) {
+
+    $user_name = sanitize_text_field($_POST['pd_user_name']);
+    $pack_id = sanitize_text_field($_POST['pd_trade_amount']);
+    $package_id = wpmlm_select_package_by_id( $pack_id);
+    $trade_amount = $package_id->package_price; 
+    
+    $date = date('Y-m-d H:i:s');
+    $usersStatus = wpmlm_ifactiveUser($user_name);
+    $is_user_name_exit = $wpdb->get_var("SELECT user_login FROM {$table_name} WHERE user_login = '$user_name'");
+    if (!$is_user_name_exit || !$usersStatus) {
+        _e("Sorry! The specified user is not available.","wpmlm-unilevel");
+        exit();
+    }
+    $the_user = get_user_by('login', $user_name);
+    $to_user_id = $the_user->ID;
+    $res = wpmlm_insert_static_leg_amount_new($to_user_id, $trade_amount,$package_id);
+    if ($res) {
+        _e("Purchase Dispersed Successfully","wpmlm-unilevel");
+        exit();
+    } else {
+        _e("Error Occured","wpmlm-unilevel");
+        exit();
+    }
+}
+//End Purchase Disperse
+
 // Level Commission 
 if (isset($_POST['level_commission_add_nonce']) && wp_verify_nonce($_POST['level_commission_add_nonce'], 'level_commission_add')) {
 
