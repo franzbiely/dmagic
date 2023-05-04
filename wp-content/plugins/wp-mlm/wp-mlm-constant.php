@@ -3,7 +3,7 @@ define("WP_MLM_PAGE_PATH", plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/template
 
 // fma constants
 // Tabs
-define('E_Wallet_Management', true); // also on dash
+define('E_Wallet_Management', false); // also on dash
 define('Change_Password_Management', false);
 define('Material_Management', false);
 

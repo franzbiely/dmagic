@@ -14,10 +14,12 @@ function wpmlm_ewallet_management() {
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-left">
                         <li class="active"><a href="#purchase-disperse" data-toggle="tab" class="purchase_disperse"><?php _e('Purchase Disperse','wpmlm-unilevel'); ?></a></li>
+                        <?php if(E_Wallet_Management) : ?>
                         <li><a href="#fund-management" data-toggle="tab" class="fund_management"><?php _e('Fund Management','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#fund-transfer" data-toggle="tab" class="fund-transfer"><?php _e('Fund Transfer','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e('Transfer Details','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#Level-Commission" data-toggle="tab" class="Level-Commission"><?php _e('Level Commission','wpmlm-unilevel'); ?></a></li>
+                        <?php endif; ?>
                     </ul>
                 </div>
                 <div class="col-md-9">
