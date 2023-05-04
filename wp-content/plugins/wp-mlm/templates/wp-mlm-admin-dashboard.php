@@ -46,7 +46,7 @@ function wpmlm_admin_dashboard($user_id) {
     
     <div id="general-settings">
 
-   <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
+   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
    
    
       <div class="col-sm-7 col-xs-6 col-md-7">
@@ -58,7 +58,7 @@ function wpmlm_admin_dashboard($user_id) {
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/bar-chart.png'; ?>">
       </div>
    </div>
-   <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
+   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
    
    
       <div class="col-sm-7 col-xs-6 col-md-7">
@@ -70,6 +70,8 @@ function wpmlm_admin_dashboard($user_id) {
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/money-bag.png'; ?>">
       </div>
    </div>
+   <?php 
+   if(E_Wallet_Management) : ?>
    <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
       <div class="col-sm-7 col-xs-6 col-md-7">
          <h4><?php _e('E-Wallet','wpmlm-unilevel'); ?></h4>
@@ -79,7 +81,8 @@ function wpmlm_admin_dashboard($user_id) {
       <div class="col-sm-5 col-xs-6 col-md-5">
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/wallet.png'; ?>">
       </div>
-   </div>
+   </div> 
+   <?php endif; ?>
       <div class="panel-border col-md-6" style="padding-left: 0px;padding-top: 11px;">
          
             <script>
@@ -173,6 +176,8 @@ function wpmlm_admin_dashboard($user_id) {
             </div>
 
         <!-- new -->
+        <?php 
+        if(Affiliate_Link) : ?>
 <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
         <div class="row"> 
                     <?php $current_user = wp_get_current_user(); ?>
@@ -192,7 +197,7 @@ function wpmlm_admin_dashboard($user_id) {
                          </div> 
                      </div>
                    </div>
-    </div>
+    </div><?php endif; ?>
         <!-- end new -->
     <?php
 }

@@ -14,7 +14,9 @@ function wpmlm_settings() {
                 <li class="active"><a  href="#1d" data-toggle="tab"><?php _e('General Settings','wpmlm-unilevel'); ?></a></li>
                 <li><a href="#2d" data-toggle="tab"><?php _e('Package Settings','wpmlm-unilevel'); ?></a></li>
                 <li><a href="#3d" data-toggle="tab"><?php _e('Bonus Settings','wpmlm-unilevel'); ?></a></li>
+                <?php if(Payment_Settings_Management) : ?>
                 <li><a href="#4d" data-toggle="tab"><?php _e('Payment Settings','wpmlm-unilevel'); ?></a></li>
+                <?php endif; ?>
             </ul>
         </div>
 

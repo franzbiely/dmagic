@@ -21,15 +21,21 @@ function wpmlm_admin_area() {
     <input id="ioss-mlm-tab9" class="tab_class tree-tab" type="radio" name="tabs">
     <label class="tab_class" for="ioss-mlm-tab9"><?php _e('Tree View','wpmlm-unilevel'); ?></label>       
     <input id="ioss-mlm-tab4" class="tab_class ewallet-tab" type="radio" name="tabs">
+    <?php if(E_Wallet_Management): ?>
     <label class="tab_class" for="ioss-mlm-tab4"><?php _e('E-wallet Management','wpmlm-unilevel'); ?></label>
+    <?php endif; ?>
     <input id="ioss-mlm-tab5" class="tab_class report-tab" type="radio" name="tabs">
     <label class="tab_class" for="ioss-mlm-tab5"><?php _e('Reports','wpmlm-unilevel'); ?></label>
     <input id="ioss-mlm-tab6" class="tab_class" type="radio" name="tabs">
+    <?php if(Change_Password_Management): ?>
     <label class="tab_class" for="ioss-mlm-tab6"><?php _e('Change Password','wpmlm-unilevel'); ?></label>
+    <?php endif; ?>
     <input id="ioss-mlm-tab7" class="tab_class" type="radio" name="tabs">
     <label class="tab_class" for="ioss-mlm-tab7"><?php _e('Settings','wpmlm-unilevel'); ?></label>
     <input id="ioss-mlm-tab8" class="tab_class" type="radio" name="tabs">
+    <?php if(Material_Management) : ?>
     <label class="tab_class" for="ioss-mlm-tab8"><?php _e('Materials','wpmlm-unilevel'); ?></label>    
+    <?php endif; ?>
       
     <section id="content1"><p><?php echo wpmlm_admin_dashboard($user_id); ?></p></section>      
     <section id="content2"><p><?php echo wpmlm_user_details_admin(); ?></p></section>      
