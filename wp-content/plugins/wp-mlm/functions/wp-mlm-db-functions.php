@@ -329,7 +329,7 @@ function wpmlm_get_all_user_details_join() {
 function wpmlm_get_recently_joined_users_under_admin($user_id, $num) {
     global $wpdb;
     $table_prefix = $wpdb->prefix;
-    $sql = "SELECT a.*,b.* FROM {$table_prefix}users a INNER JOIN {$table_prefix}wpmlm_users b ON a.ID=b.user_ref_id WHERE a.`ID`!= $user_id  ORDER BY a.ID DESC LIMIT 0,$num";
+    $sql = "SELECT a.*,b.* FROM {$table_prefix}users a INNER JOIN {$table_prefix}wpmlm_users b ON a.ID=b.user_ref_id WHERE a.`ID`!= $user_id AND b.user_status <> '-1' ORDER BY a.ID DESC LIMIT 0,$num";
     $results = $wpdb->get_results($sql);
     return $results;
 }
@@ -349,7 +349,7 @@ function wpmlm_get_recently_joined_users($num) {
 function wpmlm_get_recently_joined_users_by_parent($user_id, $num) {
     global $wpdb;
     $table_prefix = $wpdb->prefix;
-    $sql = "SELECT a.*,b.* FROM {$table_prefix}users a INNER JOIN {$table_prefix}wpmlm_users b ON a.ID=b.user_ref_id  where b.`user_parent_id`='$user_id' ORDER BY a.ID DESC LIMIT 0,$num";
+    $sql = "SELECT a.*,b.* FROM {$table_prefix}users a INNER JOIN {$table_prefix}wpmlm_users b ON a.ID=b.user_ref_id  where b.`user_parent_id`='$user_id' AND b.user_status <> '-1' ORDER BY a.ID DESC LIMIT 0,$num";
     $results = $wpdb->get_results($sql);
     return $results;
 }
