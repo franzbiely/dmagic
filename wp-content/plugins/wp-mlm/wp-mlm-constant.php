@@ -12,3 +12,6 @@ define('Affiliate_Link', false);
 
 // Under Settings
 define('Payment_Settings_Management', false);
+
+// In Registration FE
+define('Enable_Payment_Mode', false);

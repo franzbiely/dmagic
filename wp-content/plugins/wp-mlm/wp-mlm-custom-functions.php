@@ -414,41 +414,42 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
                             <input type="text" class="form-control" name="zip" id="zip" placeholder="'. __("ZIP Code","wpmlm-unilevel").'" required>
                         </div>
                     </div>';
-                    $arr.= '<div class="form-row row">
+                    if(Enable_Payment_Mode) :
+                        $arr.= '<div class="form-row row">
+                                
+                                <br><h4>'. __("Payment Mode","wpmlm-unilevel").'</h4>';
                             
-                            <br><h4>'. __("Payment Mode","wpmlm-unilevel").'</h4>';
-                        
-                        $results = wpmlm_select_reg_type();
-                        $ckd = 0;
-                        $reg_type = "paypal";
-                        foreach($results as $res) {
-                            $ckd++;
-                            if ($ckd == 1) {
-                                $ckd = "checked";
-                            } else {
-                                $ckd = "";
-                            }
-                        
-                
-                            if ($res->reg_type == "free_join") {
-                  $arr.= '  <div class="form-check form-check-inline width-col-12">
-                                <input class="form-check-input free_join" type="radio" name="user_registration_type" id="user_registration_type" value="'. $res->reg_type .'" required '. $ckd .'>
-                                <label class="form-check-label" for="user_registration_type">'.  ucwords(str_replace("_", " ", $res->reg_type)).'</label>
-                            </div>';
+                            $results = wpmlm_select_reg_type();
+                            $ckd = 0;
+                            $reg_type = "paypal";
+                            foreach($results as $res) {
+                                $ckd++;
+                                if ($ckd == 1) {
+                                    $ckd = "checked";
+                                } else {
+                                    $ckd = "";
+                                }
                             
-                            $reg_type = "";
-                            } else {
-                             
-
-                    $arr.= '<div class="form-check form-check-inline paypal-radio width-col-12">
-                                <input class="form-check-input paid_join" type="radio" name="user_registration_type" id="user_registration_type" value="paypal"  required '. $ckd. '>
-                                <label class="form-check-label" for="user_registration_type"><img src='. plugins_url() . "/" . WP_MLM_PLUGIN_NAME . "/gateway/paypal-sdk-v2/paypal.svg".'></label>
-                            </div>';
-                            } 
-                        }
                     
-         $arr.= '</div>
-                <div class="form-row row">
+                                if ($res->reg_type == "free_join") {
+                    $arr.= '  <div class="form-check form-check-inline width-col-12">
+                                    <input class="form-check-input free_join" type="radio" name="user_registration_type" id="user_registration_type" value="'. $res->reg_type .'" required '. $ckd .'>
+                                    <label class="form-check-label" for="user_registration_type">'.  ucwords(str_replace("_", " ", $res->reg_type)).'</label>
+                                </div>';
+                                
+                                $reg_type = "";
+                                } else {
+                                
+
+                        $arr.= '<div class="form-check form-check-inline paypal-radio width-col-12">
+                                    <input class="form-check-input paid_join" type="radio" name="user_registration_type" id="user_registration_type" value="paypal"  required '. $ckd. '>
+                                    <label class="form-check-label" for="user_registration_type"><img src='. plugins_url() . "/" . WP_MLM_PLUGIN_NAME . "/gateway/paypal-sdk-v2/paypal.svg".'></label>
+                                </div>';
+                                } 
+                            }
+                        $arr.='</div>';
+                    endif;
+         $arr.= '<div class="form-row row">
                     <div class="form-group width-col-12">
                     <div class="form-group">
                         <br>

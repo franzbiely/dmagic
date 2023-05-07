@@ -10,5 +10,8 @@ wp-content/index.php
 /*.html
 .DS_Store
 wp-content/plugins/affiliaa-affiliate-program-with-mlm
+wp-content/plugins/contact-form-7
+wp-content/plugins/woocommerce
+wp-content/plugins/woocommerce-gateway-stripe
 wp-content/plugins/akismet
 wp-content/plugins/*.php

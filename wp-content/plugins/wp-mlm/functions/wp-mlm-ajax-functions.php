@@ -2211,13 +2211,8 @@ function wpmlm_registration_page(){
         $lastNonFreeSlotMember = $wpdb->get_results("SELECT user_ref_id FROM ".$wpdb->prefix ."wpmlm_users WHERE user_status = '0' ORDER BY user_ref_id DESC")[0];
         $lastFreeSlotMember=$wpdb->get_results("SELECT user_ref_id FROM ".$wpdb->prefix ."wpmlm_users WHERE user_status = '-1' ORDER BY user_ref_id DESC")[0];
         $firstFreeSlotMember = $wpdb->get_results("SELECT user_ref_id FROM ".$wpdb->prefix ."wpmlm_users WHERE user_status = '-1' ORDER BY user_ref_id ASC")[0];
-        echo "\n2193:";
-        echo $lastNonFreeSlotMember->user_ref_id;
-        echo "\n" . "2195:";
-        echo $lastFreeSlotMember->user_ref_id;
         
         if(isset($lastFreeSlotMember->user_ref_id) && $lastNonFreeSlotMember->user_ref_id !== $lastFreeSlotMember->user_ref_id) {
-            echo "\n"."2200";
             $wpmlm_user_query = $wpdb->prepare("UPDATE ".$wpdb->prefix ."wpmlm_users SET 
                 user_first_name = '".$user_first_name."',
                 user_email = '".$email."',
@@ -2248,14 +2243,11 @@ function wpmlm_registration_page(){
                 'user_email' => $email,
                 'display_name' => $username
             ]);
-            echo "\nupdated_user";
             wp_set_password($password, $firstFreeSlotMember->user_ref_id);
-            echo "\npassword set";
             $sponsor = $lastMember->user_login;
             register_with_plan_only($sponsor, $reg_pack_type );
         }
         else {
-            echo "\n"."2222";
             $fma_register_iteration_params['sponsor'] = $lastMember->user_login;
             $fma_register_iteration_params['user_status'] = 0;
             $register_result = fma_register_iteration($fma_register_iteration_params);
@@ -2264,7 +2256,6 @@ function wpmlm_registration_page(){
             }
             $register_result = register_with_plan_only(get_last_user()->user_login, $reg_pack_type );
 
-            echo $fma_result;
             wp_redirect();
         }
     }

@@ -295,6 +295,7 @@ function wpmlm_register_user_html_page() {
 
 
                         </div>
+                        <?php if(Enable_Payment_Mode) : ?>
                         <div class="tab"><h1><?php echo $step3; ?>: <?php _e('Payment Mode','wpmlm-unilevel'); ?></h1>
 
                             <div class="row" style="font-size:18px">
@@ -344,6 +345,7 @@ function wpmlm_register_user_html_page() {
                             <?php } ?>
 
                         </div>
+                        <?php endif; ?>
 
                         <div class="reg-next-prev-div-outer">
                             <div class="col-md-12 please-wait" ><img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/please-wait.gif'; ?>"></div>
