@@ -1952,7 +1952,7 @@ function fma_register_iteration($params) {
         'user_status' => $user_status,
         'package_id' => $_SESSION['session_pkg_id']
     );
-
+    
     $_SESSION['user_details'] = $user_details;
     $current_url = site_url('/');
     if ($user_registration_type == 'free_join') {
@@ -1962,7 +1962,9 @@ function fma_register_iteration($params) {
         //print_r($success_msg);die('fgdfw');
         if ($success_msg) {
             if ( ($reg_amt != 0) || ($reg_pack_type == 'with_package')) {
-                wpmlm_insert_leg_amount($user_ref, $_SESSION['session_pkg_id']);
+                if(isset($package_id)) {
+                    wpmlm_insert_leg_amount($user_ref, $_SESSION['session_pkg_id']);
+                }
                 
             }
             $tran_pass = wpmlm_getRandTransPasscode(8);
@@ -1983,21 +1985,6 @@ function fma_register_iteration($params) {
             unset($_SESSION['package_name']);
             unset($_SESSION['sponsor']);
             unset($_SESSION['.']);
-
-            // First get the user details
-            $user = get_user_by('login', $username );
-            // If no error received, set the WP Cookie
-            if ( !is_wp_error( $user ) ) {
-
-                wp_clear_auth_cookie();
-                wp_set_current_user ( $user->ID ); // Set the current user detail
-                wp_set_auth_cookie  ( $user->ID ); // Set auth details in cookie
-
-            } else {
-
-                $message = "Failed to log in";
-                
-            }
 
             $dash_result = wpmlm_get_general_information();
             $dash_slug_id = get_post($dash_result->user_dash); 
@@ -2114,7 +2101,6 @@ function register_free_slot($sponsor) {
     ]);
 }
 function register_with_plan_only($sponsor, $reg_pack_type) {
-    echo "inside register_with_plan_only";
     $random_string = substr(md5(microtime()),rand(0,26),5);
     return fma_register_iteration([
         'sponsor' => $sponsor,
@@ -2136,11 +2122,13 @@ function register_with_plan_only($sponsor, $reg_pack_type) {
         'user_level' => '',
         'user_status' => -1,
         'user_registration_type' => 'free_join',
-        'reg_pack_type' => $reg_pack_type 
+        'reg_pack_type' => $reg_pack_type,
+        'package_id' => "1"
     ]);
 }
 function wpmlm_registration_page(){
     global $wpdb;
+
     if (isset($_POST['reg_submit']) && wp_verify_nonce($_POST['wpmlm_registration_nonce'], 'wpmlm_registration')) {
 
 
@@ -2178,7 +2166,7 @@ function wpmlm_registration_page(){
         $package_select = sanitize_text_field($_POST['package_select']);
 
         $pkg = wpmlm_select_package_by_id($package_select);
-
+        
         $_SESSION['package_name'] = $pkg->package_name;
         if($reg_pack_type != 'with_out_package'){
             $_SESSION['package_price'] = $pkg->package_price;
@@ -2204,7 +2192,7 @@ function wpmlm_registration_page(){
             'user_mobile' => $user_mobile,
             'user_dob' => $user_dob,
             'user_level' => $user_level,
-            'user_registration_type' => $user_registration_type,
+            'user_registration_type' => 'free_join',
             'reg_pack_type' => 'with_out_package'
         ];
         $lastMember = get_last_user();
@@ -2227,25 +2215,48 @@ function wpmlm_registration_page(){
                 user_status ='0'
                 WHERE user_ref_id = '".$firstFreeSlotMember->user_ref_id."'
             ");
-            echo $wpmlm_user_query;
             $wpdb->query($wpmlm_user_query);
-            print_r([
-                'ID' => $firstFreeSlotMember->user_ref_id,
+            $wpdb->update( $wpdb->users, [
                 'user_login' => $username,
                 'user_nicename' => $username,
                 'user_email' => $email,
                 'display_name' => $username
-            ]);
-            wp_update_user([
-                'ID' => $firstFreeSlotMember->user_ref_id,
-                'user_login' => $username,
-                'user_nicename' => $username,
-                'user_email' => $email,
-                'display_name' => $username
-            ]);
+            ], ['ID' => $firstFreeSlotMember->user_ref_id] );
+
             wp_set_password($password, $firstFreeSlotMember->user_ref_id);
+
+            // First get the user details
+            $user = get_user_by('login', $username );
+            // If no error received, set the WP Cookie
+            if ( !is_wp_error( $user ) ) {
+
+                wp_clear_auth_cookie();
+                wp_set_current_user ( $user->ID ); // Set the current user detail
+                wp_set_auth_cookie  ( $user->ID ); // Set auth details in cookie
+
+            } else {
+
+                $message = "Failed to log in";
+                
+            }
+
             $sponsor = $lastMember->user_login;
-            register_with_plan_only($sponsor, $reg_pack_type );
+            $result = register_with_plan_only($sponsor, $reg_pack_type );
+            
+            // $result is to redirect to member area but for now, let's redirect to thank you or error.
+            // echo $result;
+            if(isset(json_decode($result)->redirect_link)) {
+                echo json_encode([
+                    'redirect_link' => '/thank-you'
+                ]);
+            }
+            else {
+                echo json_encode([
+                    'redirect_link' => '/error',
+                    'id' => 4
+                ]);
+            }
+            
         }
         else {
             $fma_register_iteration_params['sponsor'] = $lastMember->user_login;
@@ -2254,10 +2265,26 @@ function wpmlm_registration_page(){
             for($i=0; $i < 10; $i++) {
                 $register_result = register_free_slot(get_last_user()->user_login );
             }
-            $register_result = register_with_plan_only(get_last_user()->user_login, $reg_pack_type );
-
-            wp_redirect();
+            $result = register_with_plan_only(get_last_user()->user_login, $reg_pack_type );
+            if(isset(json_decode($result)->redirect_link)) {
+                echo json_encode([
+                    'redirect_link' => '/thank-you'
+                ]);
+            }
+            else {
+                echo json_encode([
+                    'redirect_link' => '/error',
+                    'id' => 5
+                ]);
+            }
         }
+        exit();
+    }
+    else {
+        echo json_encode([
+            'redirect_link' => '/error'
+        ]);
+        exit();
     }
 }
 

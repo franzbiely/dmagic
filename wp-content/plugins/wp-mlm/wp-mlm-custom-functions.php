@@ -313,22 +313,34 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
         
                    if ($reg_pack_type != "with_out_package") {
                         $packages = wpmlm_select_all_packages();
-                     if (count($packages) > 0) {
-                            $result2 = wpmlm_get_general_information();
-                        
-             $arr.=    '<div class="form-row row">
-                            <div class="form-group width-col-12">
-                                <select class="form-control" name="package_select" id="package_select" required>
-                                    <option value="" tabindex="1">'.__("Select Package","wpmlm-unilevel").'</option>';
-                                   
-                             $results = wpmlm_select_all_packages();
-                                    foreach ($results as $res) {
+                        if (count($packages) > 0) {
+                                $result2 = wpmlm_get_general_information();
+                            if(Enable_Select_Package) :      
+                $arr.=    '<div class="form-row row">
+                                <div class="form-group width-col-12">
+                                    <select class="form-control" name="package_select" id="package_select" required>
+                                        <option value="" tabindex="1">'.__("Select Package","wpmlm-unilevel").'</option>';
                                     
-                              $arr.= '<option value="'. $res->id.'">'. $res->package_name . ' - ' . $result2->company_currency . $res->package_price.'</option>' ;
-                              } 
-                        $arr.= '</select>
-                            </div>
-                        </div>';
+                                $results = wpmlm_select_all_packages();
+                                        foreach ($results as $res) {
+                                        
+                                $arr.= '<option selected="selected" value="'. $res->id.'">'. $res->package_name . ' - ' . $result2->company_currency . $res->package_price.'</option>' ;
+                                } 
+                            $arr.= '</select>
+                                </div>
+                            </div>';
+                            else : 
+                                $arr.='<select style="display:none;" class="form-control" name="package_select" id="package_select" required>
+                                <option value="" tabindex="1">'.__("Select Package","wpmlm-unilevel").'</option>';
+                            
+                                    $results = wpmlm_select_all_packages();
+                                            foreach ($results as $res) {
+                                            
+                                    $arr.= '<option selected="selected" value="'. $res->id.'">'. $res->package_name . ' - ' . $result2->company_currency . $res->package_price.'</option>' ;
+                                            break;
+                                    } 
+                                $arr.= '</select>';    
+                            endif; 
                         } 
                     }
                     
@@ -492,13 +504,8 @@ jQuery(document).ready(function($) {
                    contentType: false,
                    processData: false,
                    success: function (data) {
-                    
-                        if(data.payment_type != "free_join") {
-                            // window.location.href = data.payment_link;  
-                        }else{
-                            // window.location.href = data.redirect_link;
-                        }
-                        
+                        console.log({data});
+                        window.location.href = data.redirect_link;
                    }
                });
    

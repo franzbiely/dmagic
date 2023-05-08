@@ -862,7 +862,6 @@ function wpmlm_insert_static_leg_amount_new($user_id, $package_amount, $package_
     $result = wpmlm_getTenChildren($user_details->user_parent_id, $level_from, $level_to);
     $i = 0;
     foreach ($result as $res) {
-        print_r($res);
         $i++;
         // $level_percentage = wpmlm_get_level_percentage($i);
         $level_percentage = wpmlm_get_level_percentage($i);
@@ -901,8 +900,6 @@ function wpmlm_insert_static_leg_amount_new($user_id, $package_amount, $package_
 }
 
 function wpmlm_insert_leg_amount_new($user_id, $package_amount,$package_id) {
-   echo "I AM HERE";
-    exit();
     global $wpdb;
     $table_name = $wpdb->prefix . "wpmlm_leg_amount";
 
