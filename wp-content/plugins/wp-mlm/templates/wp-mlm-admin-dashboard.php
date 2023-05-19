@@ -186,7 +186,7 @@ function wpmlm_admin_dashboard($user_id) {
                          <div class="user-affiliate-link">
 
                            <div class="col-md-10" style="height: auto; float: left;"> 
-                             <label class="form-control" id="affiliate_link" style="height:auto;"><?php echo site_url(); ?>/<?php echo $current_user->user_login;?></label>
+                             <label class="form-control" id="affiliate_link" style="height:auto;"><?php echo site_url(); ?>/affiliate-user-registration?sponsor=<?php echo $current_user->user_login;?></label>
         </div><div class="col-md-2">
 
                              <div class="tooltip-button">
@@ -199,7 +199,6 @@ function wpmlm_admin_dashboard($user_id) {
                    </div>
     </div><?php endif; ?>
         <!-- end new -->
-    
     
     <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
         <div class="row"> 

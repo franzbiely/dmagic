@@ -7,7 +7,7 @@ var plugin_url = path.pluginsUrl;
 
 
 jQuery( document ).ready( function( $ ) {
-    
+
     $("#sname").change(function () {
         $(".err_msg_sponsor").remove();
 
@@ -27,9 +27,9 @@ jQuery( document ).ready( function( $ ) {
                     $("#sname").removeClass('error');
                     $("#sname").addClass('valid');
                     $("#sname").attr('aria-invalid', 'false');
-                    $("#reg_submit").attr('disabled', false);
-                    $("#reg_submit").css('opacity','1');
-                    $("#reg_submit").css('cursor','pointer');
+                    // $("#reg_submit").attr('disabled', false);
+                    // $("#reg_submit").css('opacity','1');
+                    // $("#reg_submit").css('cursor','pointer');
 
                 } else {
                     $("#sname").parent().append('<div class="err_msg_sponsor">' + data + '</div>');

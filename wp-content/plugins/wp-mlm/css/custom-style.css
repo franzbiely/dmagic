@@ -184,7 +184,8 @@
 .wpmlm-registration-form  .glyphicon-calendar:before {
     content: '\25A9';
 }
-.err_msg_sponsor, .err_msg_username, .err_msg_email{
+.err_msg_sponsor, .err_msg_username, .err_msg_email,
+.err_msg_regcode{
     color: red;
     position: absolute;
     font-size: 12px;

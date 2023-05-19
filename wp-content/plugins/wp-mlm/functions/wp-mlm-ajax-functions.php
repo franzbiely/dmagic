@@ -1522,6 +1522,22 @@ function wpmlm_ajax_session() {
     }
 }
 
+function regcode_check() {
+    $user = get_user_by('login', $_POST['sponsor']);
+    if(!$user) {
+        _e('Sorry! Code not valid','wpmlm-unilevel');
+        exit();
+    }
+    $codes = get_user_meta($user->ID, 'regcodes');  
+    if(in_array($_POST['regcode'], $codes)) {
+        echo "1";
+    }
+    else {
+        _e('Sorry! Code not valid','wpmlm-unilevel');
+    }
+    exit();
+}
+
 function wpmlm_ajax_user_check() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'users';
@@ -1931,7 +1947,7 @@ function wpmlm_registration_page(){
     
     if (isset($_POST['reg_submit']) && wp_verify_nonce($_POST['wpmlm_registration_nonce'], 'wpmlm_registration')) {
 
-
+        
         $paypal_result = wpmlm_get_paypal_details();
         // define('PAYPAL_BASEURL', 'https://api.sandbox.paypal.com');
         define('PAYPAL_CNT_ID', $paypal_result->paypal_client_id);
@@ -1951,6 +1967,7 @@ function wpmlm_registration_page(){
         $paypal_congig_mode = $paypal_result->paypal_mode;
 
         $sponsor = sanitize_text_field($_POST['sname']);
+        $regcode = sanitize_text_field($_POST['regcode']);
         $user_first_name = sanitize_text_field($_POST['fname']);
         $user_second_name = sanitize_text_field($_POST['lname']);
         $user_dob = sanitize_text_field($_POST['date_of_birth']);
@@ -1963,9 +1980,9 @@ function wpmlm_registration_page(){
         $user_state = sanitize_text_field($_POST['state']);
         $user_country = sanitize_text_field($_POST['country']);
         $user_zip = sanitize_text_field($_POST['zip']);
-        $user_registration_type = sanitize_text_field($_POST['user_registration_type']);
+        $user_registration_type = 'free_join';
         $package_select = sanitize_text_field($_POST['package_select']);
-
+        
         $pkg = wpmlm_select_package_by_id($package_select);
 
         $_SESSION['package_name'] = $pkg->package_name;
@@ -1982,7 +1999,7 @@ function wpmlm_registration_page(){
 
         $invalid_usernames = array('admin');
         $username = sanitize_user($username);
-
+        
         $user_level = wpmlm_get_user_level_by_parent_id($user_parent_id);
         // $user_ref = get_current_user_id();
         if ( username_exists( $username ) || email_exists( $email ) ) {
@@ -2016,20 +2033,27 @@ function wpmlm_registration_page(){
             'user_status' => 1,
             'package_id' => $_SESSION['session_pkg_id']
         );
-    
+        
         $_SESSION['user_details'] = $user_details;
         $current_url = site_url('/');
+        
         if ($user_registration_type == 'free_join') {
+            
             wp_update_user(array('ID' => $user_ref, 'role' => 'contributor'));
             $success_msg = wpmlm_insert_user_registration_details($user_details);
-            //print_r($success_msg);die('fgdfw');
+            
+            
             if ($success_msg) {
                 if ( ($reg_amt != 0) || ($reg_pack_type == 'with_package')) {
-                if(isset($package_id)) {
-                        wpmlm_insert_leg_amount($user_ref, $_SESSION['session_pkg_id']);
+                    if(isset($package_id)) {
+                            wpmlm_insert_leg_amount($user_ref, $_SESSION['session_pkg_id']);
+                    }
                 }
-                   
-                }
+
+                print_r($regcode);
+                // Remove used codes
+                delete_user_meta($user_parent_id, 'regcodes', $regcode);
+
                 $tran_pass = wpmlm_getRandTransPasscode(8);
                 $hash_tran_pass = wp_hash_password($tran_pass);
                 $tran_pass_details = array(
@@ -2077,7 +2101,7 @@ function wpmlm_registration_page(){
                             'payment_type' => 'free_join',
                         ]);
                 exit();
-                //wp_redirect();
+                wp_redirect();
 
             } else {
 

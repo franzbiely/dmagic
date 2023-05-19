@@ -23,7 +23,7 @@ jQuery( document ).ready( function( $ ) {
                 $(".err_msg_sponsor").remove();
                 if ($.trim(data) === "1") {
                     $("#sname").removeClass('invalid');
-
+                    $('#regcode').trigger('change');
                 } else {
                     $("#sname").parent().append('<div class="err_msg_sponsor">' + data + '</div>');
                     $("#sname").addClass('invalid');
@@ -31,6 +31,35 @@ jQuery( document ).ready( function( $ ) {
 
             }
 
+        });
+    });
+
+    $("#regcode").change(function () {
+        
+        $(".err_msg_regcode").remove();
+        var regcode = $(this).val();
+        const sponsor = $("#sname").val();
+        $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            data: {action:'regcode_check',regcode, sponsor},
+            beforeSend: function () {
+                $("#regcode").parent().append('<div class="err_msg_regcode"><img src=' + plugin_url + '/images/loader.gif></div>');
+            },
+            success: function (data) {
+                $(".err_msg_regcode").remove();
+                if ($.trim(data) === "1") {
+                    $("#regcode").removeClass('invalid');
+                    $("#reg_submit").attr('disabled', false);
+                    $("#reg_submit").css('opacity','1');
+                    $("#reg_submit").css('cursor','pointer');
+
+                } else {
+                    $("#regcode").parent().append('<div class="err_msg_regcode">' + data + '</div>');
+                    $("#regcode").addClass('invalid');
+                    $("#reg_submit").attr('disabled', true);
+                }
+            }
         });
     });
 

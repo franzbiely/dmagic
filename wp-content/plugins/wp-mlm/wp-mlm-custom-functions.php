@@ -221,6 +221,8 @@ add_action( 'wp_ajax_add_regcodes', 'add_regcodes' );
 add_action( 'wp_ajax_nopriv_add_regcodes', 'add_regcodes' );
 add_action( 'wp_ajax_remove_regcodes', 'remove_regcodes' );
 add_action( 'wp_ajax_nopriv_remove_regcodes', 'remove_regcodes' );
+add_action( 'wp_ajax_regcode_check', 'regcode_check' );
+add_action( 'wp_ajax_nopriv_regcode_check', 'regcode_check' );
 
 add_action( 'wp_ajax_wpmlm_ajax_profile_report', 'wpmlm_ajax_profile_report' );
 add_action( 'wp_ajax_nopriv_wpmlm_ajax_profile_report', 'wpmlm_ajax_profile_report' );
@@ -236,6 +238,9 @@ add_action( 'wp_ajax_wpmlm_ajax_session', 'wpmlm_ajax_session' );
 add_action( 'wp_ajax_nopriv_wpmlm_ajax_session', 'wpmlm_ajax_session' );
 add_action( 'wp_ajax_wpmlm_ajax_user_check', 'wpmlm_ajax_user_check' );
 add_action( 'wp_ajax_nopriv_wpmlm_ajax_user_check', 'wpmlm_ajax_user_check' );
+
+
+
 add_action( 'wp_ajax_wpmlm_contact_form_registration', 'wpmlm_contact_form_registration' );
 add_action( 'wp_ajax_nopriv_wpmlm_contact_form_registration', 'wpmlm_contact_form_registration' );
 add_action( 'wp_ajax_wpmlm_registration_page', 'wpmlm_registration_page' );
@@ -289,16 +294,13 @@ function wpmlm_registration_page_shortcode() {
     $reg_amt = $result->registration_amt;
     $reg_amt_currency = $result->company_currency;
 
-
-    
-    
     $country_query = $wpdb->prepare("SELECT * FROM ".$wpdb->prefix ."wpmlm_country WHERE 1 ORDER BY name ASC");
     $countries = $wpdb->get_results($country_query);
 
 
 $wp_nonce_code = wp_nonce_field("wpmlm_registration", "wpmlm_registration_nonce");
 
-$sponsor = (isset($_SESSION["sponsor"]) ? $_SESSION["sponsor"]:"");
+$sponsor = (isset($_GET["sponsor"]) ? $_GET["sponsor"]:"");
 
 $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div class="alert info submit_message1"></div>
    <div class="wpmlm-registration-form">
@@ -314,7 +316,12 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
                     <div class="form-group">
                         <label for="sname">'. __("SPONSOR NAME","wpmlm-unilevel").':</label>
                         <input type="text" name="sname" class="form-control main_input" id="sname" value="'.$sponsor.'" placeholder="'. __('Enter Sponsor name','wpmlm-unilevel').'" required>
-                    </div>';
+                    </div>
+                    <div class="form-group">
+                        <label for="regcode">'. __("Registration Code","wpmlm-unilevel").':</label>
+                        <input type="text" name="regcode" class="form-control main_input" id="regcode" placeholder="'. __('Enter Registration Code','wpmlm-unilevel').'" required>
+                    </div>
+                    ';
         
                    if ($reg_pack_type != "with_out_package") {
                         $packages = wpmlm_select_all_packages();
