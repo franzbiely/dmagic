@@ -289,6 +289,9 @@ function wpmlm_registration_page_shortcode() {
     $reg_amt = $result->registration_amt;
     $reg_amt_currency = $result->company_currency;
 
+
+    
+    
     $country_query = $wpdb->prepare("SELECT * FROM ".$wpdb->prefix ."wpmlm_country WHERE 1 ORDER BY name ASC");
     $countries = $wpdb->get_results($country_query);
 
@@ -296,10 +299,6 @@ function wpmlm_registration_page_shortcode() {
 $wp_nonce_code = wp_nonce_field("wpmlm_registration", "wpmlm_registration_nonce");
 
 $sponsor = (isset($_SESSION["sponsor"]) ? $_SESSION["sponsor"]:"");
-
-$lastActiveMemberQuery = $wpdb->prepare("SELECT user_login FROM ".$wpdb->prefix ."users WHERE 1 ORDER BY ID DESC");
-
-$lastActiveMember=$wpdb->get_results($lastActiveMemberQuery)[0];
 
 $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div class="alert info submit_message1"></div>
    <div class="wpmlm-registration-form">
@@ -312,9 +311,9 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
                 <form class="info-card-form" id="wpmlm-registration-form" method="post">
 
                     <br><h4>'. __("User Info","wpmlm-unilevel").'</h4>
-                    <div class="form-group" style="display:none;">
+                    <div class="form-group">
                         <label for="sname">'. __("SPONSOR NAME","wpmlm-unilevel").':</label>
-                        <input type="text" value="'.$lastActiveMember->user_login.'" name="sname" class="form-control main_input" id="sname" value="'.$sponsor.'" placeholder="'. __('Enter Sponsor name','wpmlm-unilevel').'" required>
+                        <input type="text" name="sname" class="form-control main_input" id="sname" value="'.$sponsor.'" placeholder="'. __('Enter Sponsor name','wpmlm-unilevel').'" required>
                     </div>';
         
                    if ($reg_pack_type != "with_out_package") {

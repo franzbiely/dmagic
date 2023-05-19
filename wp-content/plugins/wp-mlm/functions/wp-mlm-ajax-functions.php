@@ -643,7 +643,7 @@ function wpmlm_ajax_transaction_password() {
             $update = wpmlm_update_tran_password($new_pass, $user_id);
 
             if ($update) {
-                echo $new_pass;
+                echo '1';
                 exit();
             } else {
                 $err.='<p>' . __("Password updation failed","wpmlm-unilevel") . '</p>';
@@ -683,7 +683,7 @@ function wpmlm_ajax_transaction_password() {
             $new_pass = wp_hash_password($new_tran_pass);
             $update = wpmlm_update_tran_password($new_pass, $user_id);
             if ($update) {
-                echo $new_pass;
+                echo '1';
                 exit();
             } else {
                 $err.='<p>' . __("Password updation failed","wpmlm-unilevel") . '</p>';
@@ -721,7 +721,7 @@ function wpmlm_ajax_transaction_password() {
                 $mail = wpmlm_sendMailTransactionPass($to, $new_tran_pass);
 
                 if ($mail) {
-                    echo $new_tran_pass;
+                    echo '1';
                     exit();
                 } else {
                     $err.='<p>' . __("Mail sending failed","wpmlm-unilevel") . '</p>';
@@ -1927,225 +1927,8 @@ function wpmlm_contact_form_registration() {
     }
 }
 
-function fma_register_iteration($params) {
-    extract($params);
-    $the_user = get_user_by('login', $sponsor);
-    $user_parent_id = $the_user->ID;
-
-    $invalid_usernames = array('admin');
-    $username = sanitize_user($username);
-
-    $user_level = wpmlm_get_user_level_by_parent_id($user_parent_id);
-    // $user_ref = get_current_user_id();
-    if ( username_exists( $username ) || email_exists( $email ) ) {
-        return false;
-        wp_redirect($redirect_url);
-        exit();
-    }
-    $user_ref = wp_create_user($username, $password, $email );
-    $_SESSION['user_ref'] = $user_ref;
-
-    $user_info = get_userdata($user_ref);
-    $user_email = $user_info->user_email;
-    $_SESSION['user_email'] = $user_email;
-
-
-    $user_details = array(
-        'user_ref_id' => $user_ref,
-        'user_parent_id' => $user_parent_id,
-        'user_first_name' => $user_first_name,
-        'user_second_name' => $user_second_name,
-        'user_address' => $user_address,
-        'user_city' => $user_city,
-        'user_state' => $user_state,
-        'user_country' => $user_country,
-        'user_zip' => $user_zip,
-        'user_mobile' => $user_mobile,
-        'user_email' => $user_email,
-        'user_dob' => $user_dob,
-        'user_level' => $user_level,
-        'user_registration_type' => $user_registration_type,
-        'join_date' => date("Y-m-d H:i:s"),
-        'user_status' => $user_status,
-        'package_id' => $_SESSION['session_pkg_id']
-    );
-    
-    $_SESSION['user_details'] = $user_details;
-    $current_url = site_url('/');
-    if ($user_registration_type == 'free_join') {
-        wp_update_user(array('ID' => $user_ref, 'role' => 'contributor'));
-
-        $success_msg = wpmlm_insert_user_registration_details($user_details);
-        //print_r($success_msg);die('fgdfw');
-        if ($success_msg) {
-            if ( ($reg_amt != 0) || ($reg_pack_type == 'with_package')) {
-                if(isset($package_id)) {
-                    wpmlm_insert_leg_amount($user_ref, $_SESSION['session_pkg_id']);
-                }
-                
-            }
-            $tran_pass = wpmlm_getRandTransPasscode(8);
-            $hash_tran_pass = wp_hash_password($tran_pass);
-            $tran_pass_details = array(
-                'user_id' => $user_ref,
-                'tran_password' => $hash_tran_pass
-            );
-            wpmlm_insert_tran_password($tran_pass_details);
-            wpmlm_insertBalanceAmount($user_ref);
-            //sendMailRegistration($user_email, $username, $password, $user_first_name, $user_second_name);
-            //sendMailTransactionPass($user_email, $tran_pass);
-            unset($_SESSION['user_ref']);
-            unset($_SESSION['user_details']);
-            unset($_SESSION['session_pkg_id']);
-            unset($_SESSION['user_email']);
-            unset($_SESSION['package_price']);
-            unset($_SESSION['package_name']);
-            unset($_SESSION['sponsor']);
-            unset($_SESSION['.']);
-
-            $dash_result = wpmlm_get_general_information();
-            $dash_slug_id = get_post($dash_result->user_dash); 
-            $dash_slug = $dash_slug_id->post_name;
-            $reg_slug_id = get_post($dash_result->user_registration); 
-            $reg_slug = $reg_slug_id->post_name;
-
-            $reg_msg = base64_encode('Registration Completed Successfully!');
-            header('Content-Type: application/json');
-            return json_encode([
-                        'redirect_link' => "{$current_url}{$dash_slug}&?reg_status={$reg_msg}",
-                        'payment_type' => 'free_join',
-                    ]);
-
-        } else {
-            $reg_msg = base64_encode('Sorry! Registration Failed, Please try again');
-            return $current_url .''. $reg_slug.'&?reg_failed=' . $reg_msg;
-
-        }
-
-    } else {
-        if($_POST['user_registration_type'] == 'paypal' ) {
-
-            if($paypal_congig_mode == 'sandbox') {
-                $environment = new SandboxEnvironment(PAYPAL_CNT_ID, PAYPAL_CNT_SEC);
-            } else {
-                $environment = new ProductionEnvironment(PAYPAL_CNT_ID, PAYPAL_CNT_SEC);
-            }
-            
-            $client = new PayPalHttpClient($environment);
-
-            
-            $user_id = NULL;
-            $total_amount = $_SESSION['package_price'];
-            $currency = $paypal_result->paypal_currency;
-            
-            if($total_amount <= 0) {
-                wp_redirect($redirect_url);
-            }
-
-            $reg_result = wpmlm_get_general_information();
-            $reg_slug_id = get_post($reg_result->user_registration); 
-            $reg_slug = $reg_slug_id->post_name;
-            //my_trim_function( $trim_me );
-
-
-            $request = new OrdersCreateRequest();
-            $request->prefer('return=representation');
-            $request->body = [
-                "intent" => "CAPTURE",
-                "purchase_units" => [[
-                    "amount" => [
-                        "value" => $total_amount,
-                        "currency_code" => $currency
-                    ]
-                ]],
-                "application_context" => [
-                    "cancel_url" => home_url($reg_slug.'?payment_method=paypal&status=cancel'),
-                    "return_url" => home_url($reg_slug.'?payment_method=paypal&status=return')
-                ] 
-            ];
-
-            try {
-
-                $response = $client->execute($request);
-                
-                if(isset($response->statusCode) && $response->statusCode == '201') {
-                    header('Content-Type: application/json');
-                    return json_encode([
-                        'payment_link' => $response->result->links[1]->href,
-                        'payment_type' => 'paypal',
-                    ]);
-                } else {
-                    // wp_redirect($redirect_url);
-                }
-            } catch (HttpException $ex) {
-                // wp_redirect($redirect_url);
-                // echo $ex->statusCode;
-                // print_r($ex->getMessage());
-            }    
-
-        }
-    }
-    // end of loop
-}
-
-function get_last_user() {
-    global $wpdb;
-    return $wpdb->get_results("SELECT ID, user_login FROM ".$wpdb->prefix ."users ORDER BY ID DESC")[0];
-}
-function register_free_slot($sponsor) {
-    $random_string = substr(md5(microtime()),rand(0,26),5);
-    return fma_register_iteration([
-        'sponsor' => $sponsor,
-        'username' => 'freeslot-'. $random_string,
-        'email' => '',
-        'redirect_url' => '',
-        'password' => '',
-        'user_email' => '',
-        'user_first_name' => '',
-        'user_second_name' => '',
-        'user_address' => '',
-        'user_city' => '',
-        'user_state' => '',
-        'user_country' => '',
-        'user_zip' => '',
-        'user_mobile' => '',
-        'user_email' => '',
-        'user_dob' => '',
-        'user_level' => '',
-        'user_status' => -1,
-        'user_registration_type' => 'free_join',
-        'reg_pack_type' => ''
-    ]);
-}
-function register_with_plan_only($sponsor, $reg_pack_type) {
-    $random_string = substr(md5(microtime()),rand(0,26),5);
-    return fma_register_iteration([
-        'sponsor' => $sponsor,
-        'username' => 'freeslot-'. $random_string,
-        'email' => '',
-        'redirect_url' => '',
-        'password' => '',
-        'user_email' => '',
-        'user_first_name' => '',
-        'user_second_name' => '',
-        'user_address' => '',
-        'user_city' => '',
-        'user_state' => '',
-        'user_country' => '',
-        'user_zip' => '',
-        'user_mobile' => '',
-        'user_email' => '',
-        'user_dob' => '',
-        'user_level' => '',
-        'user_status' => -1,
-        'user_registration_type' => 'free_join',
-        'reg_pack_type' => $reg_pack_type,
-        'package_id' => "1"
-    ]);
-}
 function wpmlm_registration_page(){
-    global $wpdb;
-
+    
     if (isset($_POST['reg_submit']) && wp_verify_nonce($_POST['wpmlm_registration_nonce'], 'wpmlm_registration')) {
 
 
@@ -2167,6 +1950,7 @@ function wpmlm_registration_page(){
         $redirect_url = home_url($post_slug);
         $paypal_congig_mode = $paypal_result->paypal_mode;
 
+        $sponsor = sanitize_text_field($_POST['sname']);
         $user_first_name = sanitize_text_field($_POST['fname']);
         $user_second_name = sanitize_text_field($_POST['lname']);
         $user_dob = sanitize_text_field($_POST['date_of_birth']);
@@ -2183,7 +1967,7 @@ function wpmlm_registration_page(){
         $package_select = sanitize_text_field($_POST['package_select']);
 
         $pkg = wpmlm_select_package_by_id($package_select);
-        
+
         $_SESSION['package_name'] = $pkg->package_name;
         if($reg_pack_type != 'with_out_package'){
             $_SESSION['package_price'] = $pkg->package_price;
@@ -2193,12 +1977,29 @@ function wpmlm_registration_page(){
 
         $_SESSION['session_pkg_id'] = $package_select;
 
-        $fma_register_iteration_params = [
-            'username' => $username,
-            'email' => $email,
-            'redirect_url' => $redirect_url,
-            'password' => $password,
-            'user_email' => $email,
+        $the_user = get_user_by('login', $sponsor);
+        $user_parent_id = $the_user->ID;
+
+        $invalid_usernames = array('admin');
+        $username = sanitize_user($username);
+
+        $user_level = wpmlm_get_user_level_by_parent_id($user_parent_id);
+        // $user_ref = get_current_user_id();
+        if ( username_exists( $username ) || email_exists( $email ) ) {
+            return false;
+            wp_redirect($redirect_url);
+            exit();
+        }
+        $user_ref = wp_create_user($username, $password, $email );
+        $_SESSION['user_ref'] = $user_ref;
+
+        $user_info = get_userdata($user_ref);
+        $user_email = $user_info->user_email;
+        $_SESSION['user_email'] = $user_email;
+
+        $user_details = array(
+            'user_ref_id' => $user_ref,
+            'user_parent_id' => $user_parent_id,
             'user_first_name' => $user_first_name,
             'user_second_name' => $user_second_name,
             'user_address' => $user_address,
@@ -2207,102 +2008,152 @@ function wpmlm_registration_page(){
             'user_country' => $user_country,
             'user_zip' => $user_zip,
             'user_mobile' => $user_mobile,
+            'user_email' => $user_email,
             'user_dob' => $user_dob,
             'user_level' => $user_level,
-            'user_registration_type' => 'free_join',
-            'reg_pack_type' => 'with_out_package'
-        ];
-        $lastMember = get_last_user();
-        $lastNonFreeSlotMember = $wpdb->get_results("SELECT user_ref_id FROM ".$wpdb->prefix ."wpmlm_users WHERE user_status = '0' ORDER BY user_ref_id DESC")[0];
-        $lastFreeSlotMember=$wpdb->get_results("SELECT user_ref_id FROM ".$wpdb->prefix ."wpmlm_users WHERE user_status = '-1' ORDER BY user_ref_id DESC")[0];
-        $firstFreeSlotMember = $wpdb->get_results("SELECT user_ref_id FROM ".$wpdb->prefix ."wpmlm_users WHERE user_status = '-1' ORDER BY user_ref_id ASC")[0];
-        
-        if(isset($lastFreeSlotMember->user_ref_id) && $lastNonFreeSlotMember->user_ref_id !== $lastFreeSlotMember->user_ref_id) {
-            $wpmlm_user_query = $wpdb->prepare("UPDATE ".$wpdb->prefix ."wpmlm_users SET 
-                user_first_name = '".$user_first_name."',
-                user_email = '".$email."',
-                user_second_name = '".$user_second_name."',
-                user_address = '".$user_address."',
-                user_city = '".$user_city."',
-                user_state = '".$user_state."',
-                user_country = '".$user_country."',
-                user_zip = '".$user_zip."',
-                user_mobile = '".$user_mobile."',
-                user_dob = '".$user_dob."',
-                user_status ='0'
-                WHERE user_ref_id = '".$firstFreeSlotMember->user_ref_id."'
-            ");
-            $wpdb->query($wpmlm_user_query);
-            $wpdb->update( $wpdb->users, [
-                'user_login' => $username,
-                'user_nicename' => $username,
-                'user_email' => $email,
-                'display_name' => $username
-            ], ['ID' => $firstFreeSlotMember->user_ref_id] );
+            'user_registration_type' => $user_registration_type,
+            'join_date' => date("Y-m-d H:i:s"),
+            'user_status' => 1,
+            'package_id' => $_SESSION['session_pkg_id']
+        );
+    
+        $_SESSION['user_details'] = $user_details;
+        $current_url = site_url('/');
+        if ($user_registration_type == 'free_join') {
+            wp_update_user(array('ID' => $user_ref, 'role' => 'contributor'));
+            $success_msg = wpmlm_insert_user_registration_details($user_details);
+            //print_r($success_msg);die('fgdfw');
+            if ($success_msg) {
+                if ( ($reg_amt != 0) || ($reg_pack_type == 'with_package')) {
+                if(isset($package_id)) {
+                        wpmlm_insert_leg_amount($user_ref, $_SESSION['session_pkg_id']);
+                }
+                   
+                }
+                $tran_pass = wpmlm_getRandTransPasscode(8);
+                $hash_tran_pass = wp_hash_password($tran_pass);
+                $tran_pass_details = array(
+                    'user_id' => $user_ref,
+                    'tran_password' => $hash_tran_pass
+                );
+                wpmlm_insert_tran_password($tran_pass_details);
+                wpmlm_insertBalanceAmount($user_ref);
+                //sendMailRegistration($user_email, $username, $password, $user_first_name, $user_second_name);
+                //sendMailTransactionPass($user_email, $tran_pass);
+                unset($_SESSION['user_ref']);
+                unset($_SESSION['user_details']);
+                unset($_SESSION['session_pkg_id']);
+                unset($_SESSION['user_email']);
+                unset($_SESSION['package_price']);
+                unset($_SESSION['package_name']);
+                unset($_SESSION['sponsor']);
+                unset($_SESSION['.']);
 
-            wp_set_password($password, $firstFreeSlotMember->user_ref_id);
+                // First get the user details
+                $user = get_user_by('login', $username );
+                // If no error received, set the WP Cookie
+                if ( !is_wp_error( $user ) ) {
 
-            // First get the user details
-            $user = get_user_by('login', $username );
-            // If no error received, set the WP Cookie
-            if ( !is_wp_error( $user ) ) {
+                    wp_clear_auth_cookie();
+                    wp_set_current_user ( $user->ID ); // Set the current user detail
+                    wp_set_auth_cookie  ( $user->ID ); // Set auth details in cookie
 
-                wp_clear_auth_cookie();
-                wp_set_current_user ( $user->ID ); // Set the current user detail
-                wp_set_auth_cookie  ( $user->ID ); // Set auth details in cookie
+                } else {
+
+                    $message = "Failed to log in";
+                    
+                }
+
+                $dash_result = wpmlm_get_general_information();
+                $dash_slug_id = get_post($dash_result->user_dash); 
+                $dash_slug = $dash_slug_id->post_name;
+                $reg_slug_id = get_post($dash_result->user_registration); 
+                $reg_slug = $reg_slug_id->post_name;
+
+                $reg_msg = base64_encode('Registration Completed Successfully!');
+                header('Content-Type: application/json');
+                echo json_encode([
+                            'redirect_link' => "{$current_url}{$dash_slug}&?reg_status={$reg_msg}",
+                            'payment_type' => 'free_join',
+                        ]);
+                exit();
+                //wp_redirect();
 
             } else {
 
-                $message = "Failed to log in";
-                
+                $reg_msg = base64_encode('Sorry! Registration Failed, Please try again');
+                wp_redirect($current_url .''. $reg_slug.'&?reg_failed=' . $reg_msg);
+                exit();
+
             }
 
-            $sponsor = $lastMember->user_login;
-            $result = register_with_plan_only($sponsor, $reg_pack_type );
-            
-            // $result is to redirect to member area but for now, let's redirect to thank you or error.
-            // echo $result;
-            if(isset(json_decode($result)->redirect_link)) {
-                echo json_encode([
-                    'redirect_link' => '/thank-you'
-                ]);
+        } else {
+
+            if($_POST['user_registration_type'] == 'paypal' ) {
+
+                if($paypal_congig_mode == 'sandbox') {
+                    $environment = new SandboxEnvironment(PAYPAL_CNT_ID, PAYPAL_CNT_SEC);
+                } else {
+                    $environment = new ProductionEnvironment(PAYPAL_CNT_ID, PAYPAL_CNT_SEC);
+                }
+                
+                $client = new PayPalHttpClient($environment);
+
+                
+                $user_id = NULL;
+                $total_amount = $_SESSION['package_price'];
+                $currency = $paypal_result->paypal_currency;
+                
+                if($total_amount <= 0) {
+                    wp_redirect($redirect_url);
+                }
+
+                $reg_result = wpmlm_get_general_information();
+                $reg_slug_id = get_post($reg_result->user_registration); 
+                $reg_slug = $reg_slug_id->post_name;
+                //my_trim_function( $trim_me );
+
+
+                $request = new OrdersCreateRequest();
+                $request->prefer('return=representation');
+                $request->body = [
+                    "intent" => "CAPTURE",
+                    "purchase_units" => [[
+                        "amount" => [
+                            "value" => $total_amount,
+                            "currency_code" => $currency
+                        ]
+                    ]],
+                    "application_context" => [
+                        "cancel_url" => home_url($reg_slug.'?payment_method=paypal&status=cancel'),
+                        "return_url" => home_url($reg_slug.'?payment_method=paypal&status=return')
+                    ] 
+                ];
+
+                try {
+
+                    $response = $client->execute($request);
+                    
+                    if(isset($response->statusCode) && $response->statusCode == '201') {
+                        header('Content-Type: application/json');
+                        echo json_encode([
+                            'payment_link' => $response->result->links[1]->href,
+                            'payment_type' => 'paypal',
+                        ]);
+                        exit();
+                    } else {
+                        wp_redirect($redirect_url);
+                    }
+                } catch (HttpException $ex) {
+                    wp_redirect($redirect_url);
+                    echo $ex->statusCode;
+                    print_r($ex->getMessage());
+                }    
+
             }
-            else {
-                echo json_encode([
-                    'redirect_link' => '/error',
-                    'id' => 4
-                ]);
-            }
-            
         }
-        else {
-            $fma_register_iteration_params['sponsor'] = $lastMember->user_login;
-            $fma_register_iteration_params['user_status'] = 0;
-            $register_result = fma_register_iteration($fma_register_iteration_params);
-            for($i=0; $i < 10; $i++) {
-                $register_result = register_free_slot(get_last_user()->user_login );
-            }
-            $result = register_with_plan_only(get_last_user()->user_login, $reg_pack_type );
-            if(isset(json_decode($result)->redirect_link)) {
-                echo json_encode([
-                    'redirect_link' => '/thank-you'
-                ]);
-            }
-            else {
-                echo json_encode([
-                    'redirect_link' => '/error',
-                    'id' => 5
-                ]);
-            }
-        }
-        exit();
     }
-    else {
-        echo json_encode([
-            'redirect_link' => '/error'
-        ]);
-        exit();
-    }
+   
 }
 
 //comments
