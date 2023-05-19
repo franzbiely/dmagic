@@ -216,6 +216,12 @@ add_action( 'wp_ajax_wpmlm_ajax_payment_option', 'wpmlm_ajax_payment_option' );
 add_action( 'wp_ajax_nopriv_wpmlm_ajax_payment_option', 'wpmlm_ajax_payment_option' );
 add_action( 'wp_ajax_wpmlm_ajax_package_settings', 'wpmlm_ajax_package_settings' );
 add_action( 'wp_ajax_nopriv_wpmlm_ajax_package_settings', 'wpmlm_ajax_package_settings' );
+
+add_action( 'wp_ajax_add_regcodes', 'add_regcodes' );
+add_action( 'wp_ajax_nopriv_add_regcodes', 'add_regcodes' );
+add_action( 'wp_ajax_remove_regcodes', 'remove_regcodes' );
+add_action( 'wp_ajax_nopriv_remove_regcodes', 'remove_regcodes' );
+
 add_action( 'wp_ajax_wpmlm_ajax_profile_report', 'wpmlm_ajax_profile_report' );
 add_action( 'wp_ajax_nopriv_wpmlm_ajax_profile_report', 'wpmlm_ajax_profile_report' );
 add_action( 'wp_ajax_wpmlm_ajax_joining_report', 'wpmlm_ajax_joining_report' );

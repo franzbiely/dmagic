@@ -199,5 +199,31 @@ function wpmlm_admin_dashboard($user_id) {
                    </div>
     </div><?php endif; ?>
         <!-- end new -->
+    
+    
+    <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
+        <div class="row"> 
+            <div class="user-affiliate">
+                <center>
+                    <label class="user-affiliate-label"><?php _e('Registration Codes','wpmlm-unilevel'); ?>: <br /><button class="btn btn-sm btn-danger-sm mlm-button affiliate_link" id="generateCode" data-userId="<?php echo $current_user->ID ?>">Generate</button></label>
+                </center>
+<table class="table table-striped table-bordered table-responsive-lg">
+    <tbody id="generatedCodes">
+        <?php 
+            $codes = get_user_meta($current_user->ID, 'regcodes');       
+            foreach($codes as $code) {
+                ?>
+                <tr>
+                    <td width="80%"><?php echo $code ?></td>
+                    <td><button class="btn btn-sm btn-danger-sm remove_regcodes" data-code="<?php echo $code ?>" data-userId="<?php echo $current_user->ID ?>">Remove</button></td>
+                </tr>
+                <?php
+            }
+        ?>        
+    </tbody>
+</table>
+            </div>    
+        </div>
+    </div>
     <?php
 }

@@ -8,7 +8,7 @@ define('Change_Password_Management', false);
 define('Material_Management', false);
 
 // Under Dash
-define('Affiliate_Link', false);
+define('Affiliate_Link', true);
 
 // Under Settings
 define('Payment_Settings_Management', false);

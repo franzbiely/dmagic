@@ -830,6 +830,23 @@ function wpmlm_ajax_payment_option() {
     }
 }
 
+function remove_regcodes() {
+    if(delete_user_meta($_POST['userId'], 'regcodes', $_POST['code'])) {
+        $codes = get_user_meta($_POST['userId'], 'regcodes');        
+        echo json_encode($codes);
+    }
+    exit();
+}
+
+function add_regcodes() {
+    $random_string = substr(md5(microtime()),rand(0,26),5);
+    if(add_user_meta($_POST['userId'], 'regcodes', $random_string)) {
+        $codes = get_user_meta($_POST['userId'], 'regcodes');        
+        echo json_encode($codes);
+    }
+    exit();
+}
+
 function wpmlm_ajax_package_settings() {
 
     $msg = '';

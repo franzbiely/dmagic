@@ -301,6 +301,52 @@ jQuery( document ).ready( function( $ ) {
 
     });
 
+    
+    $(document).on('click', '.remove_regcodes', function() {
+        const code = $(this)[0].dataset.code
+        const userId = $(this)[0].dataset.userid
+
+        console.log({code, userId})
+        $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            dataType: 'json',
+            data: {action:'remove_regcodes',code, userId},
+            success: function (data) {
+                console.log({data})
+                let content = '';
+                data.forEach((d) => {
+                    content += `
+                    <tr>
+                        <td width="80%">${d}</td>
+                        <td><button class="btn btn-sm btn-danger-sm remove_regcodes" data-code="${d}" data-userId="${userId}">Remove</button></td>
+                    </tr>`
+                })
+                $('#generatedCodes').html(content)
+            }
+        });
+    });
+    $('#generateCode').on('click', function() {
+        const userId = $(this)[0].dataset.userid
+        $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            dataType: 'json',
+            data: {action:'add_regcodes',userId},
+            success: function (data) {
+                console.log({data})
+                let content = '';
+                data.forEach((d) => {
+                    content += `
+                    <tr>
+                        <td width="80%">${d}</td>
+                        <td><button class="btn btn-sm btn-danger-sm" data-code="${d}" data-userId="${userId}">Remove</button></td>
+                    </tr>`
+                })
+                $('#generatedCodes').html(content)
+            }
+        });
+    })
 
     $(document).on("click", ".package_edit", function () {
         $( ".please-wait" ).show();
@@ -486,6 +532,14 @@ function readURL1(input) {
 
 
 function copyToClipboard(element) {
+    var $temp = jQuery("<input>");
+    jQuery("body").append($temp);
+    $temp.val(jQuery(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
+
+function generateCode(element) {
     var $temp = jQuery("<input>");
     jQuery("body").append($temp);
     $temp.val(jQuery(element).text()).select();
