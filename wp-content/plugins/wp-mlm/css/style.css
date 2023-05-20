@@ -1259,3 +1259,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 .switch_div label:active:after {
     width: 26px;
 }
+
+.gcash-content, .bank-content {
+    display: none;
+}

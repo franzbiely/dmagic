@@ -14,6 +14,7 @@ function wpmlm_ewallet_management() {
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-left">
                         <li class="active"><a href="#purchase-disperse" data-toggle="tab" class="purchase_disperse"><?php _e('Purchase Disperse','wpmlm-unilevel'); ?></a></li>
+                        <li><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
                         <?php if(E_Wallet_Management) : ?>
                         <li><a href="#fund-management" data-toggle="tab" class="fund_management"><?php _e('Fund Management','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#fund-transfer" data-toggle="tab" class="fund-transfer"><?php _e('Fund Transfer','wpmlm-unilevel'); ?></a></li>
@@ -25,8 +26,7 @@ function wpmlm_ewallet_management() {
                 <div class="col-md-9">
                     <!-- Tab panes -->
                     <div class="tab-content">
-                    <div class="tab-pane active" id="purchase-disperse">
-                        
+                        <div class="tab-pane active" id="purchase-disperse">
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
@@ -66,6 +66,83 @@ function wpmlm_ewallet_management() {
                             </div>
 
                         </div>
+
+                        <div class="tab-pane" id="request-widthrawal">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <h4><i class="fa fa-external-link-square"></i> <span> <?php _e('Request Widthrawal','wpmlm-unilevel'); ?></span></h4>
+                                </div>
+                                <div class="panel-border">
+                                    <div class="submit_message"></div>
+                                    <form id="Request-Widthrawal-form" class="form-horizontal " method="post">
+                                        <div id="fund-step-1">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 user-dt" for="user_name"><?php _e('User Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="pd_user_name" id="pd_user_name" placeholder="<?php _e('Enter Username','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 user-dt" for="amount"><?php _e('Amount','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="amount" id="amount" placeholder="<?php _e('Enter Amount','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 user-dt" for="payment_gateway"><?php _e('Payment Gateway','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <select class="form-control request_widthrawal_input" name="payment_gateway" id="payment_gateway">
+                                                        <option value="">[Please select gateway]</option>                                             
+                                                        <option value="gcash">Gcash</option>
+                                                        <option value="bank">Debit/Credit</option>
+                                                    </select> 
+                                                </div>                                              
+                                            </div>
+                                            <div class="form-group gcash-content">
+                                                <label class="control-label col-md-3 user-dt" for="gcash_number"><?php _e('G-cash Number','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="gcash_number" id="gcash_number" placeholder="<?php _e('Enter gcash_number','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group gcash-content">
+                                                <label class="control-label col-md-3 user-dt" for="gcash_name"><?php _e('G-cash Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="gcash_name" id="gcash_name" placeholder="<?php _e('Enter gcash_name','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group bank-content">
+                                                <label class="control-label col-md-3 user-dt" for="bank_name"><?php _e('Bank Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="bank_name" id="bank_name" placeholder="<?php _e('Enter bank_name','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group bank-content">
+                                                <label class="control-label col-md-3 user-dt" for="bank_account_number"><?php _e('Bank Account Number','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="bank_account_number" id="bank_account_number" placeholder="<?php _e('Enter bank_account_number','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group bank-content">
+                                                <label class="control-label col-md-3 user-dt" for="bank_account_name"><?php _e('Bank Account Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="bank_account_name" id="bank_account_name" placeholder="<?php _e('Enter bank_account_name','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group"> 
+                                                <div class="col-sm-offset-3 col-sm-6 fund-transfer-btn">
+                                                    <button id="Request-Widthrawal-submit"  class="btn btn-danger Request-Widthrawal-submit" > <?php _e('Submit','wpmlm-unilevel'); ?></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php wp_nonce_field('request_widthrawal_add', 'request_widthrawal_add_nonce'); ?>   
+                                    </form> 
+                                </div>
+                            </div>
+
+                        </div>
+
+
                         <div class="tab-pane" id="fund-management">
                             <div class="panel panel-default">
 
@@ -412,6 +489,47 @@ function wpmlm_ewallet_management() {
                 var action = $(this).attr("data-title");
                 $(".fund-action").val(action);
             });
+
+            // Widthrawal Request
+            $("#Request-Widthrawal-form").submit(function (event) {
+                event.preventDefault();
+                $(".submit_message").html('');
+                $(".submit_message").show();
+                var formData = new FormData(this);
+                formData.append('action', 'wpmlm_ajax_ewallet_management');
+                
+                // isValid = true;
+                // $(".request_widthrawal_input").each(function () {
+                //     var element = $(this);
+                //     console.log({element})
+                //     if (element.val() == '') {
+                //         $(this).addClass("invalid");
+                //         isValid = false;
+                //     }
+                // });
+                // if (isValid) {
+                $.ajax({
+                    type: "POST",
+                    url: ajaxurl,
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $(".submit_message").html('<div class="alert alert-info">' + data + '</div>');
+                        setTimeout(function () {
+                            $(".submit_message").hide();
+                            $(".gcash-content, .bank-content").hide();
+                            $("#Request-Widthrawal-form")[0].reset();
+
+                        }, 2000);
+                    }
+                });
+                // }
+                // console.log('maybe not valid')
+                return false;
+            })
+            // End Widthrawal Request
 
             // Purchase Disperse
             $("#Purchase-Disperse-form").submit(function (event) {

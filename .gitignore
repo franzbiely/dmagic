@@ -15,3 +15,4 @@ wp-content/plugins/woocommerce
 wp-content/plugins/woocommerce-gateway-stripe
 wp-content/plugins/akismet
 wp-content/plugins/*.php
+!wp-content/themes/twentytwentythree/functions.php

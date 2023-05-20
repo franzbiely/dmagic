@@ -299,6 +299,71 @@ if (isset($_POST['purchase_disperse_add_nonce']) && wp_verify_nonce($_POST['purc
 }
 //End Purchase Disperse
 
+// Widthrawal Request
+if (isset($_POST['request_widthrawal_add_nonce']) && wp_verify_nonce($_POST['request_widthrawal_add_nonce'], 'request_widthrawal_add')) {
+
+    // $user_name = sanitize_text_field($_POST['pd_user_name']);
+    // $pack_id = sanitize_text_field($_POST['pd_trade_amount']);
+    // $package_id = wpmlm_select_package_by_id( $pack_id);
+    // $trade_amount = $package_id->package_price; 
+    
+    // $date = date('Y-m-d H:i:s');
+    // $usersStatus = wpmlm_ifactiveUser($user_name);
+    // $wpdb->get_var("SELECT user_login FROM {$table_name} WHERE user_login = '$user_name'");
+    // if (!$is_user_name_exit || !$usersStatus) {
+    //     _e("Sorry! The specified user is not available.","wpmlm-unilevel");
+    //     exit();
+    // }
+    // $the_user = get_user_by('login', $user_name);
+    // $to_user_id = $the_user->ID;
+    // $res = wpmlm_insert_static_leg_amount_new($to_user_id, $trade_amount,$package_id);
+    // 
+
+    global $wpdb;
+
+    $usersStatus = wpmlm_ifactiveUser($_POST['pd_user_name']);
+    $table_name = $wpdb->prefix . "users";
+    $is_user_name_exit = $wpdb->get_var("SELECT user_login FROM {$table_name} WHERE user_login = '{$_POST['pd_user_name']}'");
+    
+    if (!$is_user_name_exit || !$usersStatus) {
+        _e("Sorry! The specified user is not available.","wpmlm-unilevel");
+        exit();
+    }
+
+    $table_name = $wpdb->prefix . "comments";
+    
+    $details = "
+        - Debit/Credit
+        - Bank Name : ".$_POST['bank_name']."
+        - Bank Number : ".$_POST['bank_account_number']."
+        - Account Name : ".$_POST['bank_account_name']."
+        ";
+    if($_POST['payment_gateway'] === 'gcash') {
+        $details = "
+        - Gcash
+        - Number : ".$_POST['gcash_number']."
+        - Name : ".$_POST['gcash_name']."
+        ";
+    }
+    $the_user = get_user_by('login', $_POST['pd_user_name']);
+    $to_user_id = $the_user->ID;
+    $sql1 = "INSERT INTO ".$table_name."
+    (comment_post_ID, comment_author, comment_date, comment_content, comment_karma, comment_approved, comment_agent, comment_type, comment_parent, user_id)
+    VALUES(0, '".$_POST['pd_user_name']."', NOW(), '".$_POST['pd_user_name'].", has requested to widthraw his money of P".$_POST['amount'].". 
+    Please send it to the following details :
+    ".$details."', 0, 0, 0, 'widthrawal-request', 0, '".$to_user_id."')";
+    $result = $wpdb->query($sql1);
+    if ($result) {
+        _e("Widthrawal Request Sent Successfully","wpmlm-unilevel");
+        exit();
+    } else {
+        _e("Error Occured","wpmlm-unilevel");
+        exit();
+    }
+    
+}
+//End Widthrawal Request
+
 // Level Commission 
 if (isset($_POST['level_commission_add_nonce']) && wp_verify_nonce($_POST['level_commission_add_nonce'], 'level_commission_add')) {
 

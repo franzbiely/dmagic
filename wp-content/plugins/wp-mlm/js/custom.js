@@ -33,7 +33,17 @@ jQuery( document ).ready( function( $ ) {
 
         });
     });
+    $("#payment_gateway").on('change', function () {
+        if($(this).val() === 'gcash') {
+            $('.gcash-content').show();
+            $('.bank-content').hide();
+        }
+        else {
+            $('.gcash-content').hide();
+            $('.bank-content').show();
+        }
 
+    })
     $("#regcode").change(function () {
         
         $(".err_msg_regcode").remove();
