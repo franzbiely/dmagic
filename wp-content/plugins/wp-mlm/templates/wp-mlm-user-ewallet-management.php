@@ -23,8 +23,10 @@ function wpmlm_user_ewallet_management() {
                         <?php else : ?>
 
                         <li class="active"><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
+                        <?php /*
                         <li ><a href="#fund-transfer" class="fund-transfer" data-toggle="tab"><?php _e("Fund Transfer","wpmlm-unilevel"); ?></a></li>
                         <li ><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e("Transfer Details","wpmlm-unilevel"); ?></a></li>
+                        */ ?>
                         <?php endif; ?>
 
                     </ul>
