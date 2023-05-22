@@ -35,7 +35,7 @@ function wpmlm_user_dashboard($user_id) {
                 $i++;
             }
         }
-        $joining_count = implode($joining_count, ',');
+        $joining_count = implode(',', $joining_count);
     } else {
         $joining_count = '0,0,0,0,0,0,0,0,0,0,0,0';
     }
