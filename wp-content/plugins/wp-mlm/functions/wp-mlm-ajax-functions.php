@@ -282,13 +282,16 @@ if (isset($_POST['purchase_disperse_add_nonce']) && wp_verify_nonce($_POST['purc
     $date = date('Y-m-d H:i:s');
     $usersStatus = wpmlm_ifactiveUser($user_name);
     $is_user_name_exit = $wpdb->get_var("SELECT user_login FROM {$table_name} WHERE user_login = '$user_name'");
+
+    
     if (!$is_user_name_exit || !$usersStatus) {
         _e("Sorry! The specified user is not available.","wpmlm-unilevel");
         exit();
     }
     $the_user = get_user_by('login', $user_name);
     $to_user_id = $the_user->ID;
-    $res = wpmlm_insert_static_leg_amount_new($to_user_id, $trade_amount,$package_id);
+    
+    $res = wpmlm_insert_leg_amount($to_user_id, $pack_id);
     if ($res) {
         _e("Purchase Dispersed Successfully","wpmlm-unilevel");
         exit();
@@ -667,10 +670,8 @@ function wpmlm_level_bonus() {
 
     if (isset($_POST['level_commission_nonce']) && wp_verify_nonce($_POST['level_commission_nonce'], 'level_commission')) {
         $level_commission = $_POST['level_commission'];
-        $reg_pack = $_POST['reg_commission'];          
         $level_type = sanitize_text_field($_POST['level_type']);
         wpmlm_update_level_commission($level_commission);
-        wpmlm_update_reg_pack_level_commission($reg_pack);
         wpmlm_update_level_commission_type($level_type);
         _e("Level Bonus Updated","wpmlm-unilevel");
         exit();
@@ -2115,7 +2116,6 @@ function wpmlm_registration_page(){
                     }
                 }
 
-                print_r($regcode);
                 // Remove used codes
                 delete_user_meta($user_parent_id, 'regcodes', $regcode);
 

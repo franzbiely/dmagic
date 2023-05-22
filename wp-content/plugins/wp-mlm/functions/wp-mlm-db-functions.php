@@ -129,7 +129,7 @@ function wpmlm_get_level_percentage($level) {
 }
 
 function wpmlm_get_level_percentage_reg_pack($level,$name) {
-    $column_name = 'package_reg'.$name;
+    $column_name = 'level_percentage';
     global $wpdb;
     $table_prefix = $wpdb->prefix;
     $sql = "SELECT $column_name FROM {$table_prefix}wpmlm_level_commission WHERE level_no = '" . $level . "'";
@@ -806,7 +806,6 @@ function wpmlm_insert_leg_amount($user_id, $package_id) {
     $result1 = wpmlm_get_commission_level_type();
     $result = wpmlm_getAllParents($user_details->user_parent_id, $level_from);
     $i = 0;
-    //print_r($result);die('db748');
     foreach ($result as $res) {
         $i++;
         $level_percentage = wpmlm_get_level_percentage($i);
@@ -825,8 +824,6 @@ function wpmlm_insert_leg_amount($user_id, $package_id) {
             'user_level' => $i,
             'date_of_submission' => date("Y-m-d H:i:s")
         );
-
-        //print_r($data);die('data');
 
         $wpdb->insert($table_name, $data);
 

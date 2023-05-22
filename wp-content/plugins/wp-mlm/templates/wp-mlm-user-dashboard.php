@@ -74,24 +74,61 @@ function wpmlm_user_dashboard($user_id) {
       </div>
    </div>
    <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
+         
      <div class="row"> 
-                 <?php $current_user = wp_get_current_user(); ?>
-              <div class="user-affiliate col-md-12">
-                      <center><label class="user-affiliate-label" style="align-content: center;"><?php _e('Affiliate Link','wpmlm-unilevel'); ?>:</label></center>
-                      <div class="user-affiliate-link">
+
+        <!-- new -->
+        <?php 
+            if(Affiliate_Link) : ?>
+        <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
+            <div class="row"> 
+                <?php $current_user = wp_get_current_user(); ?>
+                <div class="user-affiliate">
+                    <center><label class="user-affiliate-label"><?php _e('Affiliate Link','wpmlm-unilevel'); ?>:</label></center>
+                    <div class="user-affiliate-link">
 
                         <div class="col-md-10" style="height: auto; float: left;"> 
-                          <label class="form-control" id="affiliate_link" style="height:auto;"><?php echo site_url(); ?>/<?php echo $current_user->user_login;?></label>
-              </div><div class="col-md-2">
-
-                          <div class="tooltip-button">
-                         <button class="btn btn-sm btn-danger-sm mlm-button affiliate_link" style="padding-bottom:4px;padding-top: 4px;" onclick="copyToClipboard('#affiliate_link')" onmouseout="outFunc()"><span class="tooltiptext" id="myTooltip"><?php _e('Copy Link','wpmlm-unilevel'); ?></span>
-                           </button>
-                       </div>
-                     </div>
-                      </div> 
-                  </div>
+                            <label class="form-control" id="affiliate_link" style="height:auto;"><?php echo site_url(); ?>/affiliate-user-registration?sponsor=<?php echo $current_user->user_login;?></label>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="tooltip-button">
+                                <button class="btn btn-sm btn-danger-sm mlm-button affiliate_link" onclick="copyToClipboard('#affiliate_link')" onmouseout="outFunc()"><span class="tooltiptext" id="myTooltip"><?php _e('Copy Link','wpmlm-unilevel'); ?></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
+            </div>
+        </div><?php endif; ?>
+                <!-- end new -->
+            
+        <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
+            <div class="row"> 
+                <div class="user-affiliate">
+                    <center>
+                        <label class="user-affiliate-label"><?php _e('Registration Codes','wpmlm-unilevel'); ?>: <br /><button class="btn btn-sm btn-danger-sm mlm-button affiliate_link" id="generateCode" data-userId="<?php echo $current_user->ID ?>">Generate</button></label>
+                    </center>
+                    <table class="table table-striped table-bordered table-responsive-lg">
+                        <tbody id="generatedCodes">
+                            <?php 
+                                $codes = get_user_meta($current_user->ID, 'regcodes');       
+                                foreach($codes as $code) {
+                                    ?>
+                                    <tr>
+                                        <td width="80%"><?php echo $code ?></td>
+                                        <td><button class="btn btn-sm btn-danger-sm remove_regcodes" data-code="<?php echo $code ?>" data-userId="<?php echo $current_user->ID ?>">Remove</button></td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>        
+                        </tbody>
+                    </table>
+                </div>    
+            </div>
+        </div>
+           
+            </div>
+        </div>
    </div>
 
       <div class="panel-border col-md-6" style="padding-left: 0px;padding-top: 11px;">

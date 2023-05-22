@@ -17,10 +17,15 @@ function wpmlm_user_ewallet_management() {
                 <div class="col-md-3 ">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-left">
-                        <li class="active"><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
+                        
+                        <?php if(!E_Wallet_Management) : ?>
+                        <li class="active"><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
+                        <?php else : ?>
 
+                        <li class="active"><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
                         <li ><a href="#fund-transfer" class="fund-transfer" data-toggle="tab"><?php _e("Fund Transfer","wpmlm-unilevel"); ?></a></li>
                         <li ><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e("Transfer Details","wpmlm-unilevel"); ?></a></li>
+                        <?php endif; ?>
 
                     </ul>
                 </div>
@@ -28,6 +33,82 @@ function wpmlm_user_ewallet_management() {
                 <div class="col-md-9">
                     <!-- Tab panes -->
                     <div class="tab-content">
+                        
+                        <div class="tab-pane" id="request-widthrawal">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <h4><i class="fa fa-external-link-square"></i> <span> <?php _e('Request Widthrawal','wpmlm-unilevel'); ?></span></h4>
+                                </div>
+                                <div class="panel-border">
+                                    <div class="submit_message"></div>
+                                    <form id="Request-Widthrawal-form" class="form-horizontal " method="post">
+                                        <input type="hidden" name="ewallet_user_name" value="<?php echo $user->user_login; ?>" />
+                                        <div id="fund-step-1">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 user-dt" for="user_name"><?php _e('User Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" disabled="true" value="<?php echo $user->user_login; ?>" placeholder="<?php _e('Enter Username','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 user-dt" for="amount"><?php _e('Amount','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="amount" id="amount" placeholder="<?php _e('Enter Amount','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 user-dt" for="payment_gateway"><?php _e('Payment Gateway','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <select class="form-control request_widthrawal_input" name="payment_gateway" id="payment_gateway">
+                                                        <option value="">[Please select gateway]</option>                                             
+                                                        <option value="gcash">Gcash</option>
+                                                        <option value="bank">Debit/Credit</option>
+                                                    </select> 
+                                                </div>                                              
+                                            </div>
+                                            <div class="form-group gcash-content">
+                                                <label class="control-label col-md-3 user-dt" for="gcash_number"><?php _e('G-cash Number','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="gcash_number" id="gcash_number" placeholder="<?php _e('Enter gcash_number','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group gcash-content">
+                                                <label class="control-label col-md-3 user-dt" for="gcash_name"><?php _e('G-cash Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="gcash_name" id="gcash_name" placeholder="<?php _e('Enter gcash_name','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group bank-content">
+                                                <label class="control-label col-md-3 user-dt" for="bank_name"><?php _e('Bank Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="bank_name" id="bank_name" placeholder="<?php _e('Enter bank_name','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group bank-content">
+                                                <label class="control-label col-md-3 user-dt" for="bank_account_number"><?php _e('Bank Account Number','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="bank_account_number" id="bank_account_number" placeholder="<?php _e('Enter bank_account_number','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group bank-content">
+                                                <label class="control-label col-md-3 user-dt" for="bank_account_name"><?php _e('Bank Account Name','wpmlm-unilevel'); ?>:</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control request_widthrawal_input" name="bank_account_name" id="bank_account_name" placeholder="<?php _e('Enter bank_account_name','wpmlm-unilevel'); ?>" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group"> 
+                                                <div class="col-sm-offset-3 col-sm-6 fund-transfer-btn">
+                                                    <button id="Request-Widthrawal-submit"  class="btn btn-danger Request-Widthrawal-submit" > <?php _e('Submit','wpmlm-unilevel'); ?></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php wp_nonce_field('request_widthrawal_add', 'request_widthrawal_add_nonce'); ?>   
+                                    </form> 
+                                </div>
+                            </div>
+
+                        </div>
 
                         <div class="tab-pane active" id="ewallet-details">
 

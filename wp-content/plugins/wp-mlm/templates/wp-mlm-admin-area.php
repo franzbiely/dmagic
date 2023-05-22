@@ -24,7 +24,8 @@ function wpmlm_admin_area() {
     <?php if(E_Wallet_Management): ?>
     <label class="tab_class" for="ioss-mlm-tab4"><?php _e('E-wallet Management','wpmlm-unilevel'); ?></label>
     <?php else : ?>
-    <label class="tab_class" for="ioss-mlm-tab4"><?php _e('Purchase Dispersement','wpmlm-unilevel'); ?></label>
+    <!-- Hide for now... -->
+    <label style="display:none" class="tab_class" for="ioss-mlm-tab4"><?php _e('Purchase Dispersement','wpmlm-unilevel'); ?></label>    
     <?php endif; ?>
     <input id="ioss-mlm-tab5" class="tab_class report-tab" type="radio" name="tabs">
     <label class="tab_class" for="ioss-mlm-tab5"><?php _e('Reports','wpmlm-unilevel'); ?></label>

@@ -26,15 +26,23 @@ function wpmlm_user_area() {
                 <input id="ioss-mlm-tab2" class="tab_class tree-tab-user" type="radio" name="tabs">
                 <label class="tab_class" for="ioss-mlm-tab2"><?php _e('Genealogy Tree','wpmlm-unilevel'); ?></label>      
                 <input id="ioss-mlm-tab3" class="tab_class ewallet-tab-user" type="radio" name="tabs">
+
+                <?php if(E_Wallet_Management): ?>
                 <label class="tab_class" for="ioss-mlm-tab3"><?php _e('E-wallet Management','wpmlm-unilevel'); ?></label>      
+                <?php else : ?>
+                <label class="tab_class" for="ioss-mlm-tab3"><?php _e('Purchase Dispersement','wpmlm-unilevel'); ?></label>
+                <?php endif; ?>
+
                 <input id="ioss-mlm-tab4" class="tab_class" type="radio" name="tabs">
                 <label class="tab_class" for="ioss-mlm-tab4"><?php _e('Bonus Details','wpmlm-unilevel'); ?></label>
                 <input id="ioss-mlm-tab5" class="tab_class" type="radio" name="tabs">
                 <label class="tab_class" for="ioss-mlm-tab5"><?php _e('Referrall Details','wpmlm-unilevel'); ?></label>
                 <input id="ioss-mlm-tab7" class="tab_class" type="radio" name="tabs">
+                <?php if(Enable_User_Other_Functions) : ?>
                 <label class="tab_class" for="ioss-mlm-tab7"><?php _e('Materials','wpmlm-unilevel'); ?></label>
                 <input id="ioss-mlm-tab8" class="tab_class" type="radio" name="tabs">
                 <label class="tab_class" for="ioss-mlm-tab8"><?php _e('Comments','wpmlm-unilevel'); ?></label>
+                <?php endif; ?>
 
                 <section id="content1"><p><?php echo wpmlm_user_profile_admin($user_id); ?></p></section>    
                 <section id="content2" ><p><?php echo wpmlm_unilevel_tree($user_id); ?></p></section> 
@@ -43,7 +51,9 @@ function wpmlm_user_area() {
                 <section id="content5"><p><?php echo wpmlm_user_referrals($user_id); ?></p></section>
                 <section id="content6"><p><?php echo wpmlm_user_dashboard($user_id); ?></p></section>
                 <section id="content7"><p><?php echo wpmlm_user_vault($user_id); ?></p></section>
+                <?php if(Enable_User_Other_Functions) : ?>
                 <section id="content8"><p><?php echo wpmlm_user_comments($user_id); ?></p></section> 
+                <?php endif; ?>
 
             </div>
             <?php
