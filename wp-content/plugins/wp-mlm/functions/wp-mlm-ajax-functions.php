@@ -2111,9 +2111,7 @@ function wpmlm_registration_page(){
             
             if ($success_msg) {
                 if ( ($reg_amt != 0) || ($reg_pack_type == 'with_package')) {
-                    if(isset($package_id)) {
-                            wpmlm_insert_leg_amount($user_ref, $_SESSION['session_pkg_id']);
-                    }
+                    wpmlm_insert_leg_amount($user_ref, $package_select);
                 }
 
                 // Remove used codes
