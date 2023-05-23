@@ -18,16 +18,19 @@ function wpmlm_user_ewallet_management() {
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-left">
                         
-                        <?php if(!E_Wallet_Management) : ?>
+                        <?php 
+                        // @TODO : Please revisit this logics
+                        //if(!E_Wallet_Management) : ?>
                         <li class="active"><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
-                        <?php else : ?>
+                        <?php //else : ?>
 
-                        <li class="active"><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
+                        
                         <?php /*
+                        <li class="active"><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
                         <li ><a href="#fund-transfer" class="fund-transfer" data-toggle="tab"><?php _e("Fund Transfer","wpmlm-unilevel"); ?></a></li>
                         <li ><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e("Transfer Details","wpmlm-unilevel"); ?></a></li>
                         */ ?>
-                        <?php endif; ?>
+                        <?php //endif; ?>
 
                     </ul>
                 </div>
@@ -36,7 +39,7 @@ function wpmlm_user_ewallet_management() {
                     <!-- Tab panes -->
                     <div class="tab-content">
                         
-                        <div class="tab-pane" id="request-widthrawal">
+                        <div class="tab-panel active" id="request-widthrawal">
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
@@ -112,7 +115,7 @@ function wpmlm_user_ewallet_management() {
 
                         </div>
 
-                        <div class="tab-pane active" id="ewallet-details">
+                        <div class="tab-pane" id="ewallet-details">
 
                             <?php echo wpmlm_user_ewallet_details($user_id); ?>
 

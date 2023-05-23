@@ -15,7 +15,7 @@ function wpmlm_ewallet_management() {
                     <ul class="nav nav-tabs tabs-left">
                         <?php if(!E_Wallet_Management) : ?>
                         <li class="active"><a href="#purchase-disperse" data-toggle="tab" class="purchase_disperse"><?php _e('Purchase Disperse','wpmlm-unilevel'); ?></a></li>
-                        <li><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
+                        
                         <?php else : ?>
                          <?php /*   
                          Hide for now
@@ -23,14 +23,15 @@ function wpmlm_ewallet_management() {
                         <li><a href="#fund-transfer" data-toggle="tab" class="fund-transfer"><?php _e('Fund Transfer','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e('Transfer Details','wpmlm-unilevel'); ?></a></li>
                         */ ?>
-                        <li><a href="#Level-Commission" data-toggle="tab" class="Level-Commission"><?php _e('Level Commission','wpmlm-unilevel'); ?></a></li>
+                        <li class="active"><a href="#Level-Commission" data-toggle="tab" class="Level-Commission"><?php _e('Level Commission','wpmlm-unilevel'); ?></a></li>
+                        <li><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
                         <?php endif; ?>
                     </ul>
                 </div>
                 <div class="col-md-9">
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div class="tab-pane active" id="purchase-disperse">
+                        <div class="tab-pane" id="purchase-disperse">
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
@@ -328,7 +329,7 @@ function wpmlm_ewallet_management() {
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="Level-Commission">
+                        <div class="tab-pane active" id="Level-Commission">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4><i class="fa fa-external-link-square"></i> <span><?php _e('Level Commission','wpmlm-unilevel'); ?></span></h4>

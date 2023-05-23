@@ -74,13 +74,15 @@ function wpmlm_user_profile_admin($user_id = '') {
                   <form id="user-form3" class="form-horizontal" method="post">
                       <div class="form-group">
                    <label class="control-label col-md-3 user-dt" for=""></label>
-
+                        <?php
+                        /* TODO: Recheck.. Hide for now
                      <div class=" col-md-7">
                         <a class="btn btn-danger user-form3-edit">
                             <i class="fa fa-edit"></i>&nbsp;<?php _e('Edit','wpmlm-unilevel'); ?>
                         </a>
 
                     </div>
+                    */ ?>
                   </div>
                             <div class="form-group">
                         <label class="control-label col-md-3 user-dt" for="address1"><?php _e('Address 1','wpmlm-unilevel'); ?>:</label>
