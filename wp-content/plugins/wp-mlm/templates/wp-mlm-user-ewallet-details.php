@@ -37,6 +37,8 @@ function wpmlm_user_ewallet_details($user_id = '') {
                             </tfoot>
                             <tbody>
                                 <?php
+                                $count = 0;
+                                $balance = 0;
                                 foreach ($results as $res) {
                                     $count++;
                                     $debit = ($res->type == 'debit') ? $result2->company_currency . $res->amount : '';

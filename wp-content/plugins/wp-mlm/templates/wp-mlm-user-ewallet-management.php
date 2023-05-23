@@ -21,12 +21,13 @@ function wpmlm_user_ewallet_management() {
                         <?php 
                         // @TODO : Please revisit this logics
                         //if(!E_Wallet_Management) : ?>
+                        <li><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
                         <li class="active"><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
                         <?php //else : ?>
 
                         
                         <?php /*
-                        <li class="active"><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
+                        
                         <li ><a href="#fund-transfer" class="fund-transfer" data-toggle="tab"><?php _e("Fund Transfer","wpmlm-unilevel"); ?></a></li>
                         <li ><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e("Transfer Details","wpmlm-unilevel"); ?></a></li>
                         */ ?>

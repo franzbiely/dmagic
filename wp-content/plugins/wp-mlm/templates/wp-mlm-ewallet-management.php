@@ -19,11 +19,12 @@ function wpmlm_ewallet_management() {
                         <?php else : ?>
                          <?php /*   
                          Hide for now
-                        <li><a href="#fund-management" data-toggle="tab" class="fund_management"><?php _e('Fund Management','wpmlm-unilevel'); ?></a></li>
+                        
                         <li><a href="#fund-transfer" data-toggle="tab" class="fund-transfer"><?php _e('Fund Transfer','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e('Transfer Details','wpmlm-unilevel'); ?></a></li>
                         */ ?>
                         <li class="active"><a href="#Level-Commission" data-toggle="tab" class="Level-Commission"><?php _e('Level Commission','wpmlm-unilevel'); ?></a></li>
+                        <li><a href="#fund-management" data-toggle="tab" class="fund_management"><?php _e('Fund Management','wpmlm-unilevel'); ?></a></li>
                         <li><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
                         <?php endif; ?>
                     </ul>
