@@ -14,6 +14,8 @@ function wpmlm_user_ewallet_management() {
     <div id="all-reports">
         <div class="panel-border col-md-12">
             <div  class="col-md-12" id="exTab4">
+                <?php
+                /*@TODO : Remove the sidebar because of conflict in Divi and the wp mlm plugin on the front end not working the tabs
                 <div class="col-md-3 ">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-left">
@@ -30,17 +32,26 @@ function wpmlm_user_ewallet_management() {
                         
                         <li ><a href="#fund-transfer" class="fund-transfer" data-toggle="tab"><?php _e("Fund Transfer","wpmlm-unilevel"); ?></a></li>
                         <li ><a href="#transfer-details" data-toggle="tab" class="transfer-details"><?php _e("Transfer Details","wpmlm-unilevel"); ?></a></li>
-                        */ ?>
+                        
                         <?php //endif; ?>
 
                     </ul>
                 </div>
+                */ ?>
 
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <!-- Tab panes -->
                     <div class="tab-content">
                         
-                        <div class="tab-pane" id="request-widthrawal">
+                        
+
+                        <div class="tab-panel" id="ewallet-details">
+
+                            <?php echo wpmlm_user_ewallet_details($user_id); ?>
+
+                        </div>
+
+                        <div class="tab-panel" id="request-widthrawal">
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
@@ -116,11 +127,6 @@ function wpmlm_user_ewallet_management() {
 
                         </div>
 
-                        <div class="tab-pane active" id="ewallet-details">
-
-                            <?php echo wpmlm_user_ewallet_details($user_id); ?>
-
-                        </div>
                         <!-- Tab 2 Content-->
                         <div class="tab-pane" id="fund-transfer">
                             <div class="panel panel-default">
