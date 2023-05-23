@@ -21,8 +21,8 @@ function wpmlm_user_ewallet_management() {
                         <?php 
                         // @TODO : Please revisit this logics
                         //if(!E_Wallet_Management) : ?>
-                        <li><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
-                        <li class="active"><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
+                        <li class="active"><a href="#ewallet-details" data-toggle="tab" class="ewallet-details"><?php _e("E-wallet Details","wpmlm-unilevel"); ?></a></li>
+                        <li><a href="#request-widthrawal" data-toggle="tab" class="request_widthrawal"><?php _e('Request Widthrawal','wpmlm-unilevel'); ?></a></li>
                         <?php //else : ?>
 
                         
@@ -40,7 +40,7 @@ function wpmlm_user_ewallet_management() {
                     <!-- Tab panes -->
                     <div class="tab-content">
                         
-                        <div class="tab-panel active" id="request-widthrawal">
+                        <div class="tab-pane" id="request-widthrawal">
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">
@@ -116,7 +116,7 @@ function wpmlm_user_ewallet_management() {
 
                         </div>
 
-                        <div class="tab-pane" id="ewallet-details">
+                        <div class="tab-pane active" id="ewallet-details">
 
                             <?php echo wpmlm_user_ewallet_details($user_id); ?>
 
