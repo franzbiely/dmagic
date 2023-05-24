@@ -977,13 +977,20 @@ function wpmlm_getAllParents($user_id = NULL, $level_from) {
     $sql = "SELECT * FROM {$table_name} WHERE user_ref_id = '" . $user_id . "' AND `user_level` >=$level_from ";
     $result = $wpdb->get_row($sql);
 
-    $res[] = $result;
+    if($result->active_inactive === 'active')
+    {
+        $res[] = $result;
+    }
+    else {
+        $level_from = $level_from-1;
+        $res[] = null;
+    }
     if ($result->user_parent_id != 0) {
 
         $result = wpmlm_getAllParents($result->user_parent_id, $level_from);
         $res = array_merge($res, $result);
     }
-    return $res;
+    return array_filter($res);
 }
 
 function wpmlm_deleteUser($id) {
