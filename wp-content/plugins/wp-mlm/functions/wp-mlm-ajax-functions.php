@@ -350,13 +350,24 @@ if (isset($_POST['request_widthrawal_add_nonce']) && wp_verify_nonce($_POST['req
     }
     $the_user = get_user_by('login', $_POST['pd_user_name']);
     $to_user_id = $the_user->ID;
-    $sql1 = "INSERT INTO ".$table_name."
-    (comment_post_ID, comment_author, comment_date, comment_content, comment_karma, comment_approved, comment_agent, comment_type, comment_parent, user_id)
-    VALUES(0, '".$_POST['pd_user_name']."', NOW(), '".$_POST['pd_user_name'].", has requested to widthraw his money of P".$_POST['amount'].". 
-    Please send it to the following details :
-    ".$details."', 0, 0, 0, 'widthrawal-request', 0, '".$to_user_id."')";
-    $result = $wpdb->query($sql1);
-    if ($result) {
+    $content = $_POST['pd_user_name'].", has requested to widthraw his money of P".$_POST['amount'] .
+        ". 
+        Please send it to the following details : ".$details;
+    $wpdb->insert($table_name, [
+        'comment_post_ID' => 0,
+        'comment_author' => $_POST['pd_user_name'],
+        'comment_date' => 'NOW()',
+        'comment_content' => $content,
+        'comment_karma' => '0',
+        'comment_approved' => '0',
+        'comment_agent' => '0',
+        'comment_type' => 'widthrawal-request',
+        'comment_parent' => '0',
+        'user_id' => $to_user_id,
+    ]);
+    $new_id = $wpdb->insert_id;
+    if ($new_id) {
+        add_comment_meta($new_id, 'amount', $_POST['amount']);
         _e("Widthrawal Request Sent Successfully","wpmlm-unilevel");
         exit();
     } else {

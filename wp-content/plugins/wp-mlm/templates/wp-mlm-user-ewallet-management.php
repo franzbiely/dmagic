@@ -60,7 +60,7 @@ function wpmlm_user_ewallet_management() {
                                 <div class="panel-border">
                                     <div class="submit_message"></div>
                                     <form id="Request-Widthrawal-form" class="form-horizontal " method="post">
-                                        <input type="hidden" name="ewallet_user_name" value="<?php echo $user->user_login; ?>" />
+                                        <input type="hidden" name="pd_user_name" value="<?php echo $user->user_login; ?>" />
                                         <div id="fund-step-1">
                                             <div class="form-group">
                                                 <label class="control-label col-md-3 user-dt" for="user_name"><?php _e('User Name','wpmlm-unilevel'); ?>:</label>
@@ -641,6 +641,36 @@ jQuery(document).ready(function ($) {
                 $(this).removeClass("invalid");
             });
 
+            // Widthrawal Request
+            $("#Request-Widthrawal-form").submit(function (event) {
+                event.preventDefault();
+                $(".submit_message").html('');
+                $(".submit_message").show();
+                var formData = new FormData(this);
+                formData.append('action', 'wpmlm_ajax_ewallet_management');
+                
+                $.ajax({
+                    type: "POST",
+                    url: ajaxurl,
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $(".submit_message").html('<div class="alert alert-info">' + data + '</div>');
+                        setTimeout(function () {
+                            $(".submit_message").hide();
+                            $(".gcash-content, .bank-content").hide();
+                            $("#Request-Widthrawal-form")[0].reset();
+
+                        }, 2000);
+                    }
+                });
+                // }
+                // console.log('maybe not valid')
+                return false;
+            })
+            // End Widthrawal Request
 
             // Fund Transfer Details Ajax Function
 

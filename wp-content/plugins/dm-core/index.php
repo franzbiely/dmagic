@@ -109,17 +109,19 @@ function request_widthrawal_page() {
     ?>
     <div class="wrap">
         <h1>Request Widthrawals</h1>
+        <div class="submit_message"></div>
         <ul class="subsubsub">
-            <li class="all"><a href="http://localhost:8000/wp-admin/admin.php?page=request-widthrawal&comment_type=widthrawal-request&amp;comment_status=all" aria-current="page">All <span class="count"></span></a> |</li>
-            <li class="moderated"><a href="http://localhost:8000/wp-admin/admin.php?page=request-widthrawal&comment_type=widthrawal-request&amp;comment_status=moderated">Pending <span class="count"></span></a> |</li>
-            <li class="approved"><a href="http://localhost:8000/wp-admin/admin.php?page=request-widthrawal&comment_type=widthrawal-request&amp;comment_status=approved">Approved <span class="count"></span></a> |</li>
-            <li class="trash"><a href="http://localhost:8000/wp-admin/admin.php?page=request-widthrawal&comment_type=widthrawal-request&amp;comment_status=trash">Trash <span class="count"></span></a></li>
+            <li class="all"><a href="?page=request-widthrawal&comment_type=widthrawal-request&amp;comment_status=all" aria-current="page">All <span class="count"></span></a> |</li>
+            <li class="moderated"><a href="?page=request-widthrawal&comment_type=widthrawal-request&amp;comment_status=moderated">Pending <span class="count"></span></a> |</li>
+            <li class="approved"><a href="?page=request-widthrawal&comment_type=widthrawal-request&amp;comment_status=approved">Approved <span class="count"></span></a> |</li>
+            <li class="trash"><a href="?page=request-widthrawal&comment_type=widthrawal-request&amp;comment_status=trash">Trash <span class="count"></span></a></li>
         </ul>
         <table class="wp-list-table widefat fixed striped">
         <thead>
                 <tr>
                     <th scope="col" class="manage-column column-cb check-column"></th>
                     <th scope="col" class="manage-column column-comment">Request</th>
+                    <th scope="col" class="manage-column column-amount">Amount</th>
                     <th scope="col" class="manage-column column-date">Date</th>
                     <th scope="col" class="manage-column column-date">Status</th>
                     <th scope="col" class="manage-column column-actions">Actions</th>
@@ -127,34 +129,115 @@ function request_widthrawal_page() {
             </thead>
             <tbody id="the-comment-list">
                 <?php
-                foreach ($comments as $comment) { ?>
+                $totalAmount = 0;
+                foreach ($comments as $comment) { 
+                    $totalAmount += floatval(get_comment_meta($comment->comment_ID, 'amount', true));
+                    ?>
                 <tr>
                     <td></td>
                     <td><?php echo nl2br(get_comment_text($comment->comment_ID)) ?></td>
+                    <td>₱<?php echo number_format((float) get_comment_meta($comment->comment_ID, 'amount', true), 2, '.', ','); ?></td>
                     <td><?php echo get_comment_date(get_option('date_format'), $comment->comment_ID) ?></td>
                     <td><?php echo get_comment_status($comment->comment_approved) ?></td>
                     <td>
                         <?php if(!isset($_GET['comment_status']) || $_GET['comment_status'] !=='approved') : ?>
-                        <a href="?page=request-widthrawal&action=approve&c=<?php echo $comment->comment_ID ?>">Approve</a>
+                        <form class="approve-widthrawal-request" method="POST">
+                            <input type="hidden" name="comment_id" value="<?php echo $comment->comment_ID ?>" />
+                            <input type="hidden" name="user_id" value="<?php echo $comment->user_id ?>" />
+                            <input type="hidden" name="ewallet_user_name" value="<?php echo $comment->comment_author ?>" />
+                            <input type="hidden" name="fund_amount" value="<?php echo get_comment_meta($comment->comment_ID, 'amount', true) ?>" />
+                            <input type="hidden" name="transaction_note" value="Withdrawal Request Approved" />
+                            <?php wp_nonce_field('fund_management_add', 'fund_management_add_nonce') ?>
+                            <button type="submit" class="btn btn-danger approve-widthrawal-request-approve" > <?php _e("Approve","wpmlm-unilevel"); ?></button>
+                        </form>
                         <?php endif; ?>
                         <?php if(!isset($_GET['comment_status']) || $_GET['comment_status'] !=='moderated') : ?> | 
-                        <a href="?page=request-widthrawal&action=unapprove&c=<?php echo $comment->comment_ID ?>">Unapprove</a>
+                        <a class="btn btn-danger" href="?page=request-widthrawal&action=unapprove&c=<?php echo $comment->comment_ID ?>">Unapprove</a>
                         <?php endif; ?>
                         <?php if(!isset($_GET['comment_status']) || $_GET['comment_status'] !=='trash') : ?> | 
-                        <a href="?page=request-widthrawal&action=trash&c=<?php echo $comment->comment_ID ?>">Decline</a>
+                        <a class="btn btn-danger" href="?page=request-widthrawal&action=trash&c=<?php echo $comment->comment_ID ?>">Decline</a>
                         <?php endif; ?>
                     </td>
                 </tr>
                 <?php } ?>
                 <tr>
                     <th scope="col" class="manage-column column-cb check-column">&nbsp;</th>
-                    <th scope="col" class="manage-column column-comment">&nbsp;</th>
-                    <th scope="col" class="manage-column column-date">&nbsp;</th>
+                    <th scope="col" class="manage-column column-comment">Total Amount:</th>
+                    <th scope="col" class="manage-column column-amount">₱<?php echo number_format((float) $totalAmount, 2, '.', ','); ?></th>
                     <th scope="col" class="manage-column column-date">&nbsp;</th>
                     <th scope="col" class="manage-column column-actions">&nbsp;</th>
+                    <th scope="col" class="manage-column column-date">&nbsp;</th>
                 </tr>
             </tbody>
         </table>
     </div>
+    <script>
+        jQuery(document).ready(function ($) {
+            // Fund Transfer Ajax Function
+
+            
+            $(".approve-widthrawal-request").submit(function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                formData.append('action', 'wpmlm_ajax_ewallet_management');
+                formData.append('fund_action', 'admin_debit');
+                $.ajax({
+                    type: "POST",
+                    url: ajaxurl,
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if ($.trim(data) === "0") {
+                            $(".submit_message").html('<div class="alert alert-danger">Something went wrong</div>');
+                            setTimeout(function () {
+                                $(".submit_message").hide();
+                            }, 2000);
+
+                        } else {
+
+                            $(".submit_message").show();
+                            $(".submit_message").html('<div class="alert alert-info">' + data + '</div>');
+                            setTimeout(function () {
+                                $(".submit_message").hide();
+                                window.location.href='?page=request-widthrawal&action=approve&c=' + formData.get('comment_id')
+                            }, 2000);
+
+                        }
+                        $('.approve-widthrawal-request-approve').prop('disabled', false);
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
     <?php
+}
+
+
+add_action('admin_head', 'disable_admin_responsive_styles');
+
+function disable_admin_responsive_styles() {
+    echo '<style>
+        @media (max-width: 782px) {
+            body {
+                overflow-x: auto !important;
+            }
+            #wpadminbar {
+                display: none !important;
+            }
+            #adminmenuback, #adminmenuwrap, #adminmenu, #adminmenushadow {
+                position: static !important;
+                width: auto !important;
+            }
+            #adminmenu .wp-submenu,
+            #adminmenu .wp-has-current-submenu .wp-submenu,
+            #adminmenu .wp-has-current-submenu.opensub .wp-submenu {
+                left: 0 !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+        }
+    </style>';
 }

@@ -306,19 +306,19 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
    <div class="wpmlm-registration-form">
         <div class="info-card">
             <div class="info-card-head">
-                <h2>'. __("WP MLM User Registration","wpmlm-unilevel").'</h2>
-                <small class="form-text text-muted">'. __("CUSTOMER INFORMATION","wpmlm-unilevel") .'</small>
+                <h2>'. __("Affiliate Registration","wpmlm-unilevel").'</h2>
+                <small class="form-text text-muted">'. __("Customer Information","wpmlm-unilevel") .'</small>
             </div>
             <div class="info-card-body">
                 <form class="info-card-form" id="wpmlm-registration-form" method="post">
 
                     <br><h4>'. __("User Info","wpmlm-unilevel").'</h4>
                     <div class="form-group">
-                        <label for="sname">'. __("SPONSOR NAME","wpmlm-unilevel").':</label>
+                        <label for="sname">'. __("Sponsor Name","wpmlm-unilevel").'</label>
                         <input type="text" name="sname" class="form-control main_input" id="sname" value="'.$sponsor.'" placeholder="'. __('Enter Sponsor name','wpmlm-unilevel').'" required>
                     </div>
                     <div class="form-group">
-                        <label for="regcode">'. __("Registration Code","wpmlm-unilevel").':</label>
+                        <label for="regcode">'. __("Registration Code","wpmlm-unilevel").'</label>
                         <input type="text" name="regcode" class="form-control main_input" id="regcode" placeholder="'. __('Enter Registration Code','wpmlm-unilevel').'" required>
                     </div>
                     ';
@@ -359,83 +359,88 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
                     if ($reg_pack_type == "with_out_package") {
                     
              $arr.='<div class="form-group">
-                        <label for="reg_amount">'. __("REGISTRATION AMOUNT","wpmlm-unilevel").':</label>
-                        <input type="text" name="reg_amount" class="form-control" id="reg_amount" value="'.(isset($_SESSION["package_price"])) ? $_SESSION["package_price"] : $reg_amt . $reg_amt_currency.'" readonly required>
+                        <label for="reg_amount">'. __("Registration Amount","wpmlm-unilevel").'</label>
+                        <input type="text" name="reg_amount" class="form-control" id="reg_amount" value="'.(isset($_Session["package_price"])) ? $_Session["package_price"] : $reg_amt . $reg_amt_currency.'" readonly required>
                     </div>
                     ';
                     }
                   
              $arr.='<div class="form-row row">
                         <div class="form-group width-col-4">
-                            <label for="fname">'. __("FIRST NAME","wpmlm-unilevel").':</label>
+                            <label for="fname">'. __("First Name","wpmlm-unilevel").'</label>
                             <input type="text" class="form-control form-control" name="fname" id="fname" placeholder="'. __("Enter First Name","wpmlm-unilevel").'" required>
                         </div>                            
                         <div class="form-group width-col-4">
-                            <label for="lname">'. __("LAST NAME","wpmlm-unilevel").':</label>
+                            <label for="lname">'. __("Last Name","wpmlm-unilevel").'</label>
                             <input type="text" class="form-control" name="lname" id="lname" placeholder="'. __("Enter Last Name","wpmlm-unilevel").'">
                         </div>
                         <div class="form-group width-col-4">
-                            <label for="dob">'. __("DOB","wpmlm-unilevel").':</label>
+                            <label for="dob">'. __("Birth Date","wpmlm-unilevel").'</label>
                             
-                                <input type="date" class="form-control date_of_birth" name="date_of_birth" placeholder="'. __("Enter DOB","wpmlm-unilevel").'" required/>
+                                <input type="date" class="form-control date_of_birth" name="date_of_birth" placeholder="'. __("Enter Birth Date","wpmlm-unilevel").'" required/>
                                 
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="form-group width-col-6 ">
-                            <label for="username">'. __("USERNAME","wpmlm-unilevel").':</label>
+                            <label for="username">'. __("Username","wpmlm-unilevel").'</label>
                             <input type="text" class="form-control main_input" name="username" id="username" placeholder="'. __("Enter Username","wpmlm-unilevel").'" required>
                         </div>
                         <div class="form-group width-col-6 ">
-                            <label for="password">'. __("PASSWORD","wpmlm-unilevel").':</label>
+                            <label for="password">'. __("Password","wpmlm-unilevel").'</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="'. __("Enter Password","wpmlm-unilevel").'" required>
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="form-group width-col-6 ">
-                            <label for="email">'. __("EMAIL","wpmlm-unilevel").':</label>
+                            <label for="email">'. __("Email","wpmlm-unilevel").'</label>
                             <input type="text" class="form-control main_input" name="email" id="email" placeholder="'. __("Enter Email","wpmlm-unilevel").'" required>
                         </div>
                         <div class="form-group width-col-6 ">
-                            <label for="contact_no">'. __("MOBILE NUMBER","wpmlm-unilevel").':</label>
+                            <label for="contact_no">'. __("Mobile Number","wpmlm-unilevel").'</label>
                             <input type="text" class="form-control" name="contact_no" id="contact_no" placeholder="'. __("Mobile Number","wpmlm-unilevel").'" required>
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="form-group width-col-12">
-                            <label for="address1">'. __("ADDRESS","wpmlm-unilevel").':</label>
+                            <label for="address1">'. __("Address","wpmlm-unilevel").'</label>
                             <input type="text" class="form-control" name="address1" id="address1" placeholder="'. __("Enter Address","wpmlm-unilevel").'" required>
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="form-group width-col-6">
-                            <label for="country">'. __("COUNTRY","wpmlm-unilevel") .':</label>
+                            <label for="country">'. __("Country","wpmlm-unilevel") .'</label>
                             <select class="form-control" name="country" id="country" required>
                                 <option value="">'. __("Select Country","wpmlm-unilevel") .'</option>';
                                 foreach ($countries as $country) {
+                                    $selected='';
+                                    if($country->name === 'Philippines') {
+                                        $selected='selected="selected"';       
+                                    }
                                     if($country){
-                                $arr.='<option value="'.$country->id.'">'.$country->name.'</option>'; 
-                                }else{
-                                $arr.='<option value="">'. __("Country not available","wpmlm-unilevel") .'</option>';
+                                        
+                                        $arr.='<option value="'.$country->id.'" '.$selected.'>'.$country->name.'</option>'; 
+                                    }else{
+                                        $arr.='<option value="">'. __("Country not available","wpmlm-unilevel") .'</option>';
                                     }
                                 }
                                 
                     $arr.= '</select>
                         </div>
                         <div class="form-group width-col-6">
-                            <label for="state">'. __("STATE","wpmlm-unilevel").':</label>
+                            <label for="state">'. __("Province","wpmlm-unilevel").'</label>
                             <input type="text" class="form-control" name="state" id="state" placeholder="'. __("State","wpmlm-unilevel").'" required>
                              
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="form-group width-col-6">
-                            <label for="city">'. __("CITY","wpmlm-unilevel").':</label>
+                            <label for="city">'. __("City","wpmlm-unilevel").'</label>
                             <input type="text" class="form-control" name="city" id="city" placeholder="'. __("City","wpmlm-unilevel").'" required>
                         </div>
                         <div class="form-group width-col-6">
-                            <label for="zip">'. __("ZIP","wpmlm-unilevel").':</label>
-                            <input type="text" class="form-control" name="zip" id="zip" placeholder="'. __("ZIP Code","wpmlm-unilevel").'" required>
+                            <label for="zip">'. __("Zip","wpmlm-unilevel").'</label>
+                            <input type="text" class="form-control" name="zip" id="zip" placeholder="'. __("Zip Code","wpmlm-unilevel").'" required>
                         </div>
                     </div>';
                     if(Enable_Payment_Mode) :
@@ -467,7 +472,7 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
 
                         $arr.= '<div class="form-check form-check-inline paypal-radio width-col-12">
                                     <input class="form-check-input paid_join" type="radio" name="user_registration_type" id="user_registration_type" value="paypal"  required '. $ckd. '>
-                                    <label class="form-check-label" for="user_registration_type"><img src='. plugins_url() . "/" . WP_MLM_PLUGIN_NAME . "/gateway/paypal-sdk-v2/paypal.svg".'></label>
+                                    <label class="form-check-label" for="user_registration_type"><img src='. plugins_url() . "/" . Wp_Mlm_Plugin_Name . "/gateway/paypal-sdk-v2/paypal.svg".'></label>
                                 </div>';
                                 } 
                             }
