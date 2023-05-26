@@ -384,6 +384,11 @@ if (isset($_POST['level_commission_add_nonce']) && wp_verify_nonce($_POST['level
     }
     $the_user = get_user_by('login', $user_name);
     $to_user_id = $the_user->ID;
+    // Set active_until
+    $newActiveUntilDate = date("Y-m-d H:i:s", strtotime($usersStatus->active_until . ' +1 month'));
+    $query="UPDATE ".$wpdb->prefix . "wpmlm_users SET active_until = '${newActiveUntilDate}', active_inactive='active' WHERE user_ref_id='${to_user_id}'";
+    $wpdb->query($query);
+
     $res = wpmlm_insert_leg_amount_new($to_user_id, $trade_amount,$package_id);
     if ($res) {
         _e("Level Commission Updated Successfully","wpmlm-unilevel");

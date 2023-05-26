@@ -114,8 +114,14 @@ function wpmlm_get_user_details($user_id) {
     global $wpdb;
     $table_prefix = $wpdb->prefix;
     $sql = "SELECT * FROM {$table_prefix}wpmlm_users WHERE user_ref_id = '" . $user_id . "'";
-    $results = $wpdb->get_row($sql);
-    return $results;
+    $today = date('Y-m-d H:i:s');
+    $result = $wpdb->get_row($sql);
+    if(strtotime($result->active_until) < strtotime($today)) {
+        $wpdb->query("UPDATE {$table_prefix}wpmlm_users SET active_inactive='inactive' WHERE user_ref_id='${user_id}'");
+        $result->active_inactive = 'inactive';
+    }
+
+    return $result;
 }
 
 /* get bonus percentage of a paricular level */
@@ -976,9 +982,14 @@ function wpmlm_getAllParents($user_id = NULL, $level_from) {
     $depth = wpmlm_get_level_depth();
     $sql = "SELECT * FROM {$table_name} WHERE user_ref_id = '" . $user_id . "' AND `user_level` >=$level_from ";
     $result = $wpdb->get_row($sql);
+    $today = date('Y-m-d H:i:s');
 
-    if($result->active_inactive === 'active')
-    {
+    if(strtotime($result->active_until) < strtotime($today)) {
+        $wpdb->query("UPDATE {$table_name} SET active_inactive='inactive' WHERE user_ref_id='${user_id}'");
+        $result->active_inactive = 'inactive';
+    }
+
+    if($result->active_inactive === 'active') {
         $res[] = $result;
     }
     else {
@@ -1236,7 +1247,7 @@ function wpmlm_ifactiveUser($username){
     global $wpdb;
     $table_name1 = $wpdb->prefix . "wpmlm_users";
     $table_name2 = $wpdb->prefix . "users";
-    $sql = "SELECT a.active_inactive FROM {$table_name1} a INNER JOIN {$table_name2} b ON b.ID=a.user_ref_id AND b.user_login = '" .$username. "' AND a.active_inactive ='active' ";
-    return $result = $wpdb->get_var($sql); 
+    $sql = "SELECT a.active_inactive, a.active_until FROM {$table_name1} a INNER JOIN {$table_name2} b ON b.ID=a.user_ref_id AND b.user_login = '" .$username. "' AND a.active_inactive ='active' ";
+    return $result = $wpdb->get_row($sql); 
 
 }

@@ -36,6 +36,7 @@ function create_wpmlm_users_table() {
     `user_nbranch` varchar(250) CHARACTER SET utf8 NOT NULL DEFAULT '',
     `user_level` int(11) NOT NULL DEFAULT '0',
     `join_date` datetime DEFAULT NULL,
+    `active_until` datetime DEFAULT NULL,
     `package_id` int(11) NULL DEFAULT '0',
     `user_status` int(11) NOT NULL DEFAULT '0',
     `user_registration_type` varchar(250) CHARACTER SET utf8 NOT NULL DEFAULT '',  
@@ -73,7 +74,8 @@ function insert_wpmlm_first_user() {
             'user_first_name' => $results->user_login,
             'user_email' => $results->user_email,
             'user_level' => 0,
-            'join_date' => date("Y-m-d H:i:s")
+            'join_date' => date("Y-m-d H:i:s"),
+            'active_until' => date("Y-m-d H:i:s", strtotime('+1 month')),
         );
 
 

@@ -8,6 +8,11 @@ function wpmlm_user_area() {
     $parent_id = $user_details->user_parent_id;
     $package_id = $user_details->package_id;
     $user_status = $user_details->user_status;
+    $active_days_left = floor(
+        (strtotime($user_details->active_until) - strtotime(date("Y-m-d H:i:s"))) / 
+        (60 * 60 * 24)
+    );
+
     
     if (($user_id) && ($user_status == 1)) {
         echo '<div class="col-md-12 mlm-main-div" id="mlm-main-div"> ';
@@ -66,6 +71,16 @@ function wpmlm_user_area() {
         } else {
             ?>
             <h3><?php _e('WP MLM User','wpmlm-unilevel'); ?></h3>
+            <?php if($active_days_left > 0) : ?>
+            <small>Repurchase within <strong><?php echo $active_days_left ?> days</strong> to keep your account active.</small>      
+            <?php elseif($active_days_left == 0) : ?>
+            <small>Your account is still active <strong>until today</strong>. <br />
+            Please repurchase to keep your account receive bonuses.</small>      
+            <?php else: ?>
+            <small>Your account <strong>INACTIVE</strong>. <br />
+            Please repurchase to keep your account active and enjoy the benefits.</small>                  
+            <?php endif; ?>
+            <br /><br />
             <div class="ioss-mlm-menu">
                 <input id="ioss-mlm-tab6" class="tab_class" type="radio" name="tabs" checked>
                 <label class="tab_class" for="ioss-mlm-tab6"><?php _e('Dashboard','wpmlm-unilevel'); ?></label>
