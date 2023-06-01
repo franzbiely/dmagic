@@ -72,7 +72,8 @@ function wpmlm_register_user_html_page() {
             'user_registration_type' => $user_registration_type,
             'join_date' => date("Y-m-d H:i:s"),
             'user_status' => 1,
-            'package_id' => $_SESSION['session_pkg_id']
+            'package_id' => $_SESSION['session_pkg_id'],
+            'active_until' => date("Y-m-d H:i:s", strtotime('+1 month'))
         );
 
 
