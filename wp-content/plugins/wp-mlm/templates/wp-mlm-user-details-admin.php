@@ -17,6 +17,7 @@ function wpmlm_user_details_admin() {
                     <th><?php _e('Full Name','wpmlm-unilevel'); ?></th>
                     <th><?php _e('Joining Date','wpmlm-unilevel'); ?></th>
                     <th><?php _e('Action','wpmlm-unilevel'); ?></th>
+                    <th><?php _e('Expiry','wpmlm-unilevel'); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +25,7 @@ function wpmlm_user_details_admin() {
                 $results = wpmlm_get_all_user_details_join();
                 $p_count = 0;
                 foreach ($results as $res) {
-
+                    $active_until = isset($res->active_until) ? date("Y-m-d", strtotime($res->active_until)) : '';
                     $p_count++;
                    $tab_content = '<tr>
                                <th scope="row">' . $p_count . '</th>
@@ -47,6 +48,9 @@ function wpmlm_user_details_admin() {
                                    </div>
                                    
 
+                               </td>
+                               <td>
+                                ' . $active_until . '
                                </td>
                            </tr>';
                     echo $tab_content;

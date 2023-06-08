@@ -13,8 +13,10 @@ function wpmlm_user_profile_admin($user_id = '') {
       </div>
                 <div class="panel-border">
                <h4><?php _e('Sponsor & Package Information','wpmlm-unilevel'); ?></h4>
+               
                     <form id="user-form1" class="form-horizontal " method="post">
-                        <div class="form-group">
+                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                    <div class="form-group">
                      <label class="control-label col-md-3 user-dt" for="user_name"><?php _e('User Name','wpmlm-unilevel'); ?>:</label>
                      <div class="col-md-7">
                                 <input type="text" class="" name="user_name" id="user_name" value="<?php echo $results[0]->user_login; ?>" readonly style="border: none;" >
@@ -35,13 +37,24 @@ function wpmlm_user_profile_admin($user_id = '') {
                         
                         <?php if($package_details){?>
                         <div class="form-group">
-                     <label class="control-label col-md-3 user-dt" for="registration_package"><?php _e('Registration Package','wpmlm-unilevel'); ?> :</label>
-                     <div class="col-md-7">
+                            <label class="control-label col-md-3 user-dt" for="registration_package"><?php _e('Registration Package','wpmlm-unilevel'); ?> :</label>
+                            <div class="col-md-7">
                                 <input type="text" class="" name="registration_package" id="registration_package" value="<?php echo $package_details->package_name; ?>" readonly style="border: none;">
                             </div>
                         </div>
                         <?php }?>
-                        
+                        <div class="form-group">
+                            <label class="control-label col-md-3 user-dt" for="active_until"><?php _e('Expiry Date','wpmlm-unilevel'); ?> :</label>
+                            <div class="col-md-7">
+                                <input type="date" class="form-control user-input" name="active_until" id="active_until" value="<?php echo date("Y-m-d", strtotime($results[0]->active_until)); ?>" style="background: #fff;">                                
+                                <br  />
+                                <button class="btn btn-success" type="submit">
+                                    <?php _e('Update','wpmlm-unilevel'); ?> <i class="fa fa-arrow-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="user-form1-message"></div>
+                        <?php wp_nonce_field('user_form1', 'user_form1_nonce'); ?>
                     </form>
                
                <div id="user-form2-message"></div>
@@ -218,8 +231,6 @@ function wpmlm_user_profile_admin($user_id = '') {
                 
         jQuery(document).ready(function ($) {
 
-            
-
             $(".user-form3-edit").click(function () {
                 $("#dob").datepicker({
                     autoclose: true
@@ -250,6 +261,28 @@ function wpmlm_user_profile_admin($user_id = '') {
             // form 2 update start //
             
 
+            $("#user-form1").on('submit', function (event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                formData.append('action', 'wpmlm_ajax_user_profile');
+                $.ajax({
+                    type: "POST",
+                    url: ajaxurl,
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $("#user-form1-message").show();
+                        $("#user-form1-message").html('<div class="alert alert-info">' + data + '</div>');
+                        setTimeout(function () {
+                            $("#user-form1-message").hide();
+                        }, 1000);
+                    }
+
+                });
+                return false;
+            });
             $(document).on('submit', '#user-form3', function () {
 
                 var formData = new FormData(this);

@@ -12,6 +12,13 @@ function wpmlm_ajax_user_profile() {
     $table_name = $wpdb->prefix . "wpmlm_users";
     $table_name1 = $wpdb->prefix . "users";
     $user_id = intval($_POST['user_id']);
+    if (isset($_POST['user_form1_nonce']) && wp_verify_nonce($_POST['user_form1_nonce'], 'user_form1')) {
+        $active_until = sanitize_text_field($_POST['active_until']);
+        $condition = array('user_ref_id' => $user_id);
+        $wpdb->update($table_name, ['active_until' => $active_until], $condition);
+        _e("Updated Successfully","wpmlm-unilevel");
+        exit();
+    }
     if (isset($_POST['user_form3_nonce']) && wp_verify_nonce($_POST['user_form3_nonce'], 'user_form3')) {
 
         $user_address = sanitize_text_field($_POST['address1']);
@@ -396,7 +403,7 @@ if (isset($_POST['level_commission_add_nonce']) && wp_verify_nonce($_POST['level
     $the_user = get_user_by('login', $user_name);
     $to_user_id = $the_user->ID;
     // Set active_until
-    $newActiveUntilDate = date("Y-m-d H:i:s", strtotime($usersStatus->active_until . ' +1 month'));
+    $newActiveUntilDate = date("Y-m-d H:i:s", strtotime(' +1 month'));
     $query="UPDATE ".$wpdb->prefix . "wpmlm_users SET active_until = '${newActiveUntilDate}', active_inactive='active' WHERE user_ref_id='${to_user_id}'";
     $wpdb->query($query);
 
