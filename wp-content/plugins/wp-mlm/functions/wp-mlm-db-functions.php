@@ -116,7 +116,7 @@ function wpmlm_get_user_details($user_id) {
     $sql = "SELECT * FROM {$table_prefix}wpmlm_users WHERE user_ref_id = '" . $user_id . "'";
     $today = date('Y-m-d H:i:s');
     $result = $wpdb->get_row($sql);
-    if(strtotime($result->active_until) < strtotime($today)) {
+    if($result->active_until != '' && strtotime($result->active_until) < strtotime($today)) {
         $wpdb->query("UPDATE {$table_prefix}wpmlm_users SET active_inactive='inactive' WHERE user_ref_id='${user_id}'");
         $result->active_inactive = 'inactive';
     }
@@ -984,7 +984,7 @@ function wpmlm_getAllParents($user_id = NULL, $level_from) {
     $result = $wpdb->get_row($sql);
     $today = date('Y-m-d H:i:s');
 
-    if(strtotime($result->active_until) < strtotime($today)) {
+    if($result->active_until != '' && strtotime($result->active_until) < strtotime($today)) {
         $wpdb->query("UPDATE {$table_name} SET active_inactive='inactive' WHERE user_ref_id='${user_id}'");
         $result->active_inactive = 'inactive';
     }

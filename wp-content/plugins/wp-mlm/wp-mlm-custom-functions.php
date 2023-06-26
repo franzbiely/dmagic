@@ -315,7 +315,7 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
                     <br><h4>'. __("User Info","wpmlm-unilevel").'</h4>
                     <div class="form-group">
                         <label for="sname">'. __("Sponsor Name","wpmlm-unilevel").'</label>
-                        <input type="text" name="sname" class="form-control main_input" id="sname" value="'.$sponsor.'" placeholder="'. __('Enter Sponsor name','wpmlm-unilevel').'" required>
+                        <input type="text" name="sname" readonly class="form-control main_input" id="sname" value="'.$sponsor.'" placeholder="'. __('Enter Sponsor name','wpmlm-unilevel').'" required>
                     </div>
                     <div class="form-group">
                         <label for="regcode">'. __("Registration Code","wpmlm-unilevel").'</label>
@@ -342,16 +342,15 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
                                 </div>
                             </div>';
                             else : 
-                                $arr.='<select style="display:none;" class="form-control" name="package_select" id="package_select" required>
+                                $arr.='<div class="form-group"><label for="reg_amount">'. __("Package","wpmlm-unilevel").'</label><select class="form-control" name="package_select" id="package_select" required>
                                 <option value="" tabindex="1">'.__("Select Package","wpmlm-unilevel").'</option>';
                             
-                                    $results = wpmlm_select_all_packages();
-                                            foreach ($results as $res) {
-                                            
+                                $results = wpmlm_select_all_packages();
+                                foreach ($results as $res) {
+                                        
                                     $arr.= '<option selected="selected" value="'. $res->id.'">'. $res->package_name . ' - ' . $result2->company_currency . $res->package_price.'</option>' ;
-                                            break;
-                                    } 
-                                $arr.= '</select>';    
+                                } 
+                                $arr.= '</select></div>';    
                             endif; 
                         } 
                     }
