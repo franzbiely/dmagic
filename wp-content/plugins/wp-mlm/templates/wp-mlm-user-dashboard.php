@@ -102,7 +102,9 @@ function wpmlm_user_dashboard($user_id) {
         </div><?php endif; ?>
                 <!-- end new -->
             
-        <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
+        <?php /*
+            No Generate codes on affiliate level
+            <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
             <div class="row"> 
                 <div class="user-affiliate">
                     <center>
@@ -125,7 +127,7 @@ function wpmlm_user_dashboard($user_id) {
                     </table>
                 </div>    
             </div>
-        </div>
+        </div> */ ?>
            
             </div>
         </div>

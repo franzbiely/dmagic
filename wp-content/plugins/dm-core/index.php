@@ -12,6 +12,17 @@ function enqueue_custom_script() {
 }
 add_action('admin_enqueue_scripts', 'enqueue_custom_script');
 
+// Auto generate code for new orders in woocomerce
+add_action('woocommerce_new_order', 'request_generate_code');
+function request_generate_code($order_id) {
+
+    $random_string = substr(md5(microtime()),rand(0,26),5);
+    if(add_user_meta(1, 'regcodes', $random_string)) {
+        $codes = get_user_meta(1, 'regcodes');        
+        echo json_encode($codes);
+    }
+}
+
 function exclude_pingbacks_from_admin_comments($clauses) {
     global $pagenow, $wpdb;
 
