@@ -342,7 +342,7 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
                                 </div>
                             </div>';
                             else : 
-                                $arr.='<div class="form-group"><label for="reg_amount">'. __("Package","wpmlm-unilevel").'</label><select class="form-control" name="package_select" id="package_select" required>
+                                $arr.='<div class="form-group" style="display:none"><label for="reg_amount">'. __("Package","wpmlm-unilevel").'</label><select class="form-control" name="package_select" id="package_select" required>
                                 <option value="" tabindex="1">'.__("Select Package","wpmlm-unilevel").'</option>';
                             
                                 $results = wpmlm_select_all_packages();
@@ -357,11 +357,11 @@ $arr= '<div class="col-md-12" id="mlm-main-div"><div class="container-1"><div cl
                     
                     if ($reg_pack_type == "with_out_package") {
                     
-             $arr.='<div class="form-group">
-                        <label for="reg_amount">'. __("Registration Amount","wpmlm-unilevel").'</label>
-                        <input type="text" name="reg_amount" class="form-control" id="reg_amount" value="'.(isset($_Session["package_price"])) ? $_Session["package_price"] : $reg_amt . $reg_amt_currency.'" readonly required>
-                    </div>
-                    ';
+                    $arr.='<div class="form-group">
+                                <label for="reg_amount">'. __("Registration Amount","wpmlm-unilevel").'</label>
+                                <input type="text" name="reg_amount" class="form-control" id="reg_amount" value="'.(isset($_Session["package_price"])) ? $_Session["package_price"] : $reg_amt . $reg_amt_currency.'" readonly required>
+                            </div>
+                            ';
                     }
                   
              $arr.='<div class="form-row row">

@@ -12,16 +12,77 @@ function enqueue_custom_script() {
 }
 add_action('admin_enqueue_scripts', 'enqueue_custom_script');
 
-// Auto generate code for new orders in woocomerce
-add_action('woocommerce_new_order', 'request_generate_code');
+// Auto generate code for processing orders in woocomerce
+add_action('woocommerce_order_status_processing', 'request_generate_code');
 function request_generate_code($order_id) {
+    $order = wc_get_order( $order_id );
+    $sponsor = $order->get_meta('Sponsor');
+    
+    $total_quantity = 0;
+    foreach ( $order->get_items() as $item ) {
+        $total_quantity += $item->get_quantity();
+    }
+    $note = "You can now invite friends to join your network using this ";
+    $note .= "<a href='https://divinemagic.com.ph/affiliate-user-registration?sponsor=" . $sponsor ."'>REGISTRATION LINK</a>. <br /><br />";
+    $note .= "Since you placed a total of ${total_quantity} product(s), you have attained the following codes that you can use in the future : ";
+    
+    for($x=0; $x<$total_quantity; $x++) {
+        $random_string = substr(md5(microtime()),rand(0,26),5);
+        if(add_user_meta(1, 'regcodes', $random_string)) {
+            $note .= ' <br /><strong>' . $random_string . "</strong>,";
+        }
+    }
+    $note = substr($note, 0, -1);
+    $order->add_order_note( $note ); // this set a note viewable by admin
+    $customer = $order->get_user();
+    if ( $customer ) {
+        $customer->add_order_note( $note );  // this note is sent to customer email
+    }
+    
+}
 
-    $random_string = substr(md5(microtime()),rand(0,26),5);
-    if(add_user_meta(1, 'regcodes', $random_string)) {
-        $codes = get_user_meta(1, 'regcodes');        
-        echo json_encode($codes);
+function catch_sponsor_from_billing( $order, $data ) {
+    if ( isset( $data['sponsor'] ) ) {
+
+        $sponsor = sanitize_text_field( $data['sponsor'] );
+        $order->update_meta_data( 'Sponsor', $sponsor );
     }
 }
+add_action( 'woocommerce_checkout_create_order', 'catch_sponsor_from_billing', 10, 2 );
+
+// Add sponsor field in woocomerce checkout
+function add_sponsor_field( $fields ) {
+    $default_sponsor = WC()->session->get( 'sponsor' );
+    if ( empty( $default_sponsor ) ) {
+        $default_sponsor = 'divmagic_admin';
+    }
+
+    $fields['billing']['sponsor'] = array(
+        'label'       => 'Sponsor',
+        'placeholder' => 'Enter your sponsor',
+        'default'     => $default_sponsor,
+        'required'    => false,
+        'class'       => array( 'form-row-wide' ),
+        'clear'       => true,
+    );
+
+    return $fields;
+}
+add_filter( 'woocommerce_checkout_fields', 'add_sponsor_field' );
+
+// Catch the sponsor from the URL from the shop page
+function capture_sponsor_parameter() {
+    if ( is_shop() ) {
+        if(isset( $_GET['sponsor'] ) ) {
+            $sponsor = sanitize_text_field( $_GET['sponsor'] );
+            WC()->session->set( 'sponsor', $sponsor );
+        }
+        else {
+            WC()->session->set( 'sponsor', '' );
+        }
+    }
+}
+add_action( 'wp', 'capture_sponsor_parameter' );
 
 function exclude_pingbacks_from_admin_comments($clauses) {
     global $pagenow, $wpdb;

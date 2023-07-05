@@ -43,7 +43,7 @@ function wpmlm_user_dashboard($user_id) {
     
     <div id="general-settings">
            <div class="panel-border col-md-12">         
-   <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
+   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
       <div class="col-md-7 col-xs-6 col-md-7">
          <h4><?php _e('Downlines','wpmlm-unilevel'); ?></h4>
          <p><?php _e('Total','wpmlm-unilevel'); ?>: <span><?php echo count($user_row);?> </span></p>
@@ -53,7 +53,7 @@ function wpmlm_user_dashboard($user_id) {
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/bar-chart.png'; ?>">
       </div>
    </div>
-   <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
+   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
       <div class="col-md-7 col-xs-6 col-md-7">
          <h4><?php _e('Bonus','wpmlm-unilevel'); ?></h4>
          <p><?php _e('Total','wpmlm-unilevel'); ?>: <span><?php echo $general->company_currency;?><?php echo $bonus_total_amt;?></span></p>
@@ -63,7 +63,7 @@ function wpmlm_user_dashboard($user_id) {
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/money-bag.png'; ?>">
       </div>
    </div>
-   <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
+   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
       <div class="col-md-7 col-xs-6 col-md-7">
          <h4><?php _e('E-Wallet','wpmlm-unilevel'); ?></h4>
          <p><?php _e('Credit','wpmlm-unilevel'); ?>: <span><?php echo $general->company_currency;?><?php echo $credit_amt;?></span></p>
@@ -71,6 +71,15 @@ function wpmlm_user_dashboard($user_id) {
       </div>
       <div class="col-sm-5 col-xs-6 col-md-5">
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/wallet.png'; ?>">
+      </div>
+   </div>
+   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
+      <div class="col-md-7 col-xs-6 col-md-7">
+         <h4><?php _e('Discount Coupon Code','wpmlm-unilevel'); ?></h4>
+         <p>Get a 10% discount using this coupon code on your next purchase!</p>
+      </div>
+      <div class="col-sm-5 col-xs-6 col-md-5">
+         <h1 style="font-size: 25px; font-weight: bold; color: green;">s76u2hkm</h1>
       </div>
    </div>
    <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
@@ -84,7 +93,7 @@ function wpmlm_user_dashboard($user_id) {
             <div class="row"> 
                 <?php $current_user = wp_get_current_user(); ?>
                 <div class="user-affiliate">
-                    <center><label class="user-affiliate-label"><?php _e('Affiliate Link','wpmlm-unilevel'); ?>:</label></center>
+                    <center><label class="user-affiliate-label"><?php _e('Affiliate Registration Link','wpmlm-unilevel'); ?>:</label></center>
                     <div class="user-affiliate-link">
 
                         <div class="col-md-10" style="height: auto; float: left;"> 
@@ -99,7 +108,29 @@ function wpmlm_user_dashboard($user_id) {
                     </div> 
                 </div>
             </div>
-        </div><?php endif; ?>
+        </div>
+        <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
+            <div class="row"> 
+                <?php $current_user = wp_get_current_user(); ?>
+                <div class="user-affiliate">
+                    <center><label class="user-affiliate-label"><?php _e('Affiliate Shop Link','wpmlm-unilevel'); ?>:</label></center>
+                    <div class="user-affiliate-link">
+
+                        <div class="col-md-10" style="height: auto; float: left;"> 
+                            <label class="form-control" id="affiliate_shop_link" style="height:auto;"><?php echo site_url(); ?>/shop?sponsor=<?php echo $current_user->user_login;?></label>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="tooltip-button">
+                                <button class="btn btn-sm btn-danger-sm mlm-button affiliate_link" onclick="copyToClipboard('#affiliate_shop_link')" onmouseout="outFunc()"><span class="tooltiptext" id="myTooltip"><?php _e('Copy Link','wpmlm-unilevel'); ?></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        
+        <?php endif; ?>
                 <!-- end new -->
             
         <?php /*

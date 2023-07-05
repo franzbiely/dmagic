@@ -197,7 +197,29 @@ function wpmlm_admin_dashboard($user_id) {
                          </div> 
                      </div>
                    </div>
-    </div><?php endif; ?>
+    </div>
+    <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
+            <div class="row"> 
+                <?php $current_user = wp_get_current_user(); ?>
+                <div class="user-affiliate">
+                    <center><label class="user-affiliate-label"><?php _e('Affiliate Shop Link','wpmlm-unilevel'); ?>:</label></center>
+                    <div class="user-affiliate-link">
+
+                        <div class="col-md-10" style="height: auto; float: left;"> 
+                            <label class="form-control" id="affiliate_shop_link" style="height:auto;"><?php echo site_url(); ?>/shop?sponsor=<?php echo $current_user->user_login;?></label>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="tooltip-button">
+                                <button class="btn btn-sm btn-danger-sm mlm-button affiliate_link" onclick="copyToClipboard('#affiliate_shop_link')" onmouseout="outFunc()"><span class="tooltiptext" id="myTooltip"><?php _e('Copy Link','wpmlm-unilevel'); ?></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    
+    <?php endif; ?>
         <!-- end new -->
     
     <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">

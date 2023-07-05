@@ -1614,7 +1614,7 @@ function wpmlm_ajax_session() {
 function regcode_check() {
     $user = get_user_by('login', $_POST['sponsor']);
     if(!$user) {
-        _e('Sorry! Code not valid','wpmlm-unilevel');
+        _e('1. Sorry! Code not valid','wpmlm-unilevel');
         exit();
     }
     $codes = get_user_meta($user->ID, 'regcodes');  
@@ -1622,7 +1622,7 @@ function regcode_check() {
         echo "1";
     }
     else {
-        _e('Sorry! Code not valid','wpmlm-unilevel');
+        _e('2. Sorry! Code not valid','wpmlm-unilevel');
     }
     exit();
 }
