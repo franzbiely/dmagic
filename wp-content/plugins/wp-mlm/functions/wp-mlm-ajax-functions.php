@@ -1617,7 +1617,8 @@ function regcode_check() {
         _e('1. Sorry! Code not valid','wpmlm-unilevel');
         exit();
     }
-    $codes = get_user_meta($user->ID, 'regcodes');  
+    // Always check if code exists on user id = 1 which is Admin
+    $codes = get_user_meta(1 , 'regcodes');  
     if(in_array($_POST['regcode'], $codes)) {
         echo "1";
     }
