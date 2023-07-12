@@ -43,7 +43,7 @@ function wpmlm_user_dashboard($user_id) {
     
     <div id="general-settings">
            <div class="panel-border col-md-12">         
-   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
+   <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
       <div class="col-md-7 col-xs-6 col-md-7">
          <h4><?php _e('Downlines','wpmlm-unilevel'); ?></h4>
          <p><?php _e('Total','wpmlm-unilevel'); ?>: <span><?php echo count($user_row);?> </span></p>
@@ -53,7 +53,7 @@ function wpmlm_user_dashboard($user_id) {
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/bar-chart.png'; ?>">
       </div>
    </div>
-   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
+   <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
       <div class="col-md-7 col-xs-6 col-md-7">
          <h4><?php _e('Bonus','wpmlm-unilevel'); ?></h4>
          <p><?php _e('Total','wpmlm-unilevel'); ?>: <span><?php echo $general->company_currency;?><?php echo $bonus_total_amt;?></span></p>
@@ -63,7 +63,7 @@ function wpmlm_user_dashboard($user_id) {
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/money-bag.png'; ?>">
       </div>
    </div>
-   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
+   <div class="panel-border col-md-4 col-sm-4 panel-ioss-mlm">
       <div class="col-md-7 col-xs-6 col-md-7">
          <h4><?php _e('E-Wallet','wpmlm-unilevel'); ?></h4>
          <p><?php _e('Credit','wpmlm-unilevel'); ?>: <span><?php echo $general->company_currency;?><?php echo $credit_amt;?></span></p>
@@ -73,7 +73,7 @@ function wpmlm_user_dashboard($user_id) {
          <img src="<?php echo plugins_url() . '/' . WP_MLM_PLUGIN_NAME . '/images/wallet.png'; ?>">
       </div>
    </div>
-   <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
+   <!-- <div class="panel-border col-md-6 col-sm-6 panel-ioss-mlm">
       <div class="col-md-7 col-xs-6 col-md-7">
          <h4><?php _e('Discount Coupon Code','wpmlm-unilevel'); ?></h4>
          <p>Get a 10% discount using this coupon code on your next purchase!</p>
@@ -81,7 +81,7 @@ function wpmlm_user_dashboard($user_id) {
       <div class="col-sm-5 col-xs-6 col-md-5">
          <h1 style="font-size: 25px; font-weight: bold; color: green;">s76u2hkm</h1>
       </div>
-   </div>
+   </div> -->
    <div class="panel-border col-md-12 col-sm-12 panel-ioss-mlm">
          
      <div class="row"> 

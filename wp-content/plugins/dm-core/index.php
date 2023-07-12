@@ -16,6 +16,7 @@ add_action('admin_enqueue_scripts', 'enqueue_custom_script');
 add_action('woocommerce_order_status_processing', 'request_generate_code');
 function request_generate_code($order_id) {
     $order = wc_get_order( $order_id );
+    
     $sponsor = $order->get_meta('Sponsor');
     
     $total_quantity = 0;
@@ -25,7 +26,7 @@ function request_generate_code($order_id) {
     $note = "You can now invite friends to join your network using this ";
     $note .= "<a href='https://divinemagic.com.ph/affiliate-user-registration?sponsor=" . $sponsor ."'>REGISTRATION LINK</a>. <br /><br />";
     $note .= "Since you placed a total of ${total_quantity} product(s), you have attained the following codes that you can use in the future : ";
-    
+
     for($x=0; $x<$total_quantity; $x++) {
         $random_string = substr(md5(microtime()),rand(0,26),5);
         if(add_user_meta(1, 'regcodes', $random_string)) {
@@ -33,6 +34,17 @@ function request_generate_code($order_id) {
         }
     }
     $note = substr($note, 0, -1);
+
+    $items = $order->get_items();
+    foreach ($items as $item_id => $item) {
+        $product_name = $item->get_name();
+        if($product_name === 'Package 1') {
+            $note .= "<br /><br />Since you purchased our <strong>Package 1</strong>, 
+            you can use this coupon code on your next purchase to enjoy the 10% discount : <br /><strong>s76u2hkm</strong>";
+            break;
+        }
+    }
+
     $order->add_order_note( $note ); // this set a note viewable by admin
     $customer = $order->get_user();
     if ( $customer ) {
@@ -72,7 +84,7 @@ add_filter( 'woocommerce_checkout_fields', 'add_sponsor_field' );
 
 // Catch the sponsor from the URL from the shop page
 function capture_sponsor_parameter() {
-    if ( is_shop() ) {
+    if ( is_shop() && isset(WC()->session)) {
         if(isset( $_GET['sponsor'] ) ) {
             $sponsor = sanitize_text_field( $_GET['sponsor'] );
             WC()->session->set( 'sponsor', $sponsor );
